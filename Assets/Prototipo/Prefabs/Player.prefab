@@ -1650,7 +1650,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884101225792150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6139259, y: -0.9999999, z: 3.91293}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4960623002293876}
@@ -1972,7 +1972,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!95 &95503901682687488
 Animator:
@@ -1984,9 +1984,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: df4780ed782d7a342a1cafdca3efaa75, type: 3}
   m_Controller: {fileID: 9100000, guid: b0039fc997a9e204d83f87f266f6a4df, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3660d634731dcb44979b2f83ff54f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 4
 --- !u!137 &137061108971654948
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2013,9 +2013,9 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:

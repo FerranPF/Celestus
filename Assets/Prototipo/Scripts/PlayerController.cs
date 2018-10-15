@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 
 	[SerializeField]
-	float movementSpeed = 0.0f;
+	float movementSpeed = 4.0f;
 
 	void Start(){
 		rb = GetComponent<Rigidbody>();
@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour {
 		float moveVertical = Input.GetAxisRaw("Vertical");
 		
 		Vector3 movement = new Vector3(moveHorizonat, 0.0f, moveVertical);
+		movement.Normalize();
+		
 		if(movement != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
 		transform.Translate (movement*movementSpeed*Time.deltaTime, Space.World);
-
+		
 		if(movement != Vector3.zero){
 			anim.SetBool("moving", true);
 		}else{

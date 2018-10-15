@@ -198,7 +198,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Walking
       takeName: mixamo.com
-      firstFrame: 0
+      firstFrame: 2
       lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
