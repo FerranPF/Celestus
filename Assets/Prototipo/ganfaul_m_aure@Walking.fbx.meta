@@ -152,22 +152,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ganfaul_diffuse
-    second: {fileID: 2800000, guid: 908c7e0be18301f49838367dcea52552, type: 3}
+    second: {fileID: 2800000, guid: 9b3e97eb9ea646347a6a23b4cb7db7a7, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ganfaul_glow
-    second: {fileID: 2800000, guid: edfca486cc892d54494108dcff0d2eb7, type: 3}
+    second: {fileID: 2800000, guid: c45764bccfb8ff9408b7234866782c98, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ganfaul_normal
-    second: {fileID: 2800000, guid: 5787b57d00b9ff545a83eedf9a36131a, type: 3}
+    second: {fileID: 2800000, guid: 842108ce61029484dad68c4b5ac752ae, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ganfaul_specular
-    second: {fileID: 2800000, guid: b085b8b85a0c13045974e52c93459d66, type: 3}
+    second: {fileID: 2800000, guid: ea9e4d6b259078d4da47bce72a058abf, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -198,7 +198,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Walking
       takeName: mixamo.com
-      firstFrame: 2
+      firstFrame: 3
       lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
