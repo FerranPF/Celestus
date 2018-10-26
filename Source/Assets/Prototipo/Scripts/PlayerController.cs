@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
 	}
+
 	void Update(){
 		ControlPlayer();
 	}
+
 	void ControlPlayer(){
 		float moveHorizonat = Input.GetAxisRaw("Horizontal");
 		float moveVertical = Input.GetAxisRaw("Vertical");
