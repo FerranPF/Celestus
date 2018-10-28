@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	
 	private Rigidbody rb;
 	private Animator anim;
+    private AnimatorClipInfo animInfo;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -17,7 +18,16 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 		ControlPlayer();
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Ataque");
+            anim.SetBool("attack", true);
+        }
+        else
+        {
+            anim.SetBool("attack", false);
+        }
+    }
 
 	void ControlPlayer(){
 		float moveHorizonat = Input.GetAxisRaw("Horizontal");
