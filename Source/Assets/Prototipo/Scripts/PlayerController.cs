@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour {
 	
 	private Rigidbody rb;
 	private Animator anim;
-    private AnimatorClipInfo animInfo;
+	public AnimationClip attackAnim;
+	private float animTime;
+	private float attackTime;
+	private bool canMove;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -14,18 +17,32 @@ public class PlayerController : MonoBehaviour {
 	void Start(){
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
+		attackTime = attackAnim.length;
+		canMove = true;
 	}
 
 	void Update(){
-		ControlPlayer();
+		if(canMove)
+		{
+			ControlPlayer();
+		}
+
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Ataque");
             anim.SetBool("attack", true);
+			canMove = false;
         }
-        else
-        {
-            anim.SetBool("attack", false);
+        
+        if (!canMove)
+		{
+			animTime += Time.deltaTime;
+			
+			if(animTime >= attackTime)
+			{
+				anim.SetBool("attack", false);
+				canMove = true;
+				animTime = 0;
+			}
         }
     }
 

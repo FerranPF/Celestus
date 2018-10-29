@@ -604,18 +604,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4410404004364674, guid: 30dbe8c52dc8c9d49b0c061a98d3f795, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.50426435
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410404004364674, guid: 30dbe8c52dc8c9d49b0c061a98d3f795, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.171
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410404004364674, guid: 30dbe8c52dc8c9d49b0c061a98d3f795, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.419
-      objectReference: {fileID: 0}
+    - target: {fileID: 114547305973314028, guid: 30dbe8c52dc8c9d49b0c061a98d3f795,
+        type: 2}
+      propertyPath: attackAnim
+      value: 
+      objectReference: {fileID: 7400000, guid: 6edb9cf352c058843a94f479c7823e1a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30dbe8c52dc8c9d49b0c061a98d3f795, type: 2}
   m_IsPrefabAsset: 0
