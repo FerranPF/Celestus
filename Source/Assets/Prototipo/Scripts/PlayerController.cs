@@ -27,8 +27,9 @@ public class PlayerController : MonoBehaviour {
 			ControlPlayer();
 		}
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && animTime == 0)
         {
+			RotatePlayer();
             anim.SetBool("attack", true);
 			canMove = false;
         }
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			animTime += Time.deltaTime;
 			
-			if(animTime >= attackTime)
+			if(animTime >= attackTime*0.5)
 			{
 				anim.SetBool("attack", false);
 				canMove = true;
@@ -60,6 +61,18 @@ public class PlayerController : MonoBehaviour {
 			anim.SetBool("moving", true);
 		}else{
 			anim.SetBool("moving", false);
+		}
+	}
+
+	void RotatePlayer()
+	{
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+		float rayLength;
+		if(groundPlane.Raycast(ray, out rayLength))
+		{
+			Vector3 pointToLook = ray.GetPoint(rayLength);
+			transform.LookAt(pointToLook);
 		}
 	}
 }
