@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	private float animTime;
 	private float attackTime;
 	private bool canMove;
+    public CapsuleCollider sword;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		attackTime = attackAnim.length;
 		canMove = true;
+        sword.enabled = false;
 	}
 
 	void Update(){
@@ -32,18 +34,20 @@ public class PlayerController : MonoBehaviour {
 			RotatePlayer();
             anim.SetBool("attack", true);
 			canMove = false;
+            sword.enabled = true;
         }
         
         if (!canMove)
 		{
 			animTime += Time.deltaTime;
 			
-			if(animTime >= attackTime*0.5)
+			if(animTime >= attackTime*0.66)
 			{
 				anim.SetBool("attack", false);
 				canMove = true;
-				animTime = 0;
-			}
+                sword.enabled = false;
+                animTime = 0;
+            }
         }
     }
 

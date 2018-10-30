@@ -344,12 +344,13 @@ GameObject:
   - component: {fileID: 682895122}
   - component: {fileID: 682895121}
   - component: {fileID: 682895120}
+  - component: {fileID: 682895124}
   m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!136 &682895120
 CapsuleCollider:
@@ -413,12 +414,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 682895119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.58, y: 1.35, z: 3.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.58, y: 0.835, z: 3.2}
+  m_LocalScale: {x: 0.62868804, y: 0.80963635, z: 0.62868804}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682895124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 682895119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf92bca10ea12b14eb4ddca37ef6b989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 682895119}
 --- !u!1 &687271619
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +728,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114547305973314028, guid: 30dbe8c52dc8c9d49b0c061a98d3f795,
+        type: 2}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1744466389}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30dbe8c52dc8c9d49b0c061a98d3f795, type: 2}
   m_IsPrefabAsset: 0
@@ -1207,6 +1225,27 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1690182417}
   m_CullTransparentMesh: 0
+--- !u!1 &1744466387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1273218684540860, guid: 30dbe8c52dc8c9d49b0c061a98d3f795,
+    type: 2}
+  m_PrefabInternal: {fileID: 1089557355}
+--- !u!136 &1744466389 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 136072076384469222, guid: 30dbe8c52dc8c9d49b0c061a98d3f795,
+    type: 2}
+  m_PrefabInternal: {fileID: 1089557355}
+--- !u!114 &1744466392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1744466387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec7615b23095b341a033d9ed6186bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829687907
 GameObject:
   m_ObjectHideFlags: 0
