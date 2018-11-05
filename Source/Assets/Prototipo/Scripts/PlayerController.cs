@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	
 	private Rigidbody rb;
-	private Animator anim;
+	public Animator anim;
 	public AnimationClip attackAnim;
 	private float animTime;
 	private float attackTime;
 	private bool canMove;
     public CapsuleCollider sword;
+    PlayerHealth health;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
 
-	void Start(){
+    private void Awake()
+    {
+        health = GetComponent<PlayerHealth>();
+    }
+
+    void Start(){
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
 		attackTime = attackAnim.length;
@@ -24,7 +30,34 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update(){
-		if(canMove)
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            health.TakeDamage(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            health.HealthRecovery(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            health.UseMana(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            health.ManaRecovery(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            health.GetExp(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            health.GetExp(50f);
+        }
+
+
+        if (canMove)
 		{
 			ControlPlayer();
 		}
