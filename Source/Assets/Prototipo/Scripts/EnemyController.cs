@@ -5,13 +5,26 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     private int enemyHealth = 100;
-    public GameObject enemy;
-    
+    private CapsuleCollider enemyCol;
+    private Renderer enemyRen;
+	
+	private GameObject player;
+	private PlayerHealth playerHealth;
+	
+    private void Start()
+    {
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerHealth = player.GetComponent<PlayerHealth>();
+		
+        enemyRen = GetComponent<Renderer>();
+        enemyCol = GetComponent<CapsuleCollider>();
+    }
+
     private void Update()
     {
         if (enemyHealth == 0)
         {
-            enemy.SetActive(false);
+            Death();
         }
     }
 
@@ -20,4 +33,12 @@ public class EnemyController : MonoBehaviour {
         enemyHealth -= damage;
         Debug.Log("Enemy health: " + enemyHealth);
     }
+
+    protected void Death()
+    {
+        enemyRen.enabled = false;
+        enemyCol.enabled = false;
+		playerHealth.GetExp(25);
+        Destroy(GetComponent<EnemyController>());
+    } 
 }

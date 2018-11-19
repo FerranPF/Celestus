@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	
-	private Rigidbody rb;
 	public Animator anim;
 	public AnimationClip attackAnim;
 	private float animTime;
@@ -12,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 	private bool canMove;
     public CapsuleCollider sword;
     PlayerHealth health;
+
+    private float spellCount;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -22,11 +23,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start(){
-		rb = GetComponent<Rigidbody>();
 		anim = GetComponent<Animator>();
 		attackTime = attackAnim.length;
 		canMove = true;
         sword.enabled = false;
+        spellCount = 1f;
 	}
 
 	void Update(){
@@ -55,6 +56,18 @@ public class PlayerController : MonoBehaviour {
         {
             health.GetExp(50f);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (spellCount >= 1f && health.currentMana > 0f)
+            {
+                health.UseMana(10f);
+                SpellCountDown();
+            }
+            else
+            {
+                Debug.Log("CD time");
+            }
+        }
 
 
         if (canMove)
@@ -82,6 +95,17 @@ public class PlayerController : MonoBehaviour {
                 animTime = 0;
             }
         }
+
+        if(spellCount < 1f)
+        {
+            spellCount += Time.deltaTime;
+            health.SpellCD.fillAmount = spellCount;
+        }
+    }
+
+    void SpellCountDown()
+    {
+        spellCount = 0f;
     }
 
 	void ControlPlayer(){

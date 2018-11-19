@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
     public Image healthSlider;
     public Image manaSlider;
     public Image expSlider;
+    public Image SpellCD;
 
     PlayerController playerControl;
 
@@ -27,7 +29,7 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth = startingHealth;
         currentMana = startingMana;
         playerControl = GetComponent<PlayerController>();
-        level = 0.0f;
+        level = 1.0f;
         expSlider.fillAmount = 0.0f;
     }
 
@@ -93,13 +95,14 @@ public class PlayerHealth : MonoBehaviour {
     void Death()
     {
         playerControl.enabled = false;
+		SceneManager.LoadScene("GameOver");
     }
 
     public void GetExp(float amount)
     {
         currentExp += amount;
 
-        if (currentExp-0.01f >= maxExp)
+        if (currentExp >= maxExp)
         {
             currentExp -= baseExp * level;
             level++;
