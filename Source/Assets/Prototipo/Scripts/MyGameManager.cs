@@ -9,6 +9,7 @@ public class MyGameManager : MonoBehaviour {
 
     public GameObject pausePanel;
 	public GameObject statsPanel;
+    public Animator fadeAnim;
 	
 	private bool isPaused;
 	
@@ -45,10 +46,17 @@ public class MyGameManager : MonoBehaviour {
 	
 	public void ExitMenu(){
 		Time.timeScale = 1.0f;
-		SceneManager.LoadScene("ProtoMenu");
+        StartCoroutine(Fading());
 	}
 	
 	public void Exit(){
 		Application.Quit();
 	}
+
+    IEnumerator Fading()
+    {
+        fadeAnim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("ProtoMenu");
+    }
 }

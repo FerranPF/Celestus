@@ -24,6 +24,8 @@ public class PlayerHealth : MonoBehaviour {
     private float baseExp = 100.0f;
     public float level;
 
+    public Animator fadeAnim;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -95,7 +97,7 @@ public class PlayerHealth : MonoBehaviour {
     void Death()
     {
         playerControl.enabled = false;
-		SceneManager.LoadScene("GameOver");
+        StartCoroutine(Fading());
     }
 
     public void GetExp(float amount)
@@ -110,5 +112,12 @@ public class PlayerHealth : MonoBehaviour {
         }
         Debug.Log("Exp: " + currentExp + "MaxEsp: " + maxExp);
         expSlider.fillAmount = currentExp / maxExp;
+    }
+
+    IEnumerator Fading()
+    {
+        fadeAnim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("GameOver");
     }
 }
