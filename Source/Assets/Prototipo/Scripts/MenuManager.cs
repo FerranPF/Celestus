@@ -7,8 +7,18 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour {
 
     public Animator anim;
+    public GameObject optionsPanel;
+    public GameObject mainPanel;
+    public GameObject fadePanel;
 
-    // Use this for initialization
+    void Awake(){
+        fadePanel.SetActive(true);
+    }
+
+    void Start(){
+        optionsPanel.SetActive(false);
+        mainPanel.SetActive(true);
+    }
     public void ExitButtons()
     {
         Application.Quit();
@@ -16,12 +26,19 @@ public class MenuManager : MonoBehaviour {
 
     // Update is called once per frame
     public void OptionsButton() {
-		
+		optionsPanel.SetActive(true);
+        mainPanel.SetActive(false);
 	}
 
     public void CreditsButton()
     {
 
+    }
+
+    public void OptionsBackButton()
+    {
+        optionsPanel.SetActive(false);
+        mainPanel.SetActive(true);
     }
 
     public void PlayButton()

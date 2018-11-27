@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public AnimationClip attackAnim;
 	private float animTime;
 	private float attackTime;
-	private bool canMove;
+	public bool canMove;
     public CapsuleCollider sword;
     PlayerHealth health;
 
@@ -73,15 +73,14 @@ public class PlayerController : MonoBehaviour {
         if (canMove)
 		{
 			ControlPlayer();
+            if (Input.GetMouseButtonDown(0) && animTime == 0)
+            {
+			    RotatePlayer();
+                anim.SetBool("attack", true);
+			    canMove = false;
+                sword.enabled = true;
+            }
 		}
-
-        if (Input.GetMouseButtonDown(0) && animTime == 0)
-        {
-			RotatePlayer();
-            anim.SetBool("attack", true);
-			canMove = false;
-            sword.enabled = true;
-        }
         
         if (!canMove)
 		{
@@ -130,9 +129,10 @@ public class PlayerController : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 		float rayLength;
+        Vector3 pointToLook;
 		if(groundPlane.Raycast(ray, out rayLength))
 		{
-			Vector3 pointToLook = ray.GetPoint(rayLength);
+			pointToLook = ray.GetPoint(rayLength);
 			transform.LookAt(pointToLook);
 		}
 	}

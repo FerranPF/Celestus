@@ -9,11 +9,15 @@ public class MyGameManager : MonoBehaviour {
 
     public GameObject pausePanel;
 	public GameObject statsPanel;
+	public GameObject fadePanel;
     public Animator fadeAnim;
+	public PlayerController player;
 	
 	private bool isPaused;
 	
-    
+    void Awake(){
+		fadePanel.SetActive(true);
+	}
     void Start () {
 		isPaused = false;
 		statsPanel.SetActive(true);
@@ -23,25 +27,27 @@ public class MyGameManager : MonoBehaviour {
     void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			if(!isPaused){
-				isPaused = true;
 				Pause();
 			}else{
-				isPaused = false;
 				Resume();
 			}
 		}
 	}
 	
 	public void Pause(){
+		player.canMove = false;
+		isPaused = true;
 		pausePanel.SetActive(true);
 		statsPanel.SetActive(false);
 		Time.timeScale = 0.0f;
 	}
 	
 	public void Resume(){
+		isPaused = false;
 		pausePanel.SetActive(false);
 		statsPanel.SetActive(true);
 		Time.timeScale = 1.0f;
+		player.canMove = true;
 	}
 	
 	public void ExitMenu(){
