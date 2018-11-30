@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour {
 	private float animTime;
 	private float attackTime;
 	public bool canMove;
-    public CapsuleCollider sword;
+    public BoxCollider sword;
     PlayerHealth health;
+    public bool attacking;
 
     private float spellCount;
+    public float dashForce;
+    public bool godMode;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start(){
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 		attackTime = attackAnim.length;
 		canMove = true;
         sword.enabled = false;
@@ -32,30 +35,11 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            health.TakeDamage(10f);
+        if(godMode){
+            GodMode();
         }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            health.HealthRecovery(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            health.UseMana(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            health.ManaRecovery(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            health.GetExp(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            health.GetExp(50f);
-        }
+
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (spellCount >= 1f && health.currentMana > 0f)
@@ -69,27 +53,33 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Debug.Log("Dash");
+        }
+
 
         if (canMove)
 		{
 			ControlPlayer();
             if (Input.GetMouseButtonDown(0) && animTime == 0)
             {
-			    RotatePlayer();
+                attacking = true;
+                RotatePlayer();
                 anim.SetBool("attack", true);
 			    canMove = false;
                 sword.enabled = true;
             }
 		}
         
-        if (!canMove)
+        if (!canMove && attacking)
 		{
 			animTime += Time.deltaTime;
 			
-			if(animTime >= attackTime*0.66)
+			if(animTime >= attackTime*0.9)
 			{
 				anim.SetBool("attack", false);
 				canMove = true;
+                attacking = false;
                 sword.enabled = false;
                 animTime = 0;
             }
@@ -116,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 		
 		if(movement != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
 		transform.Translate (movement*movementSpeed*Time.deltaTime, Space.World);
-		
+
 		if(movement != Vector3.zero){
 			anim.SetBool("moving", true);
 		}else{
@@ -127,13 +117,44 @@ public class PlayerController : MonoBehaviour {
 	void RotatePlayer()
 	{
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+		Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1, 0));
 		float rayLength;
         Vector3 pointToLook;
+        
 		if(groundPlane.Raycast(ray, out rayLength))
 		{
 			pointToLook = ray.GetPoint(rayLength);
-			transform.LookAt(pointToLook);
+            Debug.Log(pointToLook);
+            transform.LookAt(pointToLook);
+            Debug.Log(transform.rotation);
 		}
 	}
+
+    void GodMode()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            health.TakeDamage(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            health.HealthRecovery(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            health.UseMana(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            health.ManaRecovery(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            health.GetExp(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            health.GetExp(50f);
+        }
+    }
 }

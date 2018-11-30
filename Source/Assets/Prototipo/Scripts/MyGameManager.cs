@@ -10,21 +10,40 @@ public class MyGameManager : MonoBehaviour {
     public GameObject pausePanel;
 	public GameObject statsPanel;
 	public GameObject fadePanel;
+	public GameObject godPanel;
+
     public Animator fadeAnim;
 	public PlayerController player;
 	
+	private bool godMode;
 	private bool isPaused;
 	
     void Awake(){
 		fadePanel.SetActive(true);
 	}
+	
     void Start () {
+		godMode = false;
 		isPaused = false;
 		statsPanel.SetActive(true);
 		pausePanel.SetActive(false);
-	}    
+		godPanel.SetActive(false);
+	}
 
     void Update () {
+
+		if(Input.GetKeyDown(KeyCode.F10)){
+			if(!godMode){
+				player.godMode = true;
+				godMode = true;
+				godPanel.SetActive(true);
+			}else{
+				player.godMode = false;
+				godMode = false;
+				godPanel.SetActive(false);
+			}
+		}
+
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			if(!isPaused){
 				Pause();
