@@ -1262,6 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf92bca10ea12b14eb4ddca37ef6b989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 50
 --- !u!95 &682895126
 Animator:
   serializedVersion: 3
@@ -1494,8 +1495,10 @@ MonoBehaviour:
   canMove: 0
   sword: {fileID: 1254343719}
   attacking: 0
+  canSpell: 0
   dashForce: 500
   godMode: 0
+  spellAnim: {fileID: 7400000, guid: 3325b58b2e0fd414a87ae063926ef7e6, type: 2}
   movementSpeed: 5
 --- !u!136 &811192443
 CapsuleCollider:
@@ -2813,11 +2816,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3503,11 +3506,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

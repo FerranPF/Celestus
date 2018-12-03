@@ -11,11 +11,14 @@ public class PlayerController : MonoBehaviour {
 	public bool canMove;
     public BoxCollider sword;
     PlayerHealth health;
-    public bool attacking;
+    public bool canAttack;
+    public bool canSpell;
 
     private float spellCount;
     public float dashForce;
     public bool godMode;
+
+    public AnimationClip spellAnim;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -27,8 +30,11 @@ public class PlayerController : MonoBehaviour {
 
     void Start(){
 		anim = GetComponentInChildren<Animator>();
-		attackTime = attackAnim.length;
+        attackTime = attackAnim.length;
+		attackTime *= 0.9f;
 		canMove = true;
+        canSpell = true;
+        canAttack = true;
         sword.enabled = false;
         spellCount = 1f;
 	}
@@ -39,65 +45,59 @@ public class PlayerController : MonoBehaviour {
             GodMode();
         }
 
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if (spellCount >= 1f && health.currentMana > 0f)
-            {
-                health.UseMana(10f);
-                SpellCountDown();
-            }
-            else
-            {
-                Debug.Log("CD time");
-            }
-        }
-
         if(Input.GetKeyDown(KeyCode.Space)){
             Debug.Log("Dash");
         }
 
-
         if (canMove)
 		{
-            if (Input.GetAxisRaw("Fire1")>0)
-            {
-                anim.SetBool("moving", false);
-                anim.SetBool("attack", true);
-                attacking = true;
-                RotatePlayer();
-			    canMove = false;
-                sword.enabled = true;
-            }else{
-                ControlPlayer();
-            }
-		}
-        
-        if (attacking)
-		{
-			animTime += Time.deltaTime;
-			
-			if(animTime >= attackTime*0.9)
-			{
-				anim.SetBool("attack", false);
-                anim.SetBool("moving", true);
-				canMove = true;
-                attacking = false;
-                sword.enabled = false;
-                animTime = 0;
-            }
-        }
 
-        if(spellCount < 1f)
-        {
+            if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
+            {
+                if (spellCount >= 1f && health.currentMana > 0f)
+                {
+                    health.UseMana(10f);
+                    spellCount = 0.0f;
+                    health.SpellCD.fillAmount = 0.0f;
+                    StartCoroutine(CastSpell());
+                }
+                else
+                {
+                    Debug.Log("CD time");
+                }
+            }
+            
+            if (Input.GetAxisRaw("Fire1")>0 && canAttack)
+            {
+                StartCoroutine(Attack());
+            }
+
+            ControlPlayer();            
+		}
+
+        do{
             spellCount += Time.deltaTime;
             health.SpellCD.fillAmount = spellCount;
-        }
+        }while(spellCount <= 1.0f);
+        
     }
 
-    void SpellCountDown()
-    {
-        spellCount = 0f;
+    IEnumerator Attack(){
+
+        anim.SetBool("attack", true);
+        RotatePlayer();
+        canMove = false;
+        canSpell = false;
+        canAttack = false;
+        sword.enabled = true;
+        
+        yield return new WaitForSeconds(attackTime);
+
+        anim.SetBool("attack", false);
+        canSpell = true;
+		canMove = true;
+        canAttack = true;
+        sword.enabled = false;
     }
 
 	void ControlPlayer(){
@@ -127,11 +127,28 @@ public class PlayerController : MonoBehaviour {
 		if(groundPlane.Raycast(ray, out rayLength))
 		{
 			pointToLook = ray.GetPoint(rayLength);
-            Debug.Log(pointToLook);
+            //Debug.Log(pointToLook);
             transform.LookAt(pointToLook);
-            Debug.Log(transform.rotation);
+            //Debug.Log(transform.rotation);
 		}
 	}
+
+    IEnumerator CastSpell()
+    {
+        RotatePlayer();
+        anim.SetBool("spell", true);
+        canMove = false;
+        canAttack = false;
+        canSpell = false;
+
+        yield return new WaitForSeconds(spellAnim.length);
+
+        anim.SetBool("spell", false);
+        canMove = true;
+        canSpell = true;
+        canAttack = true;
+    }
+
 
     void GodMode()
     {

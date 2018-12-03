@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
-    private int enemyHealth = 100;
+    public int enemyHealth = 100;
     private CapsuleCollider enemyCol;
     private Renderer enemyRen;
 	
