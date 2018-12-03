@@ -51,10 +51,9 @@ public class PlayerController : MonoBehaviour {
 
         if (canMove)
 		{
-
             if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
             {
-                if (spellCount >= 1f && health.currentMana > 0f)
+                if (health.currentMana > 0f)
                 {
                     health.UseMana(10f);
                     spellCount = 0.0f;
@@ -65,21 +64,13 @@ public class PlayerController : MonoBehaviour {
                 {
                     Debug.Log("CD time");
                 }
-            }
-            
+            }            
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
                 StartCoroutine(Attack());
             }
-
             ControlPlayer();            
 		}
-
-        do{
-            spellCount += Time.deltaTime;
-            health.SpellCD.fillAmount = spellCount;
-        }while(spellCount <= 1.0f);
-        
     }
 
     IEnumerator Attack(){
