@@ -60,24 +60,27 @@ public class PlayerController : MonoBehaviour {
 
         if (canMove)
 		{
-			ControlPlayer();
-            if (Input.GetMouseButtonDown(0) && animTime == 0)
+            if (Input.GetAxisRaw("Fire1")>0)
             {
+                anim.SetBool("moving", false);
+                anim.SetBool("attack", true);
                 attacking = true;
                 RotatePlayer();
-                anim.SetBool("attack", true);
 			    canMove = false;
                 sword.enabled = true;
+            }else{
+                ControlPlayer();
             }
 		}
         
-        if (!canMove && attacking)
+        if (attacking)
 		{
 			animTime += Time.deltaTime;
 			
 			if(animTime >= attackTime*0.9)
 			{
 				anim.SetBool("attack", false);
+                anim.SetBool("moving", true);
 				canMove = true;
                 attacking = false;
                 sword.enabled = false;

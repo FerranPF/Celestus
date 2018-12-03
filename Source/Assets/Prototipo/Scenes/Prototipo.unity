@@ -1496,7 +1496,7 @@ MonoBehaviour:
   attacking: 0
   dashForce: 500
   godMode: 0
-  movementSpeed: 3.5
+  movementSpeed: 5
 --- !u!136 &811192443
 CapsuleCollider:
   m_ObjectHideFlags: 0
