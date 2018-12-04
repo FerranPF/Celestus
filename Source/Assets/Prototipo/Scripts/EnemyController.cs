@@ -11,21 +11,17 @@ public class EnemyController : MonoBehaviour {
     NavMeshAgent agent;
 
     public int enemyHealth = 100;
-    private CapsuleCollider enemyCol;
-    private Renderer enemyRen;
-	
-	private GameObject player;
+    private float attackTime;
+    private float waitingTime;
 	private PlayerHealth playerHealth;
 	
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
-		player = GameObject.FindGameObjectWithTag("Player");
-		playerHealth = player.GetComponent<PlayerHealth>();
-		
-        enemyRen = GetComponentInChildren<Renderer>();
-        enemyCol = GetComponent<CapsuleCollider>();
+		playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        attackTime = 2.0f;
+        waitingTime = 0.0f;
     }
 
     private void Update()
@@ -36,10 +32,25 @@ public class EnemyController : MonoBehaviour {
             agent.SetDestination(target.position);
             if(distance <= agent.stoppingDistance){
                 FaceTarget();
+                Attack();
+            }else{
+            waitingTime = 0;
             }
         }
     }
 
+    void Attack(){
+
+        if(attackTime <= waitingTime){
+            playerHealth.TakeDamage(10);
+            Debug.Log("Attacking");
+            waitingTime = 0;
+        }else{
+            waitingTime += Time.deltaTime;
+            Debug.Log("Thinking");
+        }
+    }
+    
     void FaceTarget(){
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -59,10 +70,8 @@ public class EnemyController : MonoBehaviour {
 
     protected void Death()
     {
-        enemyRen.enabled = false;
-        enemyCol.enabled = false;
 		playerHealth.GetExp(25);
-        Destroy(GetComponent<EnemyController>());
+        Destroy(gameObject);
     }
 
     void OnDrawGizmosSelected(){
