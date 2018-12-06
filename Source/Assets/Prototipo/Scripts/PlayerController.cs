@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     PlayerHealth health;
     public bool canAttack;
     public bool canSpell;
+    public bool canDash;
+    public float manaSpell;
 
     private float spellCount;
     public float dashForce;
@@ -33,7 +35,8 @@ public class PlayerController : MonoBehaviour {
     public float dashStoppingSpeed = 0.1f;
 
     private float currentDashTime;
-
+    public float CDDash;
+    private float CDDashCount;
     private void Awake()
     {
         health = GetComponent<PlayerHealth>();
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 		canMove = true;
         canSpell = true;
         canAttack = true;
+        canDash = true;
         sword.enabled = false;
         spellCount = 0.0f;
 	}
@@ -60,8 +64,10 @@ public class PlayerController : MonoBehaviour {
 
         if (canMove)
 		{
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && canDash)
             {
+                CDDashCount = 0.0f;
+                canDash = false;
                 currentDashTime = 0.0f;
             }
 
@@ -69,7 +75,7 @@ public class PlayerController : MonoBehaviour {
             {
                 if (health.currentMana > 0f)
                 {
-                    health.UseMana(10f);
+                    health.UseMana(manaSpell);
                     spellCount = 0.0f;
                     health.SpellCD.fillAmount = 0.0f;
                     StartCoroutine(CastSpell());
@@ -88,6 +94,15 @@ public class PlayerController : MonoBehaviour {
             health.SpellCD.fillAmount = spellCount;
         }
 
+        if (CDDashCount <= CDDash)
+        {
+            CDDashCount += Time.deltaTime;
+        }
+        else
+        {
+            canDash = true;
+        }
+
         if (currentDashTime < maxDashTime)
         {
             moveDirection = new Vector3(0, 0, dashSpeed);
@@ -97,8 +112,8 @@ public class PlayerController : MonoBehaviour {
         {
             moveDirection = Vector3.zero;
         }
-
-        navMesh.Move(moveDirection * Time.deltaTime);
+        
+        transform.Translate(moveDirection* Time.deltaTime, Space.Self);
 
     }
 
@@ -127,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = new Vector3(moveHorizonat, 0.0f, moveVertical);
 		movement.Normalize();
 		
-		if(movement != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
+		if(movement != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.1f);
 		transform.Translate (movement*movementSpeed*Time.deltaTime, Space.World);
 
 		if(movement != Vector3.zero){
