@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
 	
@@ -19,9 +20,19 @@ public class PlayerController : MonoBehaviour {
     public bool godMode;
 
     public AnimationClip spellAnim;
+    NavMeshAgent navMesh;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
+
+    public GameObject FireBallPrefab;
+
+    public Vector3 moveDirection;
+    public float maxDashTime = 1.0f;
+    public float dashSpeed = 1.0f;
+    public float dashStoppingSpeed = 0.1f;
+
+    private float currentDashTime;
 
     private void Awake()
     {
@@ -29,14 +40,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start(){
-		anim = GetComponentInChildren<Animator>();
+        navMesh = GetComponent<NavMeshAgent>();
+        currentDashTime = maxDashTime;
+        anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
-		attackTime *= 0.9f;
+		attackTime *= 0.6f;
 		canMove = true;
         canSpell = true;
         canAttack = true;
         sword.enabled = false;
-        spellCount = 1f;
+        spellCount = 0.0f;
 	}
 
 	void Update(){
@@ -45,12 +58,13 @@ public class PlayerController : MonoBehaviour {
             GodMode();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)){
-            Debug.Log("Dash");
-        }
-
         if (canMove)
 		{
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                currentDashTime = 0.0f;
+            }
+
             if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
             {
                 if (health.currentMana > 0f)
@@ -60,10 +74,6 @@ public class PlayerController : MonoBehaviour {
                     health.SpellCD.fillAmount = 0.0f;
                     StartCoroutine(CastSpell());
                 }
-                else
-                {
-                    Debug.Log("CD time");
-                }
             }            
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
@@ -71,6 +81,25 @@ public class PlayerController : MonoBehaviour {
             }
             ControlPlayer();            
 		}
+
+        if(spellCount < 1.0f)
+        {
+            spellCount += Time.deltaTime;
+            health.SpellCD.fillAmount = spellCount;
+        }
+
+        if (currentDashTime < maxDashTime)
+        {
+            moveDirection = new Vector3(0, 0, dashSpeed);
+            currentDashTime += dashStoppingSpeed;
+        }
+        else
+        {
+            moveDirection = Vector3.zero;
+        }
+
+        navMesh.Move(moveDirection * Time.deltaTime);
+
     }
 
     IEnumerator Attack(){
@@ -111,7 +140,7 @@ public class PlayerController : MonoBehaviour {
 	void RotatePlayer()
 	{
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1, 0));
+		Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1.3f, 0));
 		float rayLength;
         Vector3 pointToLook;
         
@@ -131,6 +160,7 @@ public class PlayerController : MonoBehaviour {
         canMove = false;
         canAttack = false;
         canSpell = false;
+        Spell1();
 
         yield return new WaitForSeconds(spellAnim.length);
 
@@ -140,6 +170,13 @@ public class PlayerController : MonoBehaviour {
         canAttack = true;
     }
 
+    void Spell1()
+    {
+        Vector3 SpawnSpellLoc = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        GameObject clone;
+        clone = Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
+
+    }
 
     void GodMode()
     {

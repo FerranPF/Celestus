@@ -10,7 +10,6 @@ public class Sword : MonoBehaviour {
         {
             EnemyController enemy = other.GetComponent<EnemyController>();
             enemy.GetDamage(10);
-            //Debug.Log("Enemigo");
         }
     }
 }
