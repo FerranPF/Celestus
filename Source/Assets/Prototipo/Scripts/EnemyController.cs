@@ -11,51 +11,64 @@ public class EnemyController : MonoBehaviour {
     NavMeshAgent agent;
 
     public int enemyHealth = 100;
+
+    private Animator animator;
+    public AnimationClip attackAnim;
+    private bool canMove;
+    private PlayerHealth playerHealth;
+    private bool canAttack;
     private float attackTime;
-    private float waitingTime;
-	private PlayerHealth playerHealth;
-	
+
     private void Start()
     {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
-		playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        attackTime = 2.0f;
-        waitingTime = 0.0f;
+        canMove = true;
+        canAttack = true;
+        attackTime = (attackAnim.length) * 0.9f;
     }
 
     private void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
+        if (canMove)
+        {
+            float distance = Vector3.Distance(target.position, transform.position);
 
-        if(distance <= lookRadius){
-            agent.SetDestination(target.position);
-            if(distance <= agent.stoppingDistance){
-                FaceTarget();
-                Attack();
-            }else{
-            waitingTime = 0;
+            if (distance <= lookRadius)
+            {
+                agent.SetDestination(target.position);
+                if (distance <= agent.stoppingDistance)
+                {
+                    if (canAttack)
+                    {
+                        StartCoroutine(Attack());
+                    }
+                }
             }
         }
+        
     }
 
-    void Attack(){
+    IEnumerator Attack()
+    {
+        FaceTarget();
+        canMove = false;
+        animator.SetBool("attacking", true);
+        canAttack = false;
+        yield return new WaitForSeconds(attackTime);
+        canMove = true;
+        animator.SetBool("attacking", false);
+        canAttack = true;
 
-        if(attackTime <= waitingTime){
-            playerHealth.TakeDamage(10);
-            Debug.Log("Attacking");
-            waitingTime = 0;
-        }else{
-            waitingTime += Time.deltaTime;
-            Debug.Log("Thinking");
-        }
     }
     
     void FaceTarget(){
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = lookRotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
     }
 
     public void GetDamage(int damage)

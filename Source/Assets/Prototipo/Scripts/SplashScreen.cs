@@ -9,7 +9,6 @@ public class SplashScreen : MonoBehaviour {
 	public float logoTime;
 
 	void Start () {
-        logoTime = 5.0f;
 	}
 
 	void Update(){
@@ -23,6 +22,6 @@ public class SplashScreen : MonoBehaviour {
     {
         fadeAnim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("ProtoMenu");
+        SceneManager.LoadScene("GameLogoScreen");
     }
 }

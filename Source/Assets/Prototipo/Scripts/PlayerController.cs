@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour {
     public bool godMode;
 
     public AnimationClip spellAnim;
-    NavMeshAgent navMesh;
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
@@ -37,13 +36,13 @@ public class PlayerController : MonoBehaviour {
     private float currentDashTime;
     public float CDDash;
     private float CDDashCount;
+
     private void Awake()
     {
         health = GetComponent<PlayerHealth>();
     }
 
     void Start(){
-        navMesh = GetComponent<NavMeshAgent>();
         currentDashTime = maxDashTime;
         anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
@@ -80,11 +79,13 @@ public class PlayerController : MonoBehaviour {
                     health.SpellCD.fillAmount = 0.0f;
                     StartCoroutine(CastSpell());
                 }
-            }            
+            }
+            
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
                 StartCoroutine(Attack());
             }
+
             ControlPlayer();            
 		}
 
@@ -188,8 +189,7 @@ public class PlayerController : MonoBehaviour {
     void Spell1()
     {
         Vector3 SpawnSpellLoc = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        GameObject clone;
-        clone = Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
+        GameObject clone = Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
 
     }
 
