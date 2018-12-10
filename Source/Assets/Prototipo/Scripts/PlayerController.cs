@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour {
     public float dashForce;
     public bool godMode;
 
+    private AudioSource audio;
+    public AudioClip attackAudio;
+
     public AnimationClip spellAnim;
 
 	[SerializeField]
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start(){
+        audio = GetComponent<AudioSource>();
         currentDashTime = maxDashTime;
         anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
@@ -59,6 +63,17 @@ public class PlayerController : MonoBehaviour {
 
         if(godMode){
             GodMode();
+            GodMovement();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F10)){
+            if(godMode){
+                ActivePlayer();
+                godMode = false;
+            }else if(!godMode){
+                DesactivePlayer();
+                godMode = true;
+            }
         }
 
         if (canMove)
@@ -83,6 +98,8 @@ public class PlayerController : MonoBehaviour {
             
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
+                audio.clip = attackAudio;
+                audio.Play(0);
                 StartCoroutine(Attack());
             }
 
@@ -143,7 +160,10 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = new Vector3(moveHorizonat, 0.0f, moveVertical);
 		movement.Normalize();
 		
-		if(movement != Vector3.zero) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.1f);
+		if(movement != Vector3.zero){
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.1f);
+        }
+        
 		transform.Translate (movement*movementSpeed*Time.deltaTime, Space.World);
 
 		if(movement != Vector3.zero){
@@ -193,6 +213,32 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    void DesactivePlayer(){
+        NavMeshAgent navMesh;
+        navMesh = GetComponent<NavMeshAgent>();
+        navMesh.enabled = false;
+        Rigidbody rb;
+        rb = GetComponent<Rigidbody>();
+        rb.mass = 0;
+        canMove = false;
+        anim.enabled = false;
+    }
+
+    void ActivePlayer(){
+        NavMeshAgent navMesh;
+        navMesh = GetComponent<NavMeshAgent>();
+        navMesh.enabled = true;
+        Rigidbody rb;
+        rb = GetComponent<Rigidbody>();
+        rb.mass = 1;
+        canMove = true;
+        anim.enabled = true;
+    }
+
+    void GodMovement(){
+        ControlPlayer();
+    }
+
     void GodMode()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -219,5 +265,6 @@ public class PlayerController : MonoBehaviour {
         {
             health.GetExp(50f);
         }
+
     }
 }

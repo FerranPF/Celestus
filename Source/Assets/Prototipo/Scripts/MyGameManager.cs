@@ -34,11 +34,9 @@ public class MyGameManager : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.F10)){
 			if(!godMode){
-				player.godMode = true;
 				godMode = true;
 				godPanel.SetActive(true);
 			}else{
-				player.godMode = false;
 				godMode = false;
 				godPanel.SetActive(false);
 			}

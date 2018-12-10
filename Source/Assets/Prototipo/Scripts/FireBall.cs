@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FireBall : MonoBehaviour {
 
@@ -9,11 +10,19 @@ public class FireBall : MonoBehaviour {
     public float speedSpell;
     public int damage;
     GameObject player;
+    private AudioSource audio;
+    public AudioClip[] audioClip;
+
+    private float destTime;
 
     void Start () {
+        audio = GetComponent<AudioSource>();
+        audio.clip = audioClip[0];
+        audio.Play(0);
         timeToDestroy = 0.0f;
         player = GameObject.FindGameObjectWithTag("Player");
         transform.Rotate(new Vector3(0, player.transform.localEulerAngles.y, 0));
+        destTime = 5.0f;
     }
 	
 
@@ -49,7 +58,16 @@ public class FireBall : MonoBehaviour {
 
     void DestroySpell()
     {
-        Destroy(gameObject);
+        audio.clip = audioClip[1];
+        audio.Play(0);
+
+        BoxCollider col;
+        col = GetComponent<BoxCollider>();
+        col.enabled = false;
+        
+        ParticleSystem particle;
+        particle = GetComponentInChildren<ParticleSystem>();
+        particle.Stop(true);
     }
 
 }
