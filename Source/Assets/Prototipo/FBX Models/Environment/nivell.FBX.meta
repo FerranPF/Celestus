@@ -1,0 +1,1144 @@
+fileFormatVersion: 2
+guid: 77291f0906705c345ae19fd7c142fb1f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: altar
+    100002: arcs
+    100004: arcs2
+    100006: bancs sala enorme
+    100008: bancs_salagran
+    100010: Box002
+    100012: Box050
+    100014: Box056
+    100016: cadira
+    100018: cadira001
+    100020: calaix
+    100022: columna_salagran
+    100024: columna_salagran 1
+    100026: columna_salagran 2
+    100028: columna_salagran 3
+    100030: columnes salagran
+    100032: font
+    100034: group1_pCylinder022
+    100036: group1_pCylinder023
+    100038: group1_pCylinder024
+    100040: group1_pCylinder025
+    100042: group1_pCylinder026
+    100044: group1_pCylinder027
+    100046: group1_pCylinder028
+    100048: group1_pCylinder029
+    100050: group1_pCylinder25
+    100052: group2_pCylinder25
+    100054: group3_pCylinder25
+    100056: group4_pCylinder25
+    100058: group5_pCylinder25
+    100060: group6_pCylinder25
+    100062: habitacio mitjana
+    100064: habitacio petita
+    100066: jerro003
+    100068: jerro004
+    100070: Mirall
+    100072: //RootNode
+    100074: passadis
+    100076: passadis001
+    100078: pCube017
+    100080: pCube018
+    100082: pCube019
+    100084: pCube020
+    100086: pCube021
+    100088: pCube022
+    100090: pCube023
+    100092: pCube024
+    100094: pCube025
+    100096: pCube026
+    100098: pCube027
+    100100: pCube028
+    100102: pCube029
+    100104: pCube030
+    100106: pCube031
+    100108: pCube032
+    100110: pCube033
+    100112: pCube034
+    100114: pCube035
+    100116: pCube036
+    100118: pCube037
+    100120: pCube038
+    100122: pCube039
+    100124: pCube040
+    100126: pCube041
+    100128: pCube042
+    100130: pCube043
+    100132: pCube044
+    100134: pCube045
+    100136: pCube046
+    100138: pCube047
+    100140: pCube048
+    100142: pCube049
+    100144: pCube050
+    100146: pCube051
+    100148: pCube052
+    100150: pCube053
+    100152: pCube054
+    100154: pCube055
+    100156: pCube056
+    100158: pCube057
+    100160: pCube058
+    100162: pCube059
+    100164: pCube060
+    100166: pCube061
+    100168: pCube062
+    100170: pCube063
+    100172: pCube064
+    100174: pCube065
+    100176: pCube066
+    100178: pCube067
+    100180: pCube068
+    100182: pCube069
+    100184: pCube070
+    100186: pCube071
+    100188: pCube072
+    100190: pCube073
+    100192: pCube074
+    100194: pCube075
+    100196: pCube076
+    100198: pCube077
+    100200: pCube078
+    100202: pCube079
+    100204: pCube080
+    100206: pCube081
+    100208: pCube082
+    100210: pCube083
+    100212: pCube084
+    100214: pCube085
+    100216: pCube086
+    100218: pCube087
+    100220: pCube088
+    100222: pCube089
+    100224: pCube090
+    100226: pCube091
+    100228: pCube092
+    100230: pCube093
+    100232: pCube094
+    100234: pCube095
+    100236: pCube096
+    100238: pCube097
+    100240: pCube098
+    100242: pCube099
+    100244: pCube100
+    100246: pCube101
+    100248: pCube102
+    100250: pCube103
+    100252: pCube104
+    100254: pCube105
+    100256: pCube106
+    100258: pCube107
+    100260: pCube108
+    100262: pCube109
+    100264: pCube110
+    100266: pCube111
+    100268: pCube112
+    100270: pCube2
+    100272: pCube3
+    100274: pCube4
+    100276: pCube5
+    100278: pCylinder002
+    100280: pCylinder004
+    100282: pCylinder056
+    100284: pCylinder057
+    100286: pCylinder10
+    100288: pCylinder11
+    100290: pCylinder12
+    100292: pCylinder13
+    100294: pCylinder14
+    100296: pCylinder15
+    100298: pCylinder16
+    100300: pCylinder17
+    100302: pCylinder18
+    100304: pCylinder19
+    100306: pCylinder2
+    100308: pCylinder20
+    100310: pCylinder28_group1
+    100312: pCylinder28_group2
+    100314: pCylinder28_group3
+    100316: pCylinder28_group4
+    100318: pCylinder28_group5
+    100320: pCylinder28_group6
+    100322: pCylinder4
+    100324: pCylinder5
+    100326: pCylinder6
+    100328: pCylinder7
+    100330: pCylinder8
+    100332: pCylinder9
+    100334: Plane018
+    100336: pPlane1
+    100338: sala enorme
+    100340: sala gran
+    100342: sala gran_firepit001
+    100344: sala gran_firepit002
+    100346: sala petita_terra
+    100348: sala subboss_arc
+    100350: sala subboss_arc001
+    100352: sala subboss_arc002
+    100354: sala subboss_arc003
+    100356: sala subboss_arc004
+    100358: sala subboss_arc005
+    100360: sala subboss_arc006
+    100362: sala subboss_arc007
+    100364: sala subboss_arc008
+    100366: sala subboss_arc009
+    100368: salagran_banc
+    100370: salagran_banc 1
+    100372: salagran_banc 10
+    100374: salagran_banc 11
+    100376: salagran_banc 12
+    100378: salagran_banc 13
+    100380: salagran_banc 14
+    100382: salagran_banc 15
+    100384: salagran_banc 2
+    100386: salagran_banc 3
+    100388: salagran_banc 4
+    100390: salagran_banc 5
+    100392: salagran_banc 6
+    100394: salagran_banc 7
+    100396: salagran_banc 8
+    100398: salagran_banc 9
+    100400: salagran_paret interior
+    100402: salagran_paret1
+    100404: salagran_paret2
+    100406: salagran_paret3
+    100408: salagran_paret4
+    100410: salagran_terra
+    100412: salamitjana_paret004
+    100414: salamitjana_paret1
+    100416: salamitjana_paret2
+    100418: salamitjana_paret3
+    100420: salamitjana_terra
+    100422: salapetita_paret001
+    100424: salapetita_paret002
+    100426: salapetita_paret003
+    100428: salapetita_paret005
+    100430: taula
+    400000: altar
+    400002: arcs
+    400004: arcs2
+    400006: bancs sala enorme
+    400008: bancs_salagran
+    400010: Box002
+    400012: Box050
+    400014: Box056
+    400016: cadira
+    400018: cadira001
+    400020: calaix
+    400022: columna_salagran
+    400024: columna_salagran 1
+    400026: columna_salagran 2
+    400028: columna_salagran 3
+    400030: columnes salagran
+    400032: font
+    400034: group1_pCylinder022
+    400036: group1_pCylinder023
+    400038: group1_pCylinder024
+    400040: group1_pCylinder025
+    400042: group1_pCylinder026
+    400044: group1_pCylinder027
+    400046: group1_pCylinder028
+    400048: group1_pCylinder029
+    400050: group1_pCylinder25
+    400052: group2_pCylinder25
+    400054: group3_pCylinder25
+    400056: group4_pCylinder25
+    400058: group5_pCylinder25
+    400060: group6_pCylinder25
+    400062: habitacio mitjana
+    400064: habitacio petita
+    400066: jerro003
+    400068: jerro004
+    400070: Mirall
+    400072: //RootNode
+    400074: passadis
+    400076: passadis001
+    400078: pCube017
+    400080: pCube018
+    400082: pCube019
+    400084: pCube020
+    400086: pCube021
+    400088: pCube022
+    400090: pCube023
+    400092: pCube024
+    400094: pCube025
+    400096: pCube026
+    400098: pCube027
+    400100: pCube028
+    400102: pCube029
+    400104: pCube030
+    400106: pCube031
+    400108: pCube032
+    400110: pCube033
+    400112: pCube034
+    400114: pCube035
+    400116: pCube036
+    400118: pCube037
+    400120: pCube038
+    400122: pCube039
+    400124: pCube040
+    400126: pCube041
+    400128: pCube042
+    400130: pCube043
+    400132: pCube044
+    400134: pCube045
+    400136: pCube046
+    400138: pCube047
+    400140: pCube048
+    400142: pCube049
+    400144: pCube050
+    400146: pCube051
+    400148: pCube052
+    400150: pCube053
+    400152: pCube054
+    400154: pCube055
+    400156: pCube056
+    400158: pCube057
+    400160: pCube058
+    400162: pCube059
+    400164: pCube060
+    400166: pCube061
+    400168: pCube062
+    400170: pCube063
+    400172: pCube064
+    400174: pCube065
+    400176: pCube066
+    400178: pCube067
+    400180: pCube068
+    400182: pCube069
+    400184: pCube070
+    400186: pCube071
+    400188: pCube072
+    400190: pCube073
+    400192: pCube074
+    400194: pCube075
+    400196: pCube076
+    400198: pCube077
+    400200: pCube078
+    400202: pCube079
+    400204: pCube080
+    400206: pCube081
+    400208: pCube082
+    400210: pCube083
+    400212: pCube084
+    400214: pCube085
+    400216: pCube086
+    400218: pCube087
+    400220: pCube088
+    400222: pCube089
+    400224: pCube090
+    400226: pCube091
+    400228: pCube092
+    400230: pCube093
+    400232: pCube094
+    400234: pCube095
+    400236: pCube096
+    400238: pCube097
+    400240: pCube098
+    400242: pCube099
+    400244: pCube100
+    400246: pCube101
+    400248: pCube102
+    400250: pCube103
+    400252: pCube104
+    400254: pCube105
+    400256: pCube106
+    400258: pCube107
+    400260: pCube108
+    400262: pCube109
+    400264: pCube110
+    400266: pCube111
+    400268: pCube112
+    400270: pCube2
+    400272: pCube3
+    400274: pCube4
+    400276: pCube5
+    400278: pCylinder002
+    400280: pCylinder004
+    400282: pCylinder056
+    400284: pCylinder057
+    400286: pCylinder10
+    400288: pCylinder11
+    400290: pCylinder12
+    400292: pCylinder13
+    400294: pCylinder14
+    400296: pCylinder15
+    400298: pCylinder16
+    400300: pCylinder17
+    400302: pCylinder18
+    400304: pCylinder19
+    400306: pCylinder2
+    400308: pCylinder20
+    400310: pCylinder28_group1
+    400312: pCylinder28_group2
+    400314: pCylinder28_group3
+    400316: pCylinder28_group4
+    400318: pCylinder28_group5
+    400320: pCylinder28_group6
+    400322: pCylinder4
+    400324: pCylinder5
+    400326: pCylinder6
+    400328: pCylinder7
+    400330: pCylinder8
+    400332: pCylinder9
+    400334: Plane018
+    400336: pPlane1
+    400338: sala enorme
+    400340: sala gran
+    400342: sala gran_firepit001
+    400344: sala gran_firepit002
+    400346: sala petita_terra
+    400348: sala subboss_arc
+    400350: sala subboss_arc001
+    400352: sala subboss_arc002
+    400354: sala subboss_arc003
+    400356: sala subboss_arc004
+    400358: sala subboss_arc005
+    400360: sala subboss_arc006
+    400362: sala subboss_arc007
+    400364: sala subboss_arc008
+    400366: sala subboss_arc009
+    400368: salagran_banc
+    400370: salagran_banc 1
+    400372: salagran_banc 10
+    400374: salagran_banc 11
+    400376: salagran_banc 12
+    400378: salagran_banc 13
+    400380: salagran_banc 14
+    400382: salagran_banc 15
+    400384: salagran_banc 2
+    400386: salagran_banc 3
+    400388: salagran_banc 4
+    400390: salagran_banc 5
+    400392: salagran_banc 6
+    400394: salagran_banc 7
+    400396: salagran_banc 8
+    400398: salagran_banc 9
+    400400: salagran_paret interior
+    400402: salagran_paret1
+    400404: salagran_paret2
+    400406: salagran_paret3
+    400408: salagran_paret4
+    400410: salagran_terra
+    400412: salamitjana_paret004
+    400414: salamitjana_paret1
+    400416: salamitjana_paret2
+    400418: salamitjana_paret3
+    400420: salamitjana_terra
+    400422: salapetita_paret001
+    400424: salapetita_paret002
+    400426: salapetita_paret003
+    400428: salapetita_paret005
+    400430: taula
+    2100000: initialShadingGroup
+    2100002: Material__2
+    2100004: No Name
+    2100006: lambert3SG
+    2100008: lambert1
+    2100010: 'Material #216'
+    2100012: default
+    2100014: 'Material #217'
+    2100016: wire_154185229
+    2100018: wire_088144225
+    2300000: altar
+    2300002: Box050
+    2300004: Box056
+    2300006: cadira
+    2300008: cadira001
+    2300010: calaix
+    2300012: columna_salagran
+    2300014: columna_salagran 1
+    2300016: columna_salagran 2
+    2300018: columna_salagran 3
+    2300020: font
+    2300022: group1_pCylinder022
+    2300024: group1_pCylinder023
+    2300026: group1_pCylinder024
+    2300028: group1_pCylinder025
+    2300030: group1_pCylinder026
+    2300032: group1_pCylinder027
+    2300034: group1_pCylinder028
+    2300036: group1_pCylinder029
+    2300038: group1_pCylinder25
+    2300040: group2_pCylinder25
+    2300042: group3_pCylinder25
+    2300044: group4_pCylinder25
+    2300046: group5_pCylinder25
+    2300048: group6_pCylinder25
+    2300050: jerro003
+    2300052: jerro004
+    2300054: Mirall
+    2300056: passadis
+    2300058: passadis001
+    2300060: pCube017
+    2300062: pCube018
+    2300064: pCube019
+    2300066: pCube020
+    2300068: pCube021
+    2300070: pCube022
+    2300072: pCube023
+    2300074: pCube024
+    2300076: pCube025
+    2300078: pCube026
+    2300080: pCube027
+    2300082: pCube028
+    2300084: pCube029
+    2300086: pCube030
+    2300088: pCube031
+    2300090: pCube032
+    2300092: pCube033
+    2300094: pCube034
+    2300096: pCube035
+    2300098: pCube036
+    2300100: pCube037
+    2300102: pCube038
+    2300104: pCube039
+    2300106: pCube040
+    2300108: pCube041
+    2300110: pCube042
+    2300112: pCube043
+    2300114: pCube044
+    2300116: pCube045
+    2300118: pCube046
+    2300120: pCube047
+    2300122: pCube048
+    2300124: pCube049
+    2300126: pCube050
+    2300128: pCube051
+    2300130: pCube052
+    2300132: pCube053
+    2300134: pCube054
+    2300136: pCube055
+    2300138: pCube056
+    2300140: pCube057
+    2300142: pCube058
+    2300144: pCube059
+    2300146: pCube060
+    2300148: pCube061
+    2300150: pCube062
+    2300152: pCube063
+    2300154: pCube064
+    2300156: pCube065
+    2300158: pCube066
+    2300160: pCube067
+    2300162: pCube068
+    2300164: pCube069
+    2300166: pCube070
+    2300168: pCube071
+    2300170: pCube072
+    2300172: pCube073
+    2300174: pCube074
+    2300176: pCube075
+    2300178: pCube076
+    2300180: pCube077
+    2300182: pCube078
+    2300184: pCube079
+    2300186: pCube080
+    2300188: pCube081
+    2300190: pCube082
+    2300192: pCube083
+    2300194: pCube084
+    2300196: pCube085
+    2300198: pCube086
+    2300200: pCube087
+    2300202: pCube088
+    2300204: pCube089
+    2300206: pCube090
+    2300208: pCube091
+    2300210: pCube092
+    2300212: pCube093
+    2300214: pCube094
+    2300216: pCube095
+    2300218: pCube096
+    2300220: pCube097
+    2300222: pCube098
+    2300224: pCube099
+    2300226: pCube100
+    2300228: pCube101
+    2300230: pCube102
+    2300232: pCube103
+    2300234: pCube104
+    2300236: pCube105
+    2300238: pCube106
+    2300240: pCube107
+    2300242: pCube108
+    2300244: pCube109
+    2300246: pCube110
+    2300248: pCube111
+    2300250: pCube112
+    2300252: pCube2
+    2300254: pCube3
+    2300256: pCube4
+    2300258: pCube5
+    2300260: pCylinder002
+    2300262: pCylinder004
+    2300264: pCylinder056
+    2300266: pCylinder057
+    2300268: pCylinder10
+    2300270: pCylinder11
+    2300272: pCylinder12
+    2300274: pCylinder13
+    2300276: pCylinder14
+    2300278: pCylinder15
+    2300280: pCylinder16
+    2300282: pCylinder17
+    2300284: pCylinder18
+    2300286: pCylinder19
+    2300288: pCylinder2
+    2300290: pCylinder20
+    2300292: pCylinder28_group1
+    2300294: pCylinder28_group2
+    2300296: pCylinder28_group3
+    2300298: pCylinder28_group4
+    2300300: pCylinder28_group5
+    2300302: pCylinder28_group6
+    2300304: pCylinder4
+    2300306: pCylinder5
+    2300308: pCylinder6
+    2300310: pCylinder7
+    2300312: pCylinder8
+    2300314: pCylinder9
+    2300316: Plane018
+    2300318: sala gran_firepit001
+    2300320: sala gran_firepit002
+    2300322: sala petita_terra
+    2300324: sala subboss_arc
+    2300326: sala subboss_arc001
+    2300328: sala subboss_arc002
+    2300330: sala subboss_arc003
+    2300332: sala subboss_arc004
+    2300334: sala subboss_arc005
+    2300336: sala subboss_arc006
+    2300338: sala subboss_arc007
+    2300340: sala subboss_arc008
+    2300342: sala subboss_arc009
+    2300344: salagran_banc
+    2300346: salagran_banc 1
+    2300348: salagran_banc 10
+    2300350: salagran_banc 11
+    2300352: salagran_banc 12
+    2300354: salagran_banc 13
+    2300356: salagran_banc 14
+    2300358: salagran_banc 15
+    2300360: salagran_banc 2
+    2300362: salagran_banc 3
+    2300364: salagran_banc 4
+    2300366: salagran_banc 5
+    2300368: salagran_banc 6
+    2300370: salagran_banc 7
+    2300372: salagran_banc 8
+    2300374: salagran_banc 9
+    2300376: salagran_paret interior
+    2300378: salagran_paret1
+    2300380: salagran_paret2
+    2300382: salagran_paret3
+    2300384: salagran_paret4
+    2300386: salagran_terra
+    2300388: salamitjana_paret004
+    2300390: salamitjana_paret1
+    2300392: salamitjana_paret2
+    2300394: salamitjana_paret3
+    2300396: salamitjana_terra
+    2300398: salapetita_paret001
+    2300400: salapetita_paret002
+    2300402: salapetita_paret003
+    2300404: salapetita_paret005
+    2300406: taula
+    3300000: altar
+    3300002: Box050
+    3300004: Box056
+    3300006: cadira
+    3300008: cadira001
+    3300010: calaix
+    3300012: columna_salagran
+    3300014: columna_salagran 1
+    3300016: columna_salagran 2
+    3300018: columna_salagran 3
+    3300020: font
+    3300022: group1_pCylinder022
+    3300024: group1_pCylinder023
+    3300026: group1_pCylinder024
+    3300028: group1_pCylinder025
+    3300030: group1_pCylinder026
+    3300032: group1_pCylinder027
+    3300034: group1_pCylinder028
+    3300036: group1_pCylinder029
+    3300038: group1_pCylinder25
+    3300040: group2_pCylinder25
+    3300042: group3_pCylinder25
+    3300044: group4_pCylinder25
+    3300046: group5_pCylinder25
+    3300048: group6_pCylinder25
+    3300050: jerro003
+    3300052: jerro004
+    3300054: Mirall
+    3300056: passadis
+    3300058: passadis001
+    3300060: pCube017
+    3300062: pCube018
+    3300064: pCube019
+    3300066: pCube020
+    3300068: pCube021
+    3300070: pCube022
+    3300072: pCube023
+    3300074: pCube024
+    3300076: pCube025
+    3300078: pCube026
+    3300080: pCube027
+    3300082: pCube028
+    3300084: pCube029
+    3300086: pCube030
+    3300088: pCube031
+    3300090: pCube032
+    3300092: pCube033
+    3300094: pCube034
+    3300096: pCube035
+    3300098: pCube036
+    3300100: pCube037
+    3300102: pCube038
+    3300104: pCube039
+    3300106: pCube040
+    3300108: pCube041
+    3300110: pCube042
+    3300112: pCube043
+    3300114: pCube044
+    3300116: pCube045
+    3300118: pCube046
+    3300120: pCube047
+    3300122: pCube048
+    3300124: pCube049
+    3300126: pCube050
+    3300128: pCube051
+    3300130: pCube052
+    3300132: pCube053
+    3300134: pCube054
+    3300136: pCube055
+    3300138: pCube056
+    3300140: pCube057
+    3300142: pCube058
+    3300144: pCube059
+    3300146: pCube060
+    3300148: pCube061
+    3300150: pCube062
+    3300152: pCube063
+    3300154: pCube064
+    3300156: pCube065
+    3300158: pCube066
+    3300160: pCube067
+    3300162: pCube068
+    3300164: pCube069
+    3300166: pCube070
+    3300168: pCube071
+    3300170: pCube072
+    3300172: pCube073
+    3300174: pCube074
+    3300176: pCube075
+    3300178: pCube076
+    3300180: pCube077
+    3300182: pCube078
+    3300184: pCube079
+    3300186: pCube080
+    3300188: pCube081
+    3300190: pCube082
+    3300192: pCube083
+    3300194: pCube084
+    3300196: pCube085
+    3300198: pCube086
+    3300200: pCube087
+    3300202: pCube088
+    3300204: pCube089
+    3300206: pCube090
+    3300208: pCube091
+    3300210: pCube092
+    3300212: pCube093
+    3300214: pCube094
+    3300216: pCube095
+    3300218: pCube096
+    3300220: pCube097
+    3300222: pCube098
+    3300224: pCube099
+    3300226: pCube100
+    3300228: pCube101
+    3300230: pCube102
+    3300232: pCube103
+    3300234: pCube104
+    3300236: pCube105
+    3300238: pCube106
+    3300240: pCube107
+    3300242: pCube108
+    3300244: pCube109
+    3300246: pCube110
+    3300248: pCube111
+    3300250: pCube112
+    3300252: pCube2
+    3300254: pCube3
+    3300256: pCube4
+    3300258: pCube5
+    3300260: pCylinder002
+    3300262: pCylinder004
+    3300264: pCylinder056
+    3300266: pCylinder057
+    3300268: pCylinder10
+    3300270: pCylinder11
+    3300272: pCylinder12
+    3300274: pCylinder13
+    3300276: pCylinder14
+    3300278: pCylinder15
+    3300280: pCylinder16
+    3300282: pCylinder17
+    3300284: pCylinder18
+    3300286: pCylinder19
+    3300288: pCylinder2
+    3300290: pCylinder20
+    3300292: pCylinder28_group1
+    3300294: pCylinder28_group2
+    3300296: pCylinder28_group3
+    3300298: pCylinder28_group4
+    3300300: pCylinder28_group5
+    3300302: pCylinder28_group6
+    3300304: pCylinder4
+    3300306: pCylinder5
+    3300308: pCylinder6
+    3300310: pCylinder7
+    3300312: pCylinder8
+    3300314: pCylinder9
+    3300316: Plane018
+    3300318: sala gran_firepit001
+    3300320: sala gran_firepit002
+    3300322: sala petita_terra
+    3300324: sala subboss_arc
+    3300326: sala subboss_arc001
+    3300328: sala subboss_arc002
+    3300330: sala subboss_arc003
+    3300332: sala subboss_arc004
+    3300334: sala subboss_arc005
+    3300336: sala subboss_arc006
+    3300338: sala subboss_arc007
+    3300340: sala subboss_arc008
+    3300342: sala subboss_arc009
+    3300344: salagran_banc
+    3300346: salagran_banc 1
+    3300348: salagran_banc 10
+    3300350: salagran_banc 11
+    3300352: salagran_banc 12
+    3300354: salagran_banc 13
+    3300356: salagran_banc 14
+    3300358: salagran_banc 15
+    3300360: salagran_banc 2
+    3300362: salagran_banc 3
+    3300364: salagran_banc 4
+    3300366: salagran_banc 5
+    3300368: salagran_banc 6
+    3300370: salagran_banc 7
+    3300372: salagran_banc 8
+    3300374: salagran_banc 9
+    3300376: salagran_paret interior
+    3300378: salagran_paret1
+    3300380: salagran_paret2
+    3300382: salagran_paret3
+    3300384: salagran_paret4
+    3300386: salagran_terra
+    3300388: salamitjana_paret004
+    3300390: salamitjana_paret1
+    3300392: salamitjana_paret2
+    3300394: salamitjana_paret3
+    3300396: salamitjana_terra
+    3300398: salapetita_paret001
+    3300400: salapetita_paret002
+    3300402: salapetita_paret003
+    3300404: salapetita_paret005
+    3300406: taula
+    4300000: sala gran_firepit001
+    4300002: columna_salagran
+    4300004: columna_salagran
+    4300006: columna_salagran
+    4300008: columna_salagran
+    4300010: salagran_banc
+    4300012: salagran_banc
+    4300014: salagran_banc
+    4300016: salagran_banc
+    4300018: salagran_banc
+    4300020: salagran_banc
+    4300022: salagran_banc
+    4300024: salagran_banc
+    4300026: salagran_banc
+    4300028: salagran_banc
+    4300030: salagran_banc
+    4300032: salagran_banc
+    4300034: salagran_banc
+    4300036: salagran_banc
+    4300038: salagran_banc
+    4300040: salagran_banc
+    4300042: sala gran_firepit002
+    4300044: salagran_terra
+    4300046: salagran_paret4
+    4300048: salagran_paret1
+    4300050: salagran_paret3
+    4300052: Box050
+    4300054: salagran_paret interior
+    4300056: salagran_paret2
+    4300058: group1_pCylinder023
+    4300060: group1_pCylinder022
+    4300062: group1_pCylinder024
+    4300064: group1_pCylinder025
+    4300066: group1_pCylinder029
+    4300068: group1_pCylinder028
+    4300070: group1_pCylinder027
+    4300072: group1_pCylinder026
+    4300074: Plane018
+    4300076: pCube064
+    4300078: pCube063
+    4300080: pCube062
+    4300082: pCube060
+    4300084: pCube061
+    4300086: pCube059
+    4300088: pCube058
+    4300090: pCube057
+    4300092: pCube056
+    4300094: pCube053
+    4300096: pCube054
+    4300098: pCube055
+    4300100: pCube052
+    4300102: pCube051
+    4300104: pCube050
+    4300106: pCube047
+    4300108: pCube048
+    4300110: pCube049
+    4300112: pCube046
+    4300114: pCube045
+    4300116: pCube044
+    4300118: pCube041
+    4300120: pCube042
+    4300122: pCube043
+    4300124: pCube040
+    4300126: pCube039
+    4300128: pCube038
+    4300130: pCube037
+    4300132: pCube036
+    4300134: pCube035
+    4300136: pCube032
+    4300138: pCube033
+    4300140: pCube034
+    4300142: pCube031
+    4300144: pCube030
+    4300146: pCube029
+    4300148: pCube026
+    4300150: pCube027
+    4300152: pCube028
+    4300154: pCube025
+    4300156: pCube024
+    4300158: pCube023
+    4300160: pCube020
+    4300162: pCube021
+    4300164: pCube022
+    4300166: pCube019
+    4300168: pCube018
+    4300170: pCube017
+    4300172: pCube065
+    4300174: pCube066
+    4300176: pCube067
+    4300178: pCube070
+    4300180: pCube069
+    4300182: pCube068
+    4300184: pCube071
+    4300186: pCube072
+    4300188: pCube073
+    4300190: pCube076
+    4300192: pCube075
+    4300194: pCube074
+    4300196: pCube077
+    4300198: pCube078
+    4300200: pCube079
+    4300202: pCube080
+    4300204: pCube081
+    4300206: pCube082
+    4300208: pCube083
+    4300210: pCube084
+    4300212: pCube085
+    4300214: pCube086
+    4300216: pCube087
+    4300218: pCube088
+    4300220: pCube089
+    4300222: pCube090
+    4300224: pCube091
+    4300226: pCube092
+    4300228: pCube093
+    4300230: pCube094
+    4300232: pCube095
+    4300234: pCube096
+    4300236: pCube097
+    4300238: pCube098
+    4300240: pCube099
+    4300242: pCube100
+    4300244: pCube101
+    4300246: pCube102
+    4300248: pCube103
+    4300250: pCube104
+    4300252: pCube105
+    4300254: pCube106
+    4300256: pCube107
+    4300258: pCube108
+    4300260: pCube109
+    4300262: pCube110
+    4300264: pCube111
+    4300266: pCube112
+    4300268: altar
+    4300270: sala subboss_arc
+    4300272: sala subboss_arc001
+    4300274: sala subboss_arc002
+    4300276: sala subboss_arc003
+    4300278: sala subboss_arc004
+    4300280: sala subboss_arc005
+    4300282: sala subboss_arc006
+    4300284: sala subboss_arc007
+    4300286: sala subboss_arc008
+    4300288: sala subboss_arc009
+    4300290: pCube5
+    4300292: pCylinder16
+    4300294: pCylinder28_group6
+    4300296: group5_pCylinder25
+    4300298: pCylinder28_group5
+    4300300: group4_pCylinder25
+    4300302: pCube2
+    4300304: pCube3
+    4300306: pCylinder5
+    4300308: pCylinder6
+    4300310: pCylinder7
+    4300312: pCylinder8
+    4300314: pCylinder9
+    4300316: pCylinder10
+    4300318: pCylinder11
+    4300320: pCylinder12
+    4300322: pCylinder13
+    4300324: pCylinder14
+    4300326: pCylinder15
+    4300328: group6_pCylinder25
+    4300330: pCylinder17
+    4300332: pCube4
+    4300334: pCylinder18
+    4300336: pCylinder19
+    4300338: pCylinder20
+    4300340: pCylinder28_group1
+    4300342: group1_pCylinder25
+    4300344: pCylinder28_group2
+    4300346: group2_pCylinder25
+    4300348: pCylinder28_group3
+    4300350: group3_pCylinder25
+    4300352: pCylinder28_group4
+    4300354: pCylinder004
+    4300356: pCylinder2
+    4300358: pCylinder002
+    4300360: Box056
+    4300362: pCylinder4
+    4300364: passadis
+    4300366: pCylinder057
+    4300368: pCylinder056
+    4300370: salamitjana_paret004
+    4300372: salamitjana_paret2
+    4300374: salamitjana_paret1
+    4300376: salamitjana_paret3
+    4300378: salamitjana_terra
+    4300380: font
+    4300382: jerro003
+    4300384: jerro004
+    4300386: calaix
+    4300388: passadis001
+    4300390: Mirall
+    4300392: cadira
+    4300394: taula
+    4300396: salapetita_paret002
+    4300398: cadira001
+    4300400: sala petita_terra
+    4300402: salapetita_paret005
+    4300404: salapetita_paret003
+    4300406: salapetita_paret001
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

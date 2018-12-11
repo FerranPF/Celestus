@@ -12,29 +12,37 @@ public class FireBall : MonoBehaviour {
     GameObject player;
     public GameObject fire;
     private AudioSource audio;
-    public AudioClip[] audioClip;
+    public AudioClip castAudio;
+    public AudioClip explAudio;
+    private bool dead;
 
     private float destTime;
 
     void Start () {
         audio = GetComponent<AudioSource>();
-        audio.clip = audioClip[0];
+        audio.clip = castAudio;
         audio.Play(0);
         timeToDestroy = 0.0f;
         player = GameObject.FindGameObjectWithTag("Player");
         transform.Rotate(new Vector3(0, player.transform.localEulerAngles.y, 0));
         destTime = 5.0f;
+        dead = false;
     }
 	
 
 
 	void Update () {
-        timeToDestroy += Time.deltaTime;
-        transform.Translate(new Vector3(0, 0, speedSpell*Time.deltaTime), Space.Self);
+        if(!dead){
+            timeToDestroy += Time.deltaTime;
+            transform.Translate(new Vector3(0, 0, speedSpell*Time.deltaTime), Space.Self);
+        }
 
-        if (timeToDestroy >= lifeTime)
-        {
-            DestroySpell();
+        if(timeToDestroy >= lifeTime){
+            dead = true;
+        }
+
+        if(dead){
+            StartCoroutine(Explosion());
         }
 	}
 
@@ -47,26 +55,24 @@ public class FireBall : MonoBehaviour {
                 EnemyController enemyHealth;
                 enemyHealth = other.GetComponent<EnemyController>();
                 enemyHealth.GetDamage(damage);
-                DestroySpell();
+                dead = false;
             }
             if(other.gameObject.tag == "Environment")
             {
-                DestroySpell();
+                dead = true;
             }
         }
-        
     }
 
-    void DestroySpell()
-    {
-        audio.clip = audioClip[1];
+    IEnumerator Explosion(){
+        audio.clip = explAudio;
         audio.Play(0);
-
         BoxCollider col;
         col = GetComponent<BoxCollider>();
         col.enabled = false;
 
-        fire.SetActive(false);
-    }
+        yield return new WaitForSeconds(2.0f);
 
+        Destroy(gameObject);
+    }
 }

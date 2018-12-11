@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private AudioSource audio;
     public AudioClip attackAudio;
+    public AudioClip dashAudio;
 
     public AnimationClip spellAnim;
 
@@ -83,6 +84,8 @@ public class PlayerController : MonoBehaviour {
                 CDDashCount = 0.0f;
                 canDash = false;
                 currentDashTime = 0.0f;
+                audio.clip = dashAudio;
+                audio.Play(0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
