@@ -17,6 +17,7 @@ public class FireBall : MonoBehaviour {
     private bool dead;
 
     private float destTime;
+    private bool expl;
 
     void Start () {
         audio = GetComponent<AudioSource>();
@@ -27,6 +28,7 @@ public class FireBall : MonoBehaviour {
         transform.Rotate(new Vector3(0, player.transform.localEulerAngles.y, 0));
         destTime = 5.0f;
         dead = false;
+        expl = false;
     }
 	
 
@@ -42,7 +44,13 @@ public class FireBall : MonoBehaviour {
         }
 
         if(dead){
-            StartCoroutine(Explosion());
+            StartCoroutine(DestroySpell());
+        }
+
+        if(expl){
+            Explosion();
+            expl = false;
+            dead = true;
         }
 	}
 
@@ -52,27 +60,34 @@ public class FireBall : MonoBehaviour {
         {
             if (other.gameObject.tag == "Enemy")
             {
+                Debug.Log("Enemy");
                 EnemyController enemyHealth;
                 enemyHealth = other.GetComponent<EnemyController>();
                 enemyHealth.GetDamage(damage);
-                dead = false;
+                expl = true;
             }
             if(other.gameObject.tag == "Environment")
             {
+                Debug.Log("Environment");
                 dead = true;
             }
         }
     }
 
-    IEnumerator Explosion(){
+    void Explosion(){
+        /*
         audio.clip = explAudio;
+        Debug.Log("Explosion");
         audio.Play(0);
         BoxCollider col;
         col = GetComponent<BoxCollider>();
         col.enabled = false;
-
-        yield return new WaitForSeconds(2.0f);
-
+         */
+        Destroy(gameObject);
+    }
+    
+    IEnumerator DestroySpell(){
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 }

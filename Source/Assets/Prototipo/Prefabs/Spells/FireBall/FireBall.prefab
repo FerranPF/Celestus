@@ -287,9 +287,8 @@ MonoBehaviour:
   speedSpell: 30
   damage: 20
   fire: {fileID: 1944683195636310}
-  audioClip:
-  - {fileID: 8300000, guid: ff32e73cabb0c78409a9569c4b6ec4a6, type: 3}
-  - {fileID: 8300000, guid: c3a3af12e8b542c4b97749098e982e9f, type: 3}
+  castAudio: {fileID: 8300000, guid: ff32e73cabb0c78409a9569c4b6ec4a6, type: 3}
+  explAudio: {fileID: 8300000, guid: c3a3af12e8b542c4b97749098e982e9f, type: 3}
 --- !u!198 &198089697327623072
 ParticleSystem:
   m_ObjectHideFlags: 1
