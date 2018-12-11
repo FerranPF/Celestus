@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class FireBall : MonoBehaviour {
 
@@ -11,46 +10,35 @@ public class FireBall : MonoBehaviour {
     public int damage;
     GameObject player;
     public GameObject fire;
-    private AudioSource audio;
+    private AudioSource audioSource;
     public AudioClip castAudio;
     public AudioClip explAudio;
-    private bool dead;
-
-    private float destTime;
     private bool expl;
 
     void Start () {
-        audio = GetComponent<AudioSource>();
-        audio.clip = castAudio;
-        audio.Play(0);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = castAudio;
+        audioSource.Play(0);
         timeToDestroy = 0.0f;
         player = GameObject.FindGameObjectWithTag("Player");
         transform.Rotate(new Vector3(0, player.transform.localEulerAngles.y, 0));
-        destTime = 5.0f;
-        dead = false;
         expl = false;
     }
 	
 
 
 	void Update () {
-        if(!dead){
+        if(!expl){
             timeToDestroy += Time.deltaTime;
             transform.Translate(new Vector3(0, 0, speedSpell*Time.deltaTime), Space.Self);
         }
 
         if(timeToDestroy >= lifeTime){
-            dead = true;
-        }
-
-        if(dead){
-            StartCoroutine(DestroySpell());
+            expl = true;
         }
 
         if(expl){
             Explosion();
-            expl = false;
-            dead = true;
         }
 	}
 
@@ -66,28 +54,36 @@ public class FireBall : MonoBehaviour {
                 enemyHealth.GetDamage(damage);
                 expl = true;
             }
+
+            if(other.gameObject.tag == "Boss")
+            {
+                Debug.Log("Boss");
+                BossController bossHealth;
+                bossHealth = other.GetComponent<BossController>();
+                bossHealth.GetDamage(damage);
+                expl = true;
+            }
+
             if(other.gameObject.tag == "Environment")
             {
                 Debug.Log("Environment");
-                dead = true;
+                expl = true;
             }
         }
     }
 
     void Explosion(){
         /*
-        audio.clip = explAudio;
+        audioSource.clip = explAudio;
         Debug.Log("Explosion");
-        audio.Play(0);
+        audioSource.Play(0);
         BoxCollider col;
         col = GetComponent<BoxCollider>();
         col.enabled = false;
          */
-        Destroy(gameObject);
-    }
-    
-    IEnumerator DestroySpell(){
-        yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        if (audioSource.isPlaying == false)
+        {
+            Destroy(gameObject);
+        }
     }
 }

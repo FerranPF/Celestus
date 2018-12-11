@@ -11,5 +11,11 @@ public class Sword : MonoBehaviour {
             EnemyController enemy = other.GetComponent<EnemyController>();
             enemy.GetDamage(10);
         }
+
+        if (other.gameObject.tag == "Boss")
+        {
+            BossController boss = other.GetComponent<BossController>();
+            boss.GetDamage(10);
+        }
     }
 }

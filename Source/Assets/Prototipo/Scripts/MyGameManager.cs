@@ -69,17 +69,22 @@ public class MyGameManager : MonoBehaviour {
 	
 	public void ExitMenu(){
 		Time.timeScale = 1.0f;
-        StartCoroutine(Fading());
+        StartCoroutine(Fading("ProtoMenu"));
 	}
 	
 	public void Exit(){
 		Application.Quit();
 	}
 
-    IEnumerator Fading()
+    public void Win()
+    {
+        StartCoroutine(Fading("Win"));
+    }
+
+    IEnumerator Fading(string scene)
     {
         fadeAnim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("ProtoMenu");
+        SceneManager.LoadScene(scene);
     }
 }

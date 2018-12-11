@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour {
+public class BossController : MonoBehaviour
+{
 
 
-    public float lookRadius = 10.0f;
+    public float lookRadius = 12.0f;
     Transform target;
     NavMeshAgent agent;
 
-    public int enemyHealth = 100;
+    public int bossHealth = 100;
 
     private Animator animator;
     public AnimationClip attackAnim;
     private bool canMove;
-    private PlayerHealth playerHealth;
     private bool canAttack;
     private float attackTime;
 
     private void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
@@ -48,7 +47,7 @@ public class EnemyController : MonoBehaviour {
                 }
             }
         }
-        
+
     }
 
     IEnumerator Attack()
@@ -63,8 +62,9 @@ public class EnemyController : MonoBehaviour {
         canAttack = true;
 
     }
-    
-    void FaceTarget(){
+
+    void FaceTarget()
+    {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = lookRotation;
@@ -73,21 +73,24 @@ public class EnemyController : MonoBehaviour {
 
     public void GetDamage(int damage)
     {
-        enemyHealth -= damage;
-        Debug.Log("Enemy health: " + enemyHealth);
-        if (enemyHealth <= 0)
+        bossHealth -= damage;
+        Debug.Log("Boss health: " + bossHealth);
+        if (bossHealth <= 0)
         {
-            Death();
+            WinGame();
         }
     }
 
-    void Death()
+    void WinGame()
     {
-		playerHealth.GetExp(25);
+        MyGameManager manager;
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MyGameManager>();
+        manager.Win();
         Destroy(gameObject);
     }
 
-    void OnDrawGizmosSelected(){
+    void OnDrawGizmosSelected()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }

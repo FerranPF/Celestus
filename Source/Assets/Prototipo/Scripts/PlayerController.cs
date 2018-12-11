@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     public float dashForce;
     public bool godMode;
 
-    private AudioSource audio;
+    private AudioSource audioSource;
     public AudioClip attackAudio;
     public AudioClip dashAudio;
 
@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 
 	[SerializeField]
 	float movementSpeed = 4.0f;
+    [SerializeField]
+    float godSpeed = 8.0f;
 
     public GameObject FireBallPrefab;
 
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start(){
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         currentDashTime = maxDashTime;
         anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
@@ -84,8 +86,8 @@ public class PlayerController : MonoBehaviour {
                 CDDashCount = 0.0f;
                 canDash = false;
                 currentDashTime = 0.0f;
-                audio.clip = dashAudio;
-                audio.Play(0);
+                audioSource.clip = dashAudio;
+                audioSource.Play(0);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
@@ -101,12 +103,12 @@ public class PlayerController : MonoBehaviour {
             
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
-                audio.clip = attackAudio;
-                audio.Play(0);
+                audioSource.clip = attackAudio;
+                audioSource.Play(0);
                 StartCoroutine(Attack());
             }
 
-            ControlPlayer();            
+            ControlPlayer(movementSpeed);            
 		}
 
         if(spellCount < 1.0f)
@@ -156,7 +158,7 @@ public class PlayerController : MonoBehaviour {
         sword.enabled = false;
     }
 
-	void ControlPlayer(){
+	void ControlPlayer(float movementSpeed){
 		float moveHorizonat = Input.GetAxisRaw("Horizontal");
 		float moveVertical = Input.GetAxisRaw("Vertical");
 		
@@ -212,7 +214,7 @@ public class PlayerController : MonoBehaviour {
     void Spell1()
     {
         Vector3 SpawnSpellLoc = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        GameObject clone = Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
+        Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
 
     }
 
@@ -225,6 +227,9 @@ public class PlayerController : MonoBehaviour {
         rb.mass = 0;
         canMove = false;
         anim.enabled = false;
+        CapsuleCollider playerCol;
+        playerCol = GetComponent<CapsuleCollider>();
+        playerCol.enabled = false;
     }
 
     void ActivePlayer(){
@@ -236,10 +241,22 @@ public class PlayerController : MonoBehaviour {
         rb.mass = 1;
         canMove = true;
         anim.enabled = true;
+        CapsuleCollider playerCol;
+        playerCol = GetComponent<CapsuleCollider>();
+        playerCol.enabled = true;
     }
 
     void GodMovement(){
-        ControlPlayer();
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * godSpeed, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.Translate(-Vector3.up * Time.deltaTime * godSpeed, Space.World);
+        }
+        ControlPlayer(godSpeed);
     }
 
     void GodMode()
