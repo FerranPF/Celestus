@@ -10,6 +10,7 @@ public class FireBall : MonoBehaviour {
     public float speedSpell;
     public int damage;
     GameObject player;
+    public GameObject fire;
     private AudioSource audio;
     public AudioClip[] audioClip;
 
@@ -64,10 +65,8 @@ public class FireBall : MonoBehaviour {
         BoxCollider col;
         col = GetComponent<BoxCollider>();
         col.enabled = false;
-        
-        ParticleSystem particle;
-        particle = GetComponentInChildren<ParticleSystem>();
-        particle.Stop(true);
+
+        fire.SetActive(false);
     }
 
 }
