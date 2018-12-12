@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour {
     public float startingMana = 100.0f;
     public float currentMana;
 
+    public int manaPotions;
+    public int healthPotions;
+
     public float currentExp;
     public float maxExp = 100.0f;
     private float baseExp = 100.0f;
