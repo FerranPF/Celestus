@@ -19,8 +19,15 @@ public class BossController : MonoBehaviour
     private bool canAttack;
     private float attackTime;
 
+    public bool sangrado = false;
+    private float sangradoTime;
+    private float contSangrado;
+    public int sangradoDamage;
+
     private void Start()
     {
+        sangradoTime = 5.0f;
+        sangradoDamage = 5;
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
@@ -45,6 +52,20 @@ public class BossController : MonoBehaviour
                         StartCoroutine(Attack());
                     }
                 }
+            }
+        }
+
+        if (sangrado)
+        {
+            contSangrado += Time.deltaTime;
+            if (contSangrado >= sangradoTime)
+            {
+                contSangrado = 0;
+                sangrado = false;
+            }
+            else
+            {
+                GetDamage(sangradoDamage);
             }
         }
 

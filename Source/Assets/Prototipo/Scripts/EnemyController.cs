@@ -19,8 +19,16 @@ public class EnemyController : MonoBehaviour {
     private bool canAttack;
     private float attackTime;
 
+    public bool sangrado = false;
+    private int contSangrado;
+    private int sangradoTime;
+    public int sangradoDamage;
+    private float secCont = 0;
+
     private void Start()
     {
+        sangradoTime = 5;
+        sangradoDamage = 2;
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -46,6 +54,23 @@ public class EnemyController : MonoBehaviour {
                         StartCoroutine(Attack());
                     }
                 }
+            }
+        }
+
+        if (sangrado)
+        {
+            Debug.Log("Sangrando");
+            secCont += Time.deltaTime;
+            if(secCont >= 1.0f)
+            {
+                GetDamage(sangradoDamage);
+                contSangrado++;
+                secCont = 0.0f;
+            }
+
+            if(contSangrado == sangradoTime)
+            {
+                sangrado = false;
             }
         }
         
