@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour {
-	
+
+    private GameManager manager;
+
 	public Animator anim;
 	public AnimationClip attackAnim;
 	private float animTime;
-	private float attackTime;
+	public float attackTime;
 	public bool canMove;
     public BoxCollider sword;
-    PlayerHealth health;
+    PlayerStats health;
     public bool canAttack;
     public bool canSpell;
     public bool canDash;
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake()
     {
-        health = GetComponent<PlayerHealth>();
+        health = GetComponent<PlayerStats>();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     void Start(){
@@ -67,6 +70,11 @@ public class PlayerController : MonoBehaviour {
         if(godMode){
             GodMode();
             GodMovement();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            manager.OpenSkillTree();
         }
 
         if(Input.GetKeyDown(KeyCode.F10)){

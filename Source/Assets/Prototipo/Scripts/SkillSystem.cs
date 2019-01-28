@@ -41,6 +41,12 @@ public class SkillSystem : MonoBehaviour
         Close();
     }
 
+    public void MoreSpeedAttack()
+    {
+        gameManager.playerController.attackTime *= 0.75f;
+        Close();
+    }
+
     private void Close()
     {
         this.gameObject.SetActive(false);

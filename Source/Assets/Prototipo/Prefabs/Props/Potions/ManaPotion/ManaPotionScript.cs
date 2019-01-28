@@ -10,8 +10,8 @@ public class ManaPotionScript : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerHealth playerHealth;
-            playerHealth = other.GetComponent<PlayerHealth>();
+            PlayerStats playerHealth;
+            playerHealth = other.GetComponent<PlayerStats>();
             playerHealth.ManaRecovery(manaRecovery);
             playerHealth.manaPotions ++;
             Destroy(gameObject);

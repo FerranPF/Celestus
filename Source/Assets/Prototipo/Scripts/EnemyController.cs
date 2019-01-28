@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour {
     private Animator animator;
     public AnimationClip attackAnim;
     private bool canMove;
-    private PlayerHealth playerHealth;
+    private PlayerStats playerHealth;
     private bool canAttack;
     private float attackTime;
 
@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour {
     {
         sangradoTime = 5;
         sangradoDamage = 2;
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;

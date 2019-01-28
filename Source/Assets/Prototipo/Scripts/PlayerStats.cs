@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerStats : MonoBehaviour {
 
     public Image healthSlider;
     public Image manaSlider;

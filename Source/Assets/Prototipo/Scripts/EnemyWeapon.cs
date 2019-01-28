@@ -10,7 +10,7 @@ public class EnemyWeapon : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerHealth player = other.GetComponent<PlayerHealth>();
+            PlayerStats player = other.GetComponent<PlayerStats>();
             player.TakeDamage(damage);
         }
     }
