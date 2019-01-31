@@ -15,11 +15,8 @@ public class PlayerController : MonoBehaviour {
     public BoxCollider sword;
     PlayerStats health;
     public bool canAttack;
-    public bool canSpell;
     public bool canDash;
-    public float manaSpell;
-
-    private float spellCount;
+    
     public float dashForce;
     public bool godMode;
 
@@ -27,14 +24,11 @@ public class PlayerController : MonoBehaviour {
     public AudioClip attackAudio;
     public AudioClip dashAudio;
 
-    public AnimationClip spellAnim;
-
 	[SerializeField]
 	float movementSpeed = 4.0f;
     [SerializeField]
     float godSpeed = 8.0f;
-
-    public GameObject FireBallPrefab;
+    
 
     public Vector3 moveDirection;
     public float maxDashTime = 1.0f;
@@ -58,11 +52,9 @@ public class PlayerController : MonoBehaviour {
         attackTime = attackAnim.length;
 		attackTime *= 0.6f;
 		canMove = true;
-        canSpell = true;
         canAttack = true;
         canDash = true;
         sword.enabled = false;
-        spellCount = 0.0f;
 	}
 
 	void Update(){
@@ -97,17 +89,6 @@ public class PlayerController : MonoBehaviour {
                 audioSource.clip = dashAudio;
                 audioSource.Play(0);
             }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1) && canSpell)
-            {
-                if (health.currentMana > 0f)
-                {
-                    health.UseMana(manaSpell);
-                    spellCount = 0.0f;
-                    health.SpellCD.fillAmount = 0.0f;
-                    StartCoroutine(CastSpell());
-                }
-            }
             
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
             {
@@ -118,12 +99,6 @@ public class PlayerController : MonoBehaviour {
 
             ControlPlayer(movementSpeed);            
 		}
-
-        if(spellCount < 1.0f)
-        {
-            spellCount += Time.deltaTime;
-            health.SpellCD.fillAmount = spellCount;
-        }
 
         if (CDDashCount <= CDDash)
         {
@@ -153,14 +128,12 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("attack", true);
         RotatePlayer();
         canMove = false;
-        canSpell = false;
         canAttack = false;
         sword.enabled = true;
         
         yield return new WaitForSeconds(attackTime);
 
         anim.SetBool("attack", false);
-        canSpell = true;
 		canMove = true;
         canAttack = true;
         sword.enabled = false;
@@ -201,30 +174,6 @@ public class PlayerController : MonoBehaviour {
             //Debug.Log(transform.rotation);
 		}
 	}
-
-    IEnumerator CastSpell()
-    {
-        RotatePlayer();
-        anim.SetBool("spell", true);
-        canMove = false;
-        canAttack = false;
-        canSpell = false;
-        Spell1();
-
-        yield return new WaitForSeconds(spellAnim.length);
-
-        anim.SetBool("spell", false);
-        canMove = true;
-        canSpell = true;
-        canAttack = true;
-    }
-
-    void Spell1()
-    {
-        Vector3 SpawnSpellLoc = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        Instantiate(FireBallPrefab, SpawnSpellLoc, Quaternion.identity);
-
-    }
 
     void DesactivePlayer(){
         NavMeshAgent navMesh;
