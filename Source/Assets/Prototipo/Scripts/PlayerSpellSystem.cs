@@ -37,7 +37,7 @@ public class PlayerSpellSystem : MonoBehaviour
             {
                 manager.playerStats.UseMana(spell1Mana);
                 StartCoroutine(CastLightningSpell());
-                
+                spell1Sprite.SetActive(false);
             }
         }
 
@@ -54,6 +54,7 @@ public class PlayerSpellSystem : MonoBehaviour
         if (groundPlane.Raycast(ray, out rayLength))
         {
             pointToLook = ray.GetPoint(rayLength);
+            pointToLook = new Vector3(pointToLook.x, 1.3f, pointToLook.z);
             spell1Sprite.transform.LookAt(pointToLook);
         }
     }
@@ -64,6 +65,7 @@ public class PlayerSpellSystem : MonoBehaviour
         {
             GetTarget();
             setTarget = true;
+            spell1Sprite.SetActive(false);
         }
     }
 
