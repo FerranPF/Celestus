@@ -77,6 +77,7 @@ public class PlayerStats : MonoBehaviour {
             currentMana -= amount;
             manaSlider.fillAmount = currentMana/startingMana;
         }
+
         Debug.Log("Mana: " + currentMana);
     }
 

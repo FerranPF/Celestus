@@ -9,8 +9,14 @@ public class PlayerSpellSystem : MonoBehaviour
 
     bool target01 = false;
     bool target02 = false;
+    bool target03 = false;
+
     float spell1Time;
+    float spell2Time;
+
     public float spell1Mana;
+    public float spell2Mana;
+
     public GameObject spell1Sprite;
     public GameObject spell2Sprite;
     GameManager manager;
@@ -20,39 +26,59 @@ public class PlayerSpellSystem : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
+        //spell3Sprite.SetActive(false);
     }
 
     private void Update()
     {
+        if (manager.playerStats.currentMana <= 0)
+        {
+            canSpell = false;
+        }
+
         if (canSpell)
         {
             if (Input.GetKey(KeyCode.Alpha1))
             {
                 target01 = true;
                 target02 = false;
+                target03 = false;
+                canSpell = false;
             }
             if (Input.GetKey(KeyCode.Alpha2))
             {
                 target02 = true;
                 target01 = false;
+                target03 = false;
+                canSpell = false;
+            }
+            if (Input.GetKey(KeyCode.Alpha3))
+            {
+                target01 = false;
+                target02 = false;
+                target03 = true;
+                canSpell = false;
             }
         }
 
         if (target01)
         {
-            SettingTarget();
+            SettingTarget1();
             ShowSpell1();
             if (setTarget)
             {
-                manager.playerStats.UseMana(spell1Mana);
                 StartCoroutine(CastLightningSpell());
-                spell1Sprite.SetActive(false);
             }
         }
 
         if (target02)
         {
-
+            SettingTarget2();
+            ShowSpell2();
+            if (setTarget)
+            {
+                StartCoroutine(CastFireSpell());
+            }
         }
 
     }
@@ -61,45 +87,63 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         spell1Sprite.SetActive(true);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1.3f, 0));
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0f, 0));
         float rayLength;
         Vector3 pointToLook;
 
         if (groundPlane.Raycast(ray, out rayLength))
         {
             pointToLook = ray.GetPoint(rayLength);
-            pointToLook = new Vector3(pointToLook.x, 1.3f, pointToLook.z);
-            spell1Sprite.transform.LookAt(pointToLook);
+            Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
+            spell1Sprite.transform.rotation = Quaternion.LookRotation( PoI, Vector3.up);
         }
     }
 
     void ShowSpell2()
     {
         spell2Sprite.SetActive(true);
-        spell1Sprite.SetActive(true);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1.3f, 0));
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0, 0));
         float rayLength;
         Vector3 pointToLook;
 
         if (groundPlane.Raycast(ray, out rayLength))
         {
             pointToLook = ray.GetPoint(rayLength);
-            pointToLook = new Vector3(pointToLook.x, 1.3f, pointToLook.z);
-            spell1Sprite.transform.position = pointToLook;
+            Vector3 PoI = new Vector3(pointToLook.x, 0f, pointToLook.z);
+            spell2Sprite.transform.position = PoI;
         }
     }
 
-    void SettingTarget()
+    void SettingTarget1()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            manager.playerStats.UseMana(spell1Mana);
             manager.playerController.canAttack = false;
             GetTarget();
             setTarget = true;
             spell1Sprite.SetActive(false);
         }
-        if (Input.GetMouseButton(1))
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ResetTarget();
+        }
+    }
+
+    void SettingTarget2()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            manager.playerStats.UseMana(spell2Mana);
+            manager.playerController.canAttack = false;
+            GetTarget();
+            setTarget = true;
+            spell2Sprite.SetActive(false);
+        }
+
+        if (Input.GetMouseButtonDown(1))
         {
             ResetTarget();
         }
@@ -107,13 +151,16 @@ public class PlayerSpellSystem : MonoBehaviour
 
     void ResetTarget()
     {
-        spell1Sprite.SetActive(false);
-        spell2Sprite.SetActive(false);
+        //spell3Sprite.SetActive(false);
         manager.playerController.canAttack = true;
         canSpell = true;
         target01 = false;
         target02 = false;
+        target03 = false;
         setTarget = false;
+
+        spell1Sprite.SetActive(false);
+        spell2Sprite.SetActive(false);
     }
 
     IEnumerator CastLightningSpell()
@@ -125,6 +172,16 @@ public class PlayerSpellSystem : MonoBehaviour
         ResetTarget();
     }
 
+    IEnumerator CastFireSpell()
+    {
+        manager.playerController.anim.SetBool("attack", true);
+        canSpell = false;
+        yield return new WaitForSeconds(spell2Time);
+        manager.playerController.anim.SetBool("attack", false);
+        ResetTarget();
+    }
+
+
     void GetTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -135,7 +192,8 @@ public class PlayerSpellSystem : MonoBehaviour
         if (groundPlane.Raycast(ray, out rayLength))
         {
             pointToLook = ray.GetPoint(rayLength);
-            manager.playerController.transform.LookAt(pointToLook);
+            Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
+            manager.playerController.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
         }
     }
 
