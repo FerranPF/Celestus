@@ -7,10 +7,6 @@ public class PlayerSpellSystem : MonoBehaviour
     bool canSpell = true;
     bool setTarget = false;
 
-    bool target01 = false;
-    bool target02 = false;
-    bool target03 = false;
-
     float spell1Time;
     float spell2Time;
 
@@ -19,7 +15,20 @@ public class PlayerSpellSystem : MonoBehaviour
 
     public GameObject spell1Sprite;
     public GameObject spell2Sprite;
+
+    public GameObject FireSpell;
+
     GameManager manager;
+
+    enum Spell
+    {
+        None,
+        Lightning,
+        Fire,
+        Ice
+    }
+
+    Spell spellType;
 
     private void Start()
     {
@@ -27,12 +36,14 @@ public class PlayerSpellSystem : MonoBehaviour
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
         //spell3Sprite.SetActive(false);
+        spellType = Spell.None;
     }
 
     private void Update()
     {
         if (manager.playerStats.currentMana <= 0)
         {
+            Debug.Log("No Mana");
             canSpell = false;
         }
 
@@ -40,107 +51,92 @@ public class PlayerSpellSystem : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Alpha1))
             {
-                target01 = true;
-                target02 = false;
-                target03 = false;
-                canSpell = false;
+                ResetTarget();
+                spellType = Spell.Lightning;
+                Debug.Log(spellType);
             }
+
             if (Input.GetKey(KeyCode.Alpha2))
             {
-                target02 = true;
-                target01 = false;
-                target03 = false;
-                canSpell = false;
+                ResetTarget();
+                spellType = Spell.Fire;
+                Debug.Log(spellType);
             }
+
             if (Input.GetKey(KeyCode.Alpha3))
             {
-                target01 = false;
-                target02 = false;
-                target03 = true;
-                canSpell = false;
+                ResetTarget();
+                spellType = Spell.Ice;
+                Debug.Log(spellType);
             }
         }
 
-        if (target01)
+        switch (spellType)
         {
-            SettingTarget1();
-            ShowSpell1();
-            if (setTarget)
-            {
-                StartCoroutine(CastLightningSpell());
-            }
-        }
+            case Spell.Lightning:
+                ShowSpell();
+                SettingTarget(spell1Sprite, spell1Mana);
+                if (setTarget)
+                {
+                    StartCoroutine(CastLightningSpell());
+                }
+                break;
 
-        if (target02)
-        {
-            SettingTarget2();
-            ShowSpell2();
-            if (setTarget)
-            {
-                StartCoroutine(CastFireSpell());
-            }
-        }
+            case Spell.Fire:
+                ShowSpell();
+                SettingTarget(spell2Sprite, spell2Mana);
+                if (setTarget)
+                {
+                    StartCoroutine(CastFireSpell());
+                }
+                break;
 
+            case Spell.Ice:
+                Debug.Log("Ice");
+                break;
+
+            case Spell.None:
+                break;
+            default:
+                break;
+        }
     }
 
-    void ShowSpell1()
+    void ShowSpell()
     {
-        spell1Sprite.SetActive(true);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0f, 0));
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, -1.0f, 0));
         float rayLength;
         Vector3 pointToLook;
 
         if (groundPlane.Raycast(ray, out rayLength))
         {
             pointToLook = ray.GetPoint(rayLength);
-            Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
-            spell1Sprite.transform.rotation = Quaternion.LookRotation( PoI, Vector3.up);
+            if (spellType == Spell.Lightning)
+            {
+                spell1Sprite.SetActive(true);
+                Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
+                spell1Sprite.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
+            }
+
+            if (spellType == Spell.Fire)
+            {
+                spell2Sprite.SetActive(true);
+                Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
+                spell2Sprite.transform.position = PoI;
+            }
         }
     }
 
-    void ShowSpell2()
-    {
-        spell2Sprite.SetActive(true);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0, 0));
-        float rayLength;
-        Vector3 pointToLook;
-
-        if (groundPlane.Raycast(ray, out rayLength))
-        {
-            pointToLook = ray.GetPoint(rayLength);
-            Vector3 PoI = new Vector3(pointToLook.x, 0f, pointToLook.z);
-            spell2Sprite.transform.position = PoI;
-        }
-    }
-
-    void SettingTarget1()
+    void SettingTarget(GameObject spell, float spellMana)
     {
         if (Input.GetMouseButtonDown(0))
         {
-            manager.playerStats.UseMana(spell1Mana);
+            manager.playerStats.UseMana(spellMana);
             manager.playerController.canAttack = false;
             GetTarget();
             setTarget = true;
-            spell1Sprite.SetActive(false);
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            ResetTarget();
-        }
-    }
-
-    void SettingTarget2()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            manager.playerStats.UseMana(spell2Mana);
-            manager.playerController.canAttack = false;
-            GetTarget();
-            setTarget = true;
-            spell2Sprite.SetActive(false);
+            spell.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -151,16 +147,13 @@ public class PlayerSpellSystem : MonoBehaviour
 
     void ResetTarget()
     {
+        spell1Sprite.SetActive(false);
+        spell2Sprite.SetActive(false);
         //spell3Sprite.SetActive(false);
         manager.playerController.canAttack = true;
         canSpell = true;
-        target01 = false;
-        target02 = false;
-        target03 = false;
         setTarget = false;
-
-        spell1Sprite.SetActive(false);
-        spell2Sprite.SetActive(false);
+        spellType = Spell.None;
     }
 
     IEnumerator CastLightningSpell()

@@ -162,17 +162,17 @@ public class PlayerController : MonoBehaviour {
 	void RotatePlayer()
 	{
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1.3f, 0));
+		Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0, 0));
 		float rayLength;
         Vector3 pointToLook;
         
 		if(groundPlane.Raycast(ray, out rayLength))
 		{
 			pointToLook = ray.GetPoint(rayLength);
-            //Debug.Log(pointToLook);
-            transform.LookAt(pointToLook);
-            //Debug.Log(transform.rotation);
-		}
+            pointToLook = ray.GetPoint(rayLength);
+            Vector3 PoI = new Vector3(pointToLook.x - transform.position.x, 0, pointToLook.z - transform.position.z);
+            transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
+        }
 	}
 
     void DesactivePlayer(){
