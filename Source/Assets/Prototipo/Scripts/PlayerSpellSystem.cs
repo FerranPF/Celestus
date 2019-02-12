@@ -9,12 +9,15 @@ public class PlayerSpellSystem : MonoBehaviour
 
     float spell1Time;
     float spell2Time;
+    float spell3Time;
 
     public float spell1Mana;
     public float spell2Mana;
+    public float spell3Mana;
 
     public GameObject spell1Sprite;
     public GameObject spell2Sprite;
+    public GameObject spell3Sprite;
 
     public GameObject FireSpell;
 
@@ -35,7 +38,7 @@ public class PlayerSpellSystem : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
-        //spell3Sprite.SetActive(false);
+        spell3Sprite.SetActive(false);
         spellType = Spell.None;
     }
 
@@ -92,7 +95,12 @@ public class PlayerSpellSystem : MonoBehaviour
                 break;
 
             case Spell.Ice:
-                Debug.Log("Ice");
+                ShowSpell();
+                SettingTarget(spell3Sprite, spell3Mana);
+                if (setTarget)
+                {
+                    StartCoroutine(CastIceSpell());
+                }
                 break;
 
             case Spell.None:
@@ -125,6 +133,13 @@ public class PlayerSpellSystem : MonoBehaviour
                 Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
                 spell2Sprite.transform.position = PoI;
             }
+
+            if (spellType == Spell.Ice)
+            {
+                spell3Sprite.SetActive(true);
+                Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
+                spell3Sprite.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
+            }
         }
     }
 
@@ -149,7 +164,7 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
-        //spell3Sprite.SetActive(false);
+        spell3Sprite.SetActive(false);
         manager.playerController.canAttack = true;
         canSpell = true;
         setTarget = false;
@@ -173,6 +188,16 @@ public class PlayerSpellSystem : MonoBehaviour
         manager.playerController.anim.SetBool("attack", false);
         ResetTarget();
     }
+
+    IEnumerator CastIceSpell()
+    {
+        manager.playerController.anim.SetBool("attack", true);
+        canSpell = false;
+        yield return new WaitForSeconds(spell3Time);
+        manager.playerController.anim.SetBool("attack", false);
+        ResetTarget();
+    }
+
 
 
     void GetTarget()
