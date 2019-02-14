@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         audioSource = GetComponent<AudioSource>();
         currentDashTime = maxDashTime;
-        anim = GetComponentInChildren<Animator>();
+        //anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
 		attackTime *= 0.6f;
 		canMove = true;
