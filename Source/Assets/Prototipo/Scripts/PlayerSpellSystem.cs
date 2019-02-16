@@ -19,7 +19,9 @@ public class PlayerSpellSystem : MonoBehaviour
     public GameObject spell2Sprite;
     public GameObject spell3Sprite;
 
-    public GameObject FireSpell;
+    public ParticleSystem LightningPS;
+    public Object firePrefab;
+    Vector3 firePos;
 
     GameManager manager;
 
@@ -90,7 +92,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 SettingTarget(spell2Sprite, spell2Mana);
                 if (setTarget)
                 {
-                    StartCoroutine(CastFireSpell());
+                    StartCoroutine(CastFireSpell(firePos));
                 }
                 break;
 
@@ -132,6 +134,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 spell2Sprite.SetActive(true);
                 Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
                 spell2Sprite.transform.position = PoI;
+                firePos = pointToLook;
             }
 
             if (spellType == Spell.Ice)
@@ -175,16 +178,18 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         manager.playerController.anim.SetBool("attack", true);
         canSpell = false;
+        LightningPS.Play();
         yield return new WaitForSeconds(spell1Time);
         manager.playerController.anim.SetBool("attack", false);
         ResetTarget();
     }
 
-    IEnumerator CastFireSpell()
+    IEnumerator CastFireSpell(Vector3 position)
     {
         manager.playerController.anim.SetBool("attack", true);
         canSpell = false;
         yield return new WaitForSeconds(spell2Time);
+        Instantiate(firePrefab, position, transform.rotation);
         manager.playerController.anim.SetBool("attack", false);
         ResetTarget();
     }
