@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSpellSystem : MonoBehaviour
 {
-    bool canSpell = true;
+    public bool canSpell = true;
     bool setTarget = false;
 
     float spell1Time;
@@ -15,15 +15,21 @@ public class PlayerSpellSystem : MonoBehaviour
     public float spell2Mana;
     public float spell3Mana;
 
+    public bool canSpell1 = true;
+    public bool canSpell2 = true;
+    public bool canSpell3 = true;
+
     public GameObject spell1Sprite;
     public GameObject spell2Sprite;
     public GameObject spell3Sprite;
 
     public ParticleSystem LightningPS;
     public Object firePrefab;
+    public IceSpell iceSpell;
     Vector3 firePos;
 
     GameManager manager;
+    SpellManager spellManager;
 
     enum Spell
     {
@@ -38,6 +44,7 @@ public class PlayerSpellSystem : MonoBehaviour
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        spellManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SpellManager>();
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
         spell3Sprite.SetActive(false);
@@ -54,21 +61,21 @@ public class PlayerSpellSystem : MonoBehaviour
 
         if (canSpell)
         {
-            if (Input.GetKey(KeyCode.Alpha1))
+            if (Input.GetKey(KeyCode.Alpha1) && canSpell1)
             {
                 ResetTarget();
                 spellType = Spell.Lightning;
                 Debug.Log(spellType);
             }
 
-            if (Input.GetKey(KeyCode.Alpha2))
+            if (Input.GetKey(KeyCode.Alpha2) && canSpell2)
             {
                 ResetTarget();
                 spellType = Spell.Fire;
                 Debug.Log(spellType);
             }
 
-            if (Input.GetKey(KeyCode.Alpha3))
+            if (Input.GetKey(KeyCode.Alpha3) && canSpell3)
             {
                 ResetTarget();
                 spellType = Spell.Ice;
@@ -83,6 +90,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 SettingTarget(spell1Sprite, spell1Mana);
                 if (setTarget)
                 {
+                    spellManager.Spell1CD();
                     StartCoroutine(CastLightningSpell());
                 }
                 break;
@@ -92,6 +100,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 SettingTarget(spell2Sprite, spell2Mana);
                 if (setTarget)
                 {
+                    spellManager.Spell2CD();
                     StartCoroutine(CastFireSpell(firePos));
                 }
                 break;
@@ -101,6 +110,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 SettingTarget(spell3Sprite, spell3Mana);
                 if (setTarget)
                 {
+                    spellManager.Spell3CD();
                     StartCoroutine(CastIceSpell());
                 }
                 break;
@@ -200,6 +210,7 @@ public class PlayerSpellSystem : MonoBehaviour
         canSpell = false;
         yield return new WaitForSeconds(spell3Time);
         manager.playerController.anim.SetBool("attack", false);
+        iceSpell.ActivateSpell();
         ResetTarget();
     }
 

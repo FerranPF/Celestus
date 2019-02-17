@@ -147,12 +147,7 @@ PrefabInstance:
     - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69,
         type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 15
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 198679442476388764, guid: f293a2dcc753a4a489fefe7f8f312d69,
         type: 3}

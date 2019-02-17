@@ -25,6 +25,10 @@ public class EnemyController : MonoBehaviour {
     public int sangradoDamage;
     private float secCont = 0;
 
+    public bool frozen = false;
+    private float timeFreeze;
+    private float freezeCont = 0.0f;
+
     private void Start()
     {
         sangradoTime = 5;
@@ -73,7 +77,28 @@ public class EnemyController : MonoBehaviour {
                 sangrado = false;
             }
         }
-        
+
+        if (frozen)
+        {
+            freezeCont += Time.deltaTime;
+            Debug.Log(timeFreeze);
+            if (freezeCont >= timeFreeze)
+            {
+                freezeCont = 0.0f;
+                canMove = true;
+                frozen = false;
+                agent.Resume();
+            }
+        }
+    }
+
+    public void Freeze(float timeFrozen)
+    {
+        frozen = true;
+        timeFreeze = timeFrozen;
+        canMove = false;
+        agent.Stop();
+        animator.SetBool("attacking", false);
     }
 
     IEnumerator Attack()

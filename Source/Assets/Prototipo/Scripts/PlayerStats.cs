@@ -9,7 +9,6 @@ public class PlayerStats : MonoBehaviour {
     public Image healthSlider;
     public Image manaSlider;
     public Image expSlider;
-    public Image SpellCD;
 
     PlayerController playerControl;
 
