@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour {
     public float CDDash;
     private float CDDashCount;
 
+    public bool skillTree = false;
+
     private void Awake()
     {
         health = GetComponent<PlayerStats>();
@@ -48,7 +50,6 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         audioSource = GetComponent<AudioSource>();
         currentDashTime = maxDashTime;
-        //anim = GetComponentInChildren<Animator>();
         attackTime = attackAnim.length;
 		attackTime *= 0.6f;
 		canMove = true;
@@ -66,7 +67,15 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F8))
         {
-            manager.OpenSkillTree();
+            if (skillTree)
+            {
+                manager.CloseSkillTree();
+                skillTree = false;
+            }else if (!skillTree)
+            {
+                manager.OpenSkillTree();
+                skillTree = true;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.F10)){

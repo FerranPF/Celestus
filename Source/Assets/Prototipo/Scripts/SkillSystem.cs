@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class SkillSystem : MonoBehaviour
 {
     public GameManager gameManager;
+    public Button MoreHealthButton;
+    public Button MoreDamageButton;
+    public Button SangradoButton;
+    public Button VelAtaqueButton;
 
     private void Start()
     {
@@ -21,7 +25,7 @@ public class SkillSystem : MonoBehaviour
         gameManager.playerStats.startingHealth = newHealth;
         Debug.Log(gameManager.playerStats.currentHealth);
 
-        Close();
+        MoreHealthButton.interactable = false;
     }
 
     public void MoreDamage(int damage)
@@ -32,23 +36,24 @@ public class SkillSystem : MonoBehaviour
         gameManager.sword.damage = newDamage;
         Debug.Log(gameManager.sword.damage);
 
-        Close();
+        MoreDamageButton.interactable = false;
     }
 
     public void Sangrado()
     {
         gameManager.sword.sangrado = true;
-        Close();
+        SangradoButton.interactable = false;
     }
 
     public void MoreSpeedAttack()
     {
         gameManager.playerController.attackTime *= 0.75f;
-        Close();
+        VelAtaqueButton.interactable = false;
     }
 
-    private void Close()
+    public void Close()
     {
-        this.gameObject.SetActive(false);
+        gameManager.playerController.skillTree = false;
+        gameManager.skillTree.SetActive(false);
     }
 }
