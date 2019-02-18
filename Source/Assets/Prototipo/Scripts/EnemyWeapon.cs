@@ -11,7 +11,10 @@ public class EnemyWeapon : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             PlayerStats player = other.GetComponent<PlayerStats>();
-            player.TakeDamage(damage);
+            if(player.currentHealth >= damage)
+            {
+                player.TakeDamage(damage);
+            }
         }
     }
 }

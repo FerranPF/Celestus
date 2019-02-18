@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour {
     public float level;
 
     public Animator fadeAnim;
+    public AnimationClip deathAnim;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class PlayerStats : MonoBehaviour {
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            Death();
+            StartCoroutine(Death());
         }
         healthSlider.fillAmount = currentHealth/startingHealth;
         Debug.Log("Health: " + currentHealth);
@@ -97,9 +98,11 @@ public class PlayerStats : MonoBehaviour {
         Debug.Log("Mana: " + currentMana);
     }
 
-    void Death()
+    IEnumerator Death()
     {
         playerControl.enabled = false;
+        playerControl.anim.SetBool("death", true);
+        yield return new WaitForSeconds(deathAnim.length);
         StartCoroutine(Fading());
     }
 
