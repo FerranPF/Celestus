@@ -11,6 +11,11 @@ public class MenuManager : MonoBehaviour {
     public GameObject mainPanel;
     public GameObject fadePanel;
 
+    public RectTransform celestusTitle;
+    public RectTransform titlePos;
+    private Vector2 iniPos;
+    public float difScale;
+
     void Awake(){
         fadePanel.SetActive(true);
     }
@@ -18,17 +23,19 @@ public class MenuManager : MonoBehaviour {
     void Start(){
         optionsPanel.SetActive(false);
         mainPanel.SetActive(true);
+        iniPos = celestusTitle.position;
     }
     public void ExitButtons()
     {
         Application.Quit();
     }
-
-    // Update is called once per frame
+    
     public void OptionsButton() {
 		optionsPanel.SetActive(true);
         mainPanel.SetActive(false);
-	}
+        celestusTitle.localScale *= difScale;
+        celestusTitle.position = titlePos.position;
+    }
 
     public void CreditsButton()
     {
@@ -37,6 +44,8 @@ public class MenuManager : MonoBehaviour {
 
     public void OptionsBackButton()
     {
+        celestusTitle.position = iniPos;
+        celestusTitle.localScale *= (1 / difScale);
         optionsPanel.SetActive(false);
         mainPanel.SetActive(true);
     }
@@ -52,4 +61,6 @@ public class MenuManager : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Prototipo");
     }
+
+    
 }

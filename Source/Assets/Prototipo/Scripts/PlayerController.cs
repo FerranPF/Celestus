@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour {
 		{
             if (Input.GetKeyDown(KeyCode.Space) && canDash)
             {
+                anim.SetBool("dash", true);
                 CDDashCount = 0.0f;
                 canDash = false;
                 currentDashTime = 0.0f;
@@ -126,6 +127,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             moveDirection = Vector3.zero;
+            anim.SetBool("dash", false);
         }
         
         transform.Translate(moveDirection* Time.deltaTime, Space.Self);
