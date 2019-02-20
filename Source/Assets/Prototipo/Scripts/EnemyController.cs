@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour {
     NavMeshAgent agent;
 
     public int enemyHealth = 100;
+    private CapsuleCollider coll;
 
     private Animator animator;
     public AnimationClip attackAnim;
@@ -28,6 +29,7 @@ public class EnemyController : MonoBehaviour {
     public bool frozen = false;
     private float timeFreeze;
     private float freezeCont = 0.0f;
+    public float enemySpeed;
 
     private void Start()
     {
@@ -39,7 +41,8 @@ public class EnemyController : MonoBehaviour {
         target = PlayerManager.instance.player.transform;
         canMove = true;
         canAttack = true;
-        attackTime = (attackAnim.length) * 0.9f;
+        attackTime = (attackAnim.length) * 1.2f;
+        coll = this.GetComponent<CapsuleCollider>();
     }
 
     private void Update()
@@ -51,6 +54,9 @@ public class EnemyController : MonoBehaviour {
             if (distance <= lookRadius)
             {
                 agent.SetDestination(target.position);
+                agent.speed = enemySpeed;
+                animator.SetBool("walking", true);
+
                 if (distance <= agent.stoppingDistance)
                 {
                     if (canAttack)
@@ -98,6 +104,7 @@ public class EnemyController : MonoBehaviour {
         timeFreeze = timeFrozen;
         canMove = false;
         agent.Stop();
+        animator.SetBool("walking", false);
         animator.SetBool("attacking", false);
     }
 
@@ -107,6 +114,7 @@ public class EnemyController : MonoBehaviour {
         canMove = false;
         animator.SetBool("attacking", true);
         canAttack = false;
+        animator.SetBool("walking", false);
         yield return new WaitForSeconds(attackTime);
         canMove = true;
         animator.SetBool("attacking", false);
@@ -127,13 +135,18 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("Enemy health: " + enemyHealth);
         if (enemyHealth <= 0)
         {
-            Death();
+            animator.SetBool("death", true);
+            StartCoroutine(Death());
         }
     }
 
-    void Death()
+    IEnumerator Death()
     {
 		playerHealth.GetExp(25);
+        canMove = false;
+        coll.enabled = false;
+        agent.Stop();
+        yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }
 
