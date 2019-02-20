@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 
+    private GameManager manager;
+
     public Image healthSlider;
     public Image manaSlider;
     public Image expSlider;
@@ -29,6 +31,10 @@ public class PlayerStats : MonoBehaviour {
     public Animator fadeAnim;
     public AnimationClip deathAnim;
 
+    public int[] keys;
+    private int keyCont = 0;
+    public bool win = false;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -36,6 +42,7 @@ public class PlayerStats : MonoBehaviour {
         playerControl = GetComponent<PlayerController>();
         level = 1.0f;
         expSlider.fillAmount = 0.0f;
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     public void TakeDamage(float amount)
@@ -125,5 +132,15 @@ public class PlayerStats : MonoBehaviour {
         fadeAnim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("GameOver");
+    }
+
+    public void Key(int key)
+    {
+        keys[key] = 1;
+        keyCont++;
+        if(keyCont == keys.Length)
+        {
+            win = true;
+        }
     }
 }

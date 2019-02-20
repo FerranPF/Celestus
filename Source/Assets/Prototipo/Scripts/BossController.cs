@@ -106,7 +106,7 @@ public class BossController : MonoBehaviour
     {
         MyGameManager manager;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MyGameManager>();
-        manager.Win();
+        //manager.Win();
         Destroy(gameObject);
     }
 

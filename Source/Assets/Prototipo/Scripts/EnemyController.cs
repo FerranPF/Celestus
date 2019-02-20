@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour {
     private float timeFreeze;
     private float freezeCont = 0.0f;
     public float enemySpeed;
+    private bool dead = false;
 
     private void Start()
     {
@@ -47,53 +48,59 @@ public class EnemyController : MonoBehaviour {
 
     private void Update()
     {
-        if (canMove)
+        if (!dead)
         {
-            float distance = Vector3.Distance(target.position, transform.position);
-
-            if (distance <= lookRadius)
+            if (canMove)
             {
-                agent.SetDestination(target.position);
-                agent.speed = enemySpeed;
-                animator.SetBool("walking", true);
+                float distance = Vector3.Distance(target.position, transform.position);
 
-                if (distance <= agent.stoppingDistance)
+                if (distance <= lookRadius)
                 {
-                    if (canAttack)
+                    agent.SetDestination(target.position);
+                    agent.speed = enemySpeed;
+                    animator.SetBool("walking", true);
+
+                    if (distance <= agent.stoppingDistance)
                     {
-                        StartCoroutine(Attack());
+                        if (canAttack)
+                        {
+                            StartCoroutine(Attack());
+                        }
                     }
                 }
-            }
-        }
-
-        if (sangrado)
-        {
-            Debug.Log("Sangrando");
-            secCont += Time.deltaTime;
-            if(secCont >= 1.0f)
-            {
-                GetDamage(sangradoDamage);
-                contSangrado++;
-                secCont = 0.0f;
+                else
+                {
+                    animator.SetBool("walking", false);
+                }
             }
 
-            if(contSangrado == sangradoTime)
+            if (sangrado)
             {
-                sangrado = false;
-            }
-        }
+                Debug.Log("Sangrando");
+                secCont += Time.deltaTime;
+                if (secCont >= 1.0f)
+                {
+                    GetDamage(sangradoDamage);
+                    contSangrado++;
+                    secCont = 0.0f;
+                }
 
-        if (frozen)
-        {
-            freezeCont += Time.deltaTime;
-            Debug.Log(timeFreeze);
-            if (freezeCont >= timeFreeze)
+                if (contSangrado == sangradoTime)
+                {
+                    sangrado = false;
+                }
+            }
+
+            if (frozen)
             {
-                freezeCont = 0.0f;
-                canMove = true;
-                frozen = false;
-                agent.Resume();
+                freezeCont += Time.deltaTime;
+                Debug.Log(timeFreeze);
+                if (freezeCont >= timeFreeze)
+                {
+                    freezeCont = 0.0f;
+                    canMove = true;
+                    frozen = false;
+                }
             }
         }
     }
@@ -103,7 +110,7 @@ public class EnemyController : MonoBehaviour {
         frozen = true;
         timeFreeze = timeFrozen;
         canMove = false;
-        agent.Stop();
+        agent.SetDestination(this.transform.position);
         animator.SetBool("walking", false);
         animator.SetBool("attacking", false);
     }
@@ -135,17 +142,20 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("Enemy health: " + enemyHealth);
         if (enemyHealth <= 0)
         {
-            animator.SetBool("death", true);
             StartCoroutine(Death());
         }
     }
 
     IEnumerator Death()
     {
-		playerHealth.GetExp(25);
-        canMove = false;
         coll.enabled = false;
-        agent.Stop();
+        playerHealth.GetExp(25);
+        frozen = false;
+        canMove = false;
+        dead = false;
+        animator.SetBool("death", true);
+        agent.SetDestination(Vector3.zero);
+        agent.enabled = false;
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }

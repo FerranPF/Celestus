@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     public Sword sword;
     public GameObject skillTree;
+
+    public Animator fadeAnim;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI manaText;
@@ -42,5 +45,17 @@ public class GameManager : MonoBehaviour
     public void CloseSkillTree()
     {
         skillTree.SetActive(false);
+    }
+
+    public void Win()
+    {
+        StartCoroutine(Fading("Win"));
+    }
+
+    IEnumerator Fading(string scene)
+    {
+        fadeAnim.SetBool("Fade", true);
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(scene);
     }
 }
