@@ -23,7 +23,7 @@ public class PlayerSpellSystem : MonoBehaviour
     public GameObject spell2Sprite;
     public GameObject spell3Sprite;
 
-    public ParticleSystem LightningPS;
+    public LightningSpell lightningSpell;
     public Object firePrefab;
     public IceSpell iceSpell;
     Vector3 firePos;
@@ -188,7 +188,7 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         manager.playerController.anim.SetBool("attack", true);
         canSpell = false;
-        LightningPS.Play();
+        lightningSpell.ActivateSpell1();
         yield return new WaitForSeconds(spell1Time);
         manager.playerController.anim.SetBool("attack", false);
         ResetTarget();
