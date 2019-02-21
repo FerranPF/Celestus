@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour {
     void Start(){
         optionsPanel.SetActive(false);
         mainPanel.SetActive(true);
-        iniPos = celestusTitle.position;
+        //iniPos = celestusTitle.position;
     }
     public void ExitButtons()
     {
@@ -33,8 +33,8 @@ public class MenuManager : MonoBehaviour {
     public void OptionsButton() {
 		optionsPanel.SetActive(true);
         mainPanel.SetActive(false);
-        celestusTitle.localScale *= difScale;
-        celestusTitle.position = titlePos.position;
+        //celestusTitle.localScale *= difScale;
+        //celestusTitle.position = titlePos.position;
     }
 
     public void CreditsButton()
@@ -44,8 +44,8 @@ public class MenuManager : MonoBehaviour {
 
     public void OptionsBackButton()
     {
-        celestusTitle.position = iniPos;
-        celestusTitle.localScale *= (1 / difScale);
+        //celestusTitle.position = iniPos;
+        //celestusTitle.localScale *= (1 / difScale);
         optionsPanel.SetActive(false);
         mainPanel.SetActive(true);
     }
