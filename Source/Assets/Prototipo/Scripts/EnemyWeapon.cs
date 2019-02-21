@@ -5,6 +5,14 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour {
     
     public int damage;
+    public BoxCollider coll;
+    public AudioSource audioSource;
+    public AudioClip hit;
+
+    private void Awake()
+    {
+        coll = GetComponent<BoxCollider>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,8 +21,11 @@ public class EnemyWeapon : MonoBehaviour {
             PlayerStats player = other.GetComponent<PlayerStats>();
             if(player.currentHealth >= damage)
             {
+                audioSource.clip = hit;
+                audioSource.Play(0);
                 Debug.Log("Player damage");
                 player.TakeDamage(damage);
+                coll.enabled = false;
             }
         }
     }

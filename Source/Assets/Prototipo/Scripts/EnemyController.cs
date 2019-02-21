@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour {
     private bool canAttack;
     private float attackTime;
 
+    public EnemyWeapon weapon;
+
     public bool sangrado = false;
     private int contSangrado;
     private int sangradoTime;
@@ -32,8 +34,12 @@ public class EnemyController : MonoBehaviour {
     public float enemySpeed;
     private bool dead = false;
 
+    private float cont;
+    public float delayAttack = 0.5f;
+
     private void Start()
     {
+        weapon = GetComponentInChildren<EnemyWeapon>();
         sangradoTime = 5;
         sangradoDamage = 2;
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
@@ -65,6 +71,16 @@ public class EnemyController : MonoBehaviour {
                         if (canAttack)
                         {
                             StartCoroutine(Attack());
+                            cont += Time.deltaTime;
+                            if (cont >= delayAttack)
+                            {
+                                weapon.coll.enabled = true;
+                            }
+
+                            if (!dead)
+                            {
+                                canMove = true;
+                            }
                         }
                     }
                 }
@@ -98,7 +114,10 @@ public class EnemyController : MonoBehaviour {
                 if (freezeCont >= timeFreeze)
                 {
                     freezeCont = 0.0f;
-                    canMove = true;
+                    if (!dead)
+                    {
+                        canMove = true;
+                    }
                     frozen = false;
                 }
             }
@@ -124,6 +143,7 @@ public class EnemyController : MonoBehaviour {
         animator.SetBool("walking", false);
         yield return new WaitForSeconds(attackTime);
         canMove = true;
+        weapon.coll.enabled = false;
         animator.SetBool("attacking", false);
         canAttack = true;
 
@@ -154,8 +174,11 @@ public class EnemyController : MonoBehaviour {
         canMove = false;
         dead = false;
         animator.SetBool("death", true);
-        agent.SetDestination(Vector3.zero);
+        animator.SetBool("attacking", false);
+        animator.SetBool("walking", false);
+        agent.SetDestination(transform.position);
         agent.enabled = false;
+        weapon.coll.enabled = false;
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }

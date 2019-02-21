@@ -5,6 +5,7 @@ using UnityEngine;
 public class WinDoor : MonoBehaviour
 {
     GameManager manager;
+    public Animator anim;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class WinDoor : MonoBehaviour
             PlayerStats player = other.gameObject.GetComponent<PlayerStats>();
             if (player.win)
             {
+                anim.SetBool("open", true);
                 manager.Win();
             }
         }
