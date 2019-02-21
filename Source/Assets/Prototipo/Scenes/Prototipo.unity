@@ -1733,6 +1733,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1241802573}
+  audioSource: {fileID: 811192441}
+  audioNoKey: {fileID: 8300000, guid: deaf5133af57e734aa3986eca6cc40c5, type: 3}
 --- !u!1 &418777067
 GameObject:
   m_ObjectHideFlags: 0
@@ -7578,6 +7580,7 @@ MonoBehaviour:
   key: 0
   audioSource: {fileID: 811192441}
   audioOpen: {fileID: 8300000, guid: 1bb49ceaa2756044e9e16723822f1f6a, type: 3}
+  audioNoKey: {fileID: 8300000, guid: deaf5133af57e734aa3986eca6cc40c5, type: 3}
 --- !u!65 &1792167613
 BoxCollider:
   m_ObjectHideFlags: 0

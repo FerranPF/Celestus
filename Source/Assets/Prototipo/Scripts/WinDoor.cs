@@ -6,6 +6,8 @@ public class WinDoor : MonoBehaviour
 {
     GameManager manager;
     public Animator anim;
+    public AudioSource audioSource;
+    public AudioClip audioNoKey;
 
     private void Awake()
     {
@@ -21,6 +23,12 @@ public class WinDoor : MonoBehaviour
             {
                 anim.SetBool("open", true);
                 manager.Win();
+            }
+            else
+            {
+
+                audioSource.clip = audioNoKey;
+                audioSource.Play(0);
             }
         }
     }

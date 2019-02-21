@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Door : MonoBehaviour
     GameManager manager;
     public AudioSource audioSource;
     public AudioClip audioOpen;
+    public AudioClip audioNoKey;
 
     private void Awake()
     {
@@ -31,6 +33,8 @@ public class Door : MonoBehaviour
             else
             {
                 Debug.Log("Do not have the key");
+                audioSource.clip = audioNoKey;
+                audioSource.Play(0);
             }
         }
     }
