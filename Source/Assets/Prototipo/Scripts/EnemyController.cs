@@ -119,6 +119,18 @@ public class EnemyController : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            DisableEnemy();
+        }
+    }
+
+    private void DisableEnemy()
+    {
+        agent.SetDestination(this.transform.position);
+        canAttack = false;
+        canMove = false;
+        weapon.coll.enabled = false;
     }
 
     public void Freeze(float timeFrozen)
@@ -170,13 +182,11 @@ public class EnemyController : MonoBehaviour {
         playerHealth.GetExp(25);
         frozen = false;
         canMove = false;
-        dead = false;
+        dead = true;
         animator.SetBool("death", true);
         animator.SetBool("attacking", false);
         animator.SetBool("walking", false);
-        agent.SetDestination(transform.position);
-        agent.enabled = false;
-        weapon.coll.enabled = false;
+        //agent.enabled = false;
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }

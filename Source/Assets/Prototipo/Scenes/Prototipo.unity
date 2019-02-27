@@ -8611,7 +8611,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8737,6 +8737,11 @@ PrefabInstance:
       propertyPath: fadeAnim
       value: 
       objectReference: {fileID: 1470880646}
+    - target: {fileID: 164036204569459896, guid: 2dc1e72ea156bf74a98655192dee6e48,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7476261816147060099, guid: 2dc1e72ea156bf74a98655192dee6e48,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8791,11 +8796,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 164036204569459896, guid: 2dc1e72ea156bf74a98655192dee6e48,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dc1e72ea156bf74a98655192dee6e48, type: 3}
