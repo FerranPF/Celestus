@@ -37,6 +37,19 @@ public class EnemyController : MonoBehaviour {
     private float cont;
     public float delayAttack = 0.2f;
 
+    bool chasing = false;
+
+    private enum EnemyPhase
+    {
+        Idle,
+        Chase,
+        Walk,
+        Attack,
+        Frozen,
+        Death
+    }
+
+    private EnemyPhase enemyPhase = EnemyPhase.Idle;
     private void Start()
     {
         weapon = GetComponentInChildren<EnemyWeapon>();
@@ -54,109 +67,133 @@ public class EnemyController : MonoBehaviour {
 
     private void Update()
     {
-        if (!dead)
+        switch (enemyPhase)
         {
-            if (canMove)
-            {
-                float distance = Vector3.Distance(target.position, transform.position);
+            case EnemyPhase.Idle:
+                EnemyIdle();
+                break;
 
-                if (distance <= lookRadius)
-                {
-                    agent.SetDestination(target.position);
-                    agent.speed = enemySpeed;
-                    animator.SetBool("walking", true);
+            case EnemyPhase.Chase:
+                EnemyChase();
+                break;
 
-                    if (distance <= agent.stoppingDistance)
-                    {
-                        if (canAttack)
-                        {
-                            
-                            weapon.coll.enabled = true;
-                            StartCoroutine(Attack());
+            case EnemyPhase.Walk:
+                EnemyWalk();
+                break;
 
-                            if (!dead)
-                            {
-                                canMove = true;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    animator.SetBool("walking", false);
-                }
-            }
+            case EnemyPhase.Attack:
+                EnemyAttack();
+                break;
 
-            if (sangrado)
-            {
-                Debug.Log("Sangrando");
-                secCont += Time.deltaTime;
-                if (secCont >= 1.0f)
-                {
-                    GetDamage(sangradoDamage);
-                    contSangrado++;
-                    secCont = 0.0f;
-                }
+            case EnemyPhase.Frozen:
+                EnemyFrozen();
+                break;
 
-                if (contSangrado == sangradoTime)
-                {
-                    sangrado = false;
-                }
-            }
-
-            if (frozen)
-            {
-                freezeCont += Time.deltaTime;
-                Debug.Log(timeFreeze);
-                if (freezeCont >= timeFreeze)
-                {
-                    freezeCont = 0.0f;
-                    if (!dead)
-                    {
-                        canMove = true;
-                    }
-                    frozen = false;
-                }
-            }
-        }
-        else
-        {
-            DisableEnemy();
+            case EnemyPhase.Death:
+                EnemyDeath();
+                break;
         }
     }
 
-    private void DisableEnemy()
+    private void EnemyIdle()
     {
-        agent.SetDestination(this.transform.position);
+        animator.SetBool("walking", false);
+        animator.SetBool("attacking", false);
+        animator.SetBool("death", false);
+
+        DetectPlayer();
+    }
+
+    private void EnemyChase()
+    {
+        animator.SetBool("walking", true);
+        animator.SetBool("attacking", false);
+        animator.SetBool("death", false);
+        agent.SetDestination(target.position);
+        agent.speed = enemySpeed;
+
+        DetectPlayer();
+    }
+
+    private void EnemyWalk()
+    {
+        animator.SetBool("death", false);
+        animator.SetBool("attacking", false);
+        animator.SetBool("walking", true);
+    }
+
+    private void EnemyAttack()
+    {
+        animator.SetBool("death", false);
+        animator.SetBool("attacking", true);
+        animator.SetBool("walking", false);
         canAttack = false;
-        canMove = false;
+
+        weapon.coll.enabled = true;
+        StartCoroutine(Attack());
+    }
+
+    private void EnemyFrozen()
+    {
+        animator.SetBool("death", false);
+        animator.SetBool("attacking", false);
+        animator.SetBool("walking", false);
+
+        agent.SetDestination(transform.position);
+        freezeCont += Time.deltaTime;
+        if (freezeCont >= timeFreeze)
+        {
+            freezeCont = 0.0f;
+            DetectPlayer();
+        }
+    }
+
+    private void EnemyDeath()
+    {
+        animator.SetBool("death", true);
+        animator.SetBool("attacking", false);
+        animator.SetBool("walking", false);
+        agent.SetDestination(this.transform.position);
         weapon.coll.enabled = false;
+
+        StartCoroutine(Death());
+    }
+
+    private void DetectPlayer()
+    {
+        float distance = Vector3.Distance(target.position, transform.position);
+
+        if (distance <= lookRadius)
+        {
+            if (chasing)
+            {
+
+            }
+            enemyPhase = EnemyPhase.Chase;
+
+            if (distance <= agent.stoppingDistance)
+            {
+                if (canAttack)
+                {
+                    enemyPhase = EnemyPhase.Attack;
+                }
+            }
+        }
     }
 
     public void Freeze(float timeFrozen)
     {
-        frozen = true;
         timeFreeze = timeFrozen;
-        canMove = false;
-        agent.SetDestination(this.transform.position);
-        animator.SetBool("walking", false);
-        animator.SetBool("attacking", false);
+        enemyPhase = EnemyPhase.Frozen;
     }
 
     IEnumerator Attack()
     {
         FaceTarget();
-        canMove = false;
-        animator.SetBool("attacking", true);
-        canAttack = false;
-        animator.SetBool("walking", false);
+        weapon.coll.enabled = true;
         yield return new WaitForSeconds(attackTime);
-        cont = 0.0f;
-        canMove = true;
-        weapon.coll.enabled = false;
-        animator.SetBool("attacking", false);
         canAttack = true;
-
+        DetectPlayer();
     }
     
     void FaceTarget(){
@@ -172,21 +209,14 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("Enemy health: " + enemyHealth);
         if (enemyHealth <= 0)
         {
-            StartCoroutine(Death());
+            enemyPhase = EnemyPhase.Death;
+            playerHealth.GetExp(25);
         }
     }
 
     IEnumerator Death()
     {
         coll.enabled = false;
-        playerHealth.GetExp(25);
-        frozen = false;
-        canMove = false;
-        dead = true;
-        animator.SetBool("death", true);
-        animator.SetBool("attacking", false);
-        animator.SetBool("walking", false);
-        //agent.enabled = false;
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }

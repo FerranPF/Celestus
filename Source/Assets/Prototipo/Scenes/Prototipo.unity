@@ -4229,10 +4229,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base_Sala_02
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 1b1c98fdfecfec448b475724e44f2503, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 1b1c98fdfecfec448b475724e44f2503, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65.16
@@ -4288,6 +4284,10 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 1b1c98fdfecfec448b475724e44f2503, type: 3}
       propertyPath: m_LocalScale.z
       value: 60.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1b1c98fdfecfec448b475724e44f2503, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b1c98fdfecfec448b475724e44f2503, type: 3}
@@ -8606,17 +8606,17 @@ PrefabInstance:
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.45
+      value: -117.8
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.45
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8666,7 +8666,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152307, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152306, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8686,7 +8686,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152306, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_Radius
-      value: 0.36
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1638518729208840287, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8703,6 +8703,11 @@ PrefabInstance:
       propertyPath: hit
       value: 
       objectReference: {fileID: 8300000, guid: c921f9e58db505240aef4fbf280c4a17, type: 3}
+    - target: {fileID: 681524858982152308, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
+        type: 3}
+      propertyPath: lookRadius
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab6c1ac79fd59064f8fa0bf39710a73b, type: 3}
 --- !u!1001 &7476261816023526897
@@ -8796,6 +8801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169033091164334931, guid: 2dc1e72ea156bf74a98655192dee6e48,
+        type: 3}
+      propertyPath: m_Name
+      value: Satan GFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dc1e72ea156bf74a98655192dee6e48, type: 3}
