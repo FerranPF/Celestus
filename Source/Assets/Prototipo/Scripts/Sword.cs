@@ -11,7 +11,7 @@ public class Sword : MonoBehaviour {
     {
         sangrado = false;
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -35,4 +35,5 @@ public class Sword : MonoBehaviour {
             }
         }
     }
+    
 }

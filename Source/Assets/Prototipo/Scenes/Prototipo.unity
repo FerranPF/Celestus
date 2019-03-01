@@ -8587,7 +8587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 7fb8d2884e9a83b4b80515f9b19f47cc, type: 2}
-  isGlobal: 1
+  isGlobal: 0
   blendDistance: 0
   weight: 1
   priority: 0
@@ -8606,17 +8606,17 @@ PrefabInstance:
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -117.8
+      value: -124.2
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.06
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152304, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8666,7 +8666,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152307, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 681524858982152306, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8686,7 +8686,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152306, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_Radius
-      value: 0.45
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 1638518729208840287, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -8706,7 +8706,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152308, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: lookRadius
-      value: 15
+      value: 14.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab6c1ac79fd59064f8fa0bf39710a73b, type: 3}
@@ -8801,11 +8801,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9169033091164334931, guid: 2dc1e72ea156bf74a98655192dee6e48,
-        type: 3}
-      propertyPath: m_Name
-      value: Satan GFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dc1e72ea156bf74a98655192dee6e48, type: 3}
