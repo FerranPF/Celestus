@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     PlayerStats health;
     public bool canAttack;
     public bool canDash;
+    public bool dashing;
     
     public float dashForce;
     public bool godMode;
@@ -56,7 +57,9 @@ public class PlayerController : MonoBehaviour {
         canAttack = true;
         canDash = true;
         sword.enabled = false;
-	}
+        dashing = false;
+
+    }
 
 	void Update(){
 
@@ -98,6 +101,7 @@ public class PlayerController : MonoBehaviour {
                 currentDashTime = 0.0f;
                 audioSource.clip = dashAudio;
                 audioSource.Play(0);
+                dashing = true;
             }
             
             if (Input.GetAxisRaw("Fire1")>0 && canAttack)
@@ -128,6 +132,7 @@ public class PlayerController : MonoBehaviour {
         {
             moveDirection = Vector3.zero;
             anim.SetBool("dash", false);
+            dashing = false;
         }
         
         transform.Translate(moveDirection* Time.deltaTime, Space.Self);

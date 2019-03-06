@@ -1857,15 +1857,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -127.1
+      value: -114.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.1
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1901,7 +1901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad344294b3dd98f4091099fa823194f0, type: 3}
@@ -1937,7 +1937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a68908c2e401840ba12a8f26312ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expandSpeed: 0.8
+  expandSpeed: 1
   damage: 10
 --- !u!1 &480293295
 GameObject:

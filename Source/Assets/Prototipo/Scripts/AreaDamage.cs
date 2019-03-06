@@ -6,6 +6,7 @@ public class AreaDamage : MonoBehaviour
 {
     public float expandSpeed;
     public float damage;
+    private PlayerController player;
 
     private void Update()
     {
@@ -17,7 +18,12 @@ public class AreaDamage : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            player = other.gameObject.GetComponent<PlayerController>();
+
+            if (!player.dashing)
+            {
+                other.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            }
         }
     }
 }
