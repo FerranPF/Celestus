@@ -218,6 +218,9 @@ public class PlayerController : MonoBehaviour {
         playerCol = GetComponent<CapsuleCollider>();
         playerCol.enabled = true;
     }
+    
+
+
 
     void GodMovement(){
         if (Input.GetKey(KeyCode.Space))
