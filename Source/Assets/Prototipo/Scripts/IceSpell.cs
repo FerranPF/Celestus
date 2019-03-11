@@ -8,18 +8,19 @@ public class IceSpell : MonoBehaviour
     public float timeFrozen;
     float cont = 0.0f;
     bool activated = false;
-    ParticleSystem PS;
+    public ParticleSystem[] PS;
 
     private void Start()
     {
-        PS = GetComponentInChildren<ParticleSystem>();
         coll = GetComponent<BoxCollider>();
         coll.enabled = false;
     }
     
     public void ActivateSpell()
     {
-        PS.Play();
+        for(int i = 0; i < PS.Length; i++){
+            PS[i].Play();
+        }
         coll.enabled = true;
         activated = true;
     }
