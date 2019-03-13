@@ -4,36 +4,42 @@ using UnityEngine;
 
 public class LightningSpell : MonoBehaviour
 {
-    public ParticleSystem PS;
+    public ParticleSystem[] PS;
     private BoxCollider coll;
-    public float pulseTime;
-    public int timesPulse;
+
+    public float timeTravel;
+    public float travelSpeed;
     private float contTime = 0.0f;
     public int damage;
-
+    private bool active;
+    private Vector3 speedVector;
 
     private void Start()
     {
         coll = this.GetComponent<BoxCollider>();
         coll.isTrigger = true;
-        coll.enabled = false;
-        PS = GetComponentInChildren<ParticleSystem>();
+        active = false;
+        speedVector = new Vector3(0, 0, travelSpeed);
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < PS.Length; i++)
+        {
+            PS[i].Play();
+        }
     }
 
     private void Update()
     {
-        if (contTime < pulseTime)
-        {
-            contTime += Time.deltaTime;
-            StartCoroutine(Pulse());
-        }
-    }
+        contTime += Time.deltaTime;
 
-    IEnumerator Pulse()
-    {
-        coll.enabled = true;
-        yield return new WaitForSeconds(pulseTime/(timesPulse+0.1f));
-        coll.enabled = false;
+        this.transform.Translate(speedVector*Time.deltaTime, Space.Self);
+
+        if(contTime >= timeTravel)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,11 +51,5 @@ public class LightningSpell : MonoBehaviour
             enemy = other.gameObject.GetComponent<EnemyController>();
             enemy.GetDamage(damage);
         }
-    }
-
-    public void ActivateSpell1()
-    {
-        contTime = 0;
-        PS.Play();
     }
 }

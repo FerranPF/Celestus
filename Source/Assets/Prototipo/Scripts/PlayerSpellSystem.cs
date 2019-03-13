@@ -23,7 +23,7 @@ public class PlayerSpellSystem : MonoBehaviour
     public GameObject spell2Sprite;
     public GameObject spell3Sprite;
 
-    public LightningSpell lightningSpell;
+    public GameObject lightningSpell;
     public Object firePrefab;
     public IceSpell iceSpell;
     Vector3 firePos;
@@ -180,6 +180,7 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
+        spell3Sprite.SetActive(false);
         manager.playerController.canAttack = true;
         canSpell = true;
         setTarget = false;
@@ -190,9 +191,14 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         manager.playerController.anim.SetBool("attack", true);
         canSpell = false;
-        lightningSpell.ActivateSpell1();
+        manager.playerController.canMove = false;
+        Instantiate(lightningSpell, this.transform.position, transform.rotation);
+        spell1Sprite.SetActive(false);
+        spellType = Spell.None;
+
         yield return new WaitForSeconds(spell1Time);
         manager.playerController.anim.SetBool("attack", false);
+        manager.playerController.canMove = true;
         ResetTarget();
     }
 
@@ -200,6 +206,8 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         manager.playerController.anim.SetBool("attack", true);
         canSpell = false;
+        spellType = Spell.None;
+
         yield return new WaitForSeconds(spell2Time);
         Instantiate(firePrefab, position, transform.rotation);
         manager.playerController.anim.SetBool("attack", false);
@@ -213,6 +221,8 @@ public class PlayerSpellSystem : MonoBehaviour
         canSpell = false;
         iceSpell.ActivateSpell();
         spell3Sprite.SetActive(false);
+        spellType = Spell.None;
+
         yield return new WaitForSeconds(spell3Time);
         manager.playerController.anim.SetBool("attack", false);
         manager.playerController.canMove = true;

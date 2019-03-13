@@ -6558,7 +6558,7 @@ PrefabInstance:
     - target: {fileID: 681524858982152307, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 1.9
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1638518729208840287, guid: ab6c1ac79fd59064f8fa0bf39710a73b,
         type: 3}
@@ -6579,6 +6579,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 811192441, guid: 2dc1e72ea156bf74a98655192dee6e48, type: 3}
+      propertyPath: lightningSpell
+      value: 
+      objectReference: {fileID: 3440535967772234319, guid: e509214835d43a64c87d42b245a715d4,
+        type: 3}
     - target: {fileID: 7476261815215717768, guid: 2dc1e72ea156bf74a98655192dee6e48,
         type: 3}
       propertyPath: healthSlider
