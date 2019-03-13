@@ -48,6 +48,9 @@ public class PlayerSpellSystem : MonoBehaviour
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
         spell3Sprite.SetActive(false);
+
+        spell3Time = 1.9f;
+
         spellType = Spell.None;
     }
 
@@ -158,10 +161,10 @@ public class PlayerSpellSystem : MonoBehaviour
 
     void SettingTarget(GameObject spell, float spellMana)
     {
+        manager.playerController.canAttack = false;
         if (Input.GetMouseButtonDown(0))
         {
             manager.playerStats.UseMana(spellMana);
-            manager.playerController.canAttack = false;
             GetTarget();
             setTarget = true;
             spell.SetActive(false);
@@ -177,7 +180,6 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
-        spell3Sprite.SetActive(false);
         manager.playerController.canAttack = true;
         canSpell = true;
         setTarget = false;
@@ -207,10 +209,13 @@ public class PlayerSpellSystem : MonoBehaviour
     IEnumerator CastIceSpell()
     {
         manager.playerController.anim.SetBool("attack", true);
+        manager.playerController.canMove = false;
         canSpell = false;
+        iceSpell.ActivateSpell();
+        spell3Sprite.SetActive(false);
         yield return new WaitForSeconds(spell3Time);
         manager.playerController.anim.SetBool("attack", false);
-        iceSpell.ActivateSpell();
+        manager.playerController.canMove = true;
         ResetTarget();
     }
 
