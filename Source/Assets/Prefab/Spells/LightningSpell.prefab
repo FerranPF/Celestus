@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3440535966907617042}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57101, y: 0.57101, z: 0.57101}
   m_Children: []
   m_Father: {fileID: 3440535967772234318}
   m_RootOrder: 0
@@ -4639,7 +4639,7 @@ ParticleSystem:
 --- !u!199 &3440535966907617044
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4725,7 +4725,7 @@ Transform:
   m_GameObject: {fileID: 3440535967371638154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57101, y: 0.57101, z: 0.57101}
   m_Children: []
   m_Father: {fileID: 3440535967772234318}
   m_RootOrder: 4
@@ -4738,7 +4738,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440535967371638154}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9337,7 +9337,7 @@ ParticleSystem:
 --- !u!199 &3440535967371638156
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9422,7 +9422,7 @@ Transform:
   m_GameObject: {fileID: 3440535967615804003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57101, y: 0.57101, z: 0.57101}
   m_Children: []
   m_Father: {fileID: 3440535967772234318}
   m_RootOrder: 3
@@ -9532,8 +9532,8 @@ MonoBehaviour:
   - {fileID: 3440535967900417543}
   - {fileID: 3440535967840993829}
   - {fileID: 3440535967371638159}
-  timeTravel: 0.5
-  travelSpeed: 30
+  timeTravel: 1
+  travelSpeed: 20
   damage: 10
 --- !u!1 &3440535967840993824
 GameObject:
@@ -9562,7 +9562,7 @@ Transform:
   m_GameObject: {fileID: 3440535967840993824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57101, y: 0.57101, z: 0.57101}
   m_Children: []
   m_Father: {fileID: 3440535967772234318}
   m_RootOrder: 2
@@ -9575,7 +9575,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440535967840993824}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -14174,7 +14174,7 @@ ParticleSystem:
 --- !u!199 &3440535967840993826
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14260,7 +14260,7 @@ Transform:
   m_GameObject: {fileID: 3440535967900417538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57101, y: 0.57101, z: 0.57101}
   m_Children: []
   m_Father: {fileID: 3440535967772234318}
   m_RootOrder: 1
@@ -14273,7 +14273,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440535967900417538}
   serializedVersion: 6
-  lengthInSec: 4
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -14348,8 +14348,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 1.5
+      scalar: 1
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18872,7 +18872,7 @@ ParticleSystem:
 --- !u!199 &3440535967900417540
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
