@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1737,15 +1737,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: VERY LOW
-      m_Image: {fileID: 0}
     - m_Text: LOW
       m_Image: {fileID: 0}
     - m_Text: MEDIUM
       m_Image: {fileID: 0}
     - m_Text: HIGH
-      m_Image: {fileID: 0}
-    - m_Text: VERY HIGH
       m_Image: {fileID: 0}
     - m_Text: ULTRA
       m_Image: {fileID: 0}
@@ -3273,7 +3269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VERY LOW
+  m_Text: LOW
 --- !u!222 &1276440918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3606,10 +3602,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: VOLUME
+  m_text: Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e9b234a643b7b147b213b5651dbb9ee, type: 2}
-  m_sharedMaterial: {fileID: 21540301834736374, guid: 5e9b234a643b7b147b213b5651dbb9ee,
+  m_fontAsset: {fileID: 11400000, guid: 797c8e9178967f541b99d75818b6f1cb, type: 2}
+  m_sharedMaterial: {fileID: 21634038827110214, guid: 797c8e9178967f541b99d75818b6f1cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3621,7 +3617,7 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0, b: 0, a: 1}
+    topLeft: {r: 0.2830189, g: 0, b: 0, a: 1}
     topRight: {r: 1, g: 0, b: 0, a: 1}
     bottomLeft: {r: 0.49056602, g: 0, b: 0, a: 1}
     bottomRight: {r: 0.49411765, g: 0, b: 0, a: 1}
@@ -3635,8 +3631,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5013,8 +5009,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: GRAPHICS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e9b234a643b7b147b213b5651dbb9ee, type: 2}
-  m_sharedMaterial: {fileID: 21540301834736374, guid: 5e9b234a643b7b147b213b5651dbb9ee,
+  m_fontAsset: {fileID: 11400000, guid: 797c8e9178967f541b99d75818b6f1cb, type: 2}
+  m_sharedMaterial: {fileID: 21634038827110214, guid: 797c8e9178967f541b99d75818b6f1cb,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5026,7 +5022,7 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0, b: 0, a: 1}
+    topLeft: {r: 0.28235295, g: 0, b: 0, a: 1}
     topRight: {r: 1, g: 0, b: 0, a: 1}
     bottomLeft: {r: 0.49056602, g: 0, b: 0, a: 1}
     bottomRight: {r: 0.49411765, g: 0, b: 0, a: 1}
@@ -5040,8 +5036,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
