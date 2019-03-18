@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
 
+    public GameObject damageText;
 
     public float lookRadius = 10.0f;
     Transform target;
@@ -166,12 +167,28 @@ public class EnemyController : MonoBehaviour {
 
     public void GetDamage(int damage)
     {
+        //Take damage
         enemyHealth -= damage;
+
+        //Trigger damage popup
+        if (damageText && enemyHealth > 0)
+        {
+            ShowFloatingText();
+        }
+
         Debug.Log("Enemy health: " + enemyHealth);
+
+        //Enemy death
         if (enemyHealth <= 0)
         {
             StartCoroutine(Death());
         }
+    }
+
+    void ShowFloatingText()
+    {
+        var go = Instantiate(damageText, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = enemyHealth.ToString();
     }
 
     IEnumerator Death()

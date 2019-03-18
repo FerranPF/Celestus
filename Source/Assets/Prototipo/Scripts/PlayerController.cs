@@ -6,40 +6,47 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour {
 
     private GameManager manager;
+    PlayerStats health;
 
+    [Header("Animation Settings")]
 	public Animator anim;
 	public AnimationClip attackAnim;
 	private float animTime;
 	public float attackTime;
 	public bool canMove;
     public BoxCollider sword;
-    PlayerStats health;
     public bool canAttack;
-    public bool canDash;
-    public bool dashing;
-    
-    public float dashForce;
-    public bool godMode;
 
-    private AudioSource audioSource;
-    public AudioClip attackAudio;
-    public AudioClip dashAudio;
+    [Header("Player Attack")]
+    public SwordDamage swordDamage;
 
-	[SerializeField]
-	float movementSpeed = 4.0f;
+    [Header("God Settings")]
     [SerializeField]
     float godSpeed = 8.0f;
+    public bool godMode;
     
 
+    [Header("Player Speed")]
+    [SerializeField]
+    float movementSpeed = 4.0f;
+
+    [Header("Dash Settings")]
+    public bool canDash;
+    public bool dashing;
     public Vector3 moveDirection;
     public float maxDashTime = 1.0f;
     public float dashSpeed = 1.0f;
     public float dashStoppingSpeed = 0.1f;
-
     private float currentDashTime;
     public float CDDash;
     private float CDDashCount;
 
+    [Header("Audio Settings")]
+    private AudioSource audioSource;
+    public AudioClip attackAudio;
+    public AudioClip dashAudio;
+
+    [Header("Skill Tree Settings")]
     public bool skillTree = false;
 
     private void Awake()
@@ -145,14 +152,14 @@ public class PlayerController : MonoBehaviour {
         RotatePlayer();
         canMove = false;
         canAttack = false;
-        sword.enabled = true;
+        //sword.enabled = true;
         
         yield return new WaitForSeconds(attackTime);
 
         anim.SetBool("attack", false);
 		canMove = true;
         canAttack = true;
-        sword.enabled = false;
+        //sword.enabled = false;
     }
 
 	void ControlPlayer(float movementSpeed){
@@ -218,8 +225,11 @@ public class PlayerController : MonoBehaviour {
         playerCol = GetComponent<CapsuleCollider>();
         playerCol.enabled = true;
     }
-    
 
+    public void AttackOverlap()
+    {
+        swordDamage.MyCollision();
+    }
 
 
     void GodMovement(){

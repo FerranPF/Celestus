@@ -25,7 +25,7 @@ public class PlayerSpellSystem : MonoBehaviour
 
     public GameObject lightningSpell;
     public Object firePrefab;
-    public IceSpell iceSpell;
+    public GameObject iceSpell;
     Vector3 firePos;
 
     GameManager manager;
@@ -219,7 +219,6 @@ public class PlayerSpellSystem : MonoBehaviour
         manager.playerController.anim.SetBool("attack", true);
         manager.playerController.canMove = false;
         canSpell = false;
-        iceSpell.ActivateSpell();
         spell3Sprite.SetActive(false);
         spellType = Spell.None;
 
