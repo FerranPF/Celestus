@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour {
 	private float animTime;
 	public float attackTime;
 	public bool canMove;
-    public BoxCollider sword;
     public bool canAttack;
 
     [Header("Player Attack")]
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour {
 		canMove = true;
         canAttack = true;
         canDash = true;
-        sword.enabled = false;
         dashing = false;
 
     }
@@ -111,7 +109,7 @@ public class PlayerController : MonoBehaviour {
                 dashing = true;
             }
             
-            if (Input.GetAxisRaw("Fire1")>0 && canAttack)
+            if (Input.GetMouseButtonDown(0) && canAttack)
             {
                 audioSource.clip = attackAudio;
                 audioSource.Play(0);
@@ -152,14 +150,12 @@ public class PlayerController : MonoBehaviour {
         RotatePlayer();
         canMove = false;
         canAttack = false;
-        //sword.enabled = true;
         
         yield return new WaitForSeconds(attackTime);
 
         anim.SetBool("attack", false);
 		canMove = true;
         canAttack = true;
-        //sword.enabled = false;
     }
 
 	void ControlPlayer(float movementSpeed){

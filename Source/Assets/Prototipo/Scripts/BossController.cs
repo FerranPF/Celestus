@@ -12,6 +12,7 @@ public class BossController : MonoBehaviour
     NavMeshAgent agent;
 
     public int bossHealth = 100;
+    public float timeDeath = 2.0f;
 
     private Animator animator;
     public AnimationClip attackAnim;
@@ -106,8 +107,8 @@ public class BossController : MonoBehaviour
     {
         MyGameManager manager;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MyGameManager>();
-        //manager.Win();
-        Destroy(gameObject);
+        manager.Win();
+        Destroy(gameObject, timeDeath);
     }
 
     void OnDrawGizmosSelected()

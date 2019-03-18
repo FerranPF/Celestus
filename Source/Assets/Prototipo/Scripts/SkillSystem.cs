@@ -27,33 +27,4 @@ public class SkillSystem : MonoBehaviour
 
         MoreHealthButton.interactable = false;
     }
-
-    public void MoreDamage(int damage)
-    {
-        int newDamage = gameManager.sword.damage;
-        Debug.Log(newDamage);
-        newDamage += damage;
-        gameManager.sword.damage = newDamage;
-        Debug.Log(gameManager.sword.damage);
-
-        MoreDamageButton.interactable = false;
-    }
-
-    public void Sangrado()
-    {
-        gameManager.sword.sangrado = true;
-        SangradoButton.interactable = false;
-    }
-
-    public void MoreSpeedAttack()
-    {
-        gameManager.playerController.attackTime *= 0.75f;
-        VelAtaqueButton.interactable = false;
-    }
-
-    public void Close()
-    {
-        gameManager.playerController.skillTree = false;
-        gameManager.skillTree.SetActive(false);
-    }
 }

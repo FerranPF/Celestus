@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public PlayerStats playerStats;
     public PlayerController playerController;
-    public Sword sword;
     public GameObject skillTree;
 
     public Animator fadeAnim;

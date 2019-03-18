@@ -7,14 +7,13 @@ public class Door : MonoBehaviour
 {
     public Animator anim;
     public int key;
-    GameManager manager;
     public AudioSource audioSource;
     public AudioClip audioOpen;
     public AudioClip audioNoKey;
 
     private void Awake()
     {
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
     }
 
     private void OnTriggerEnter(Collider other)

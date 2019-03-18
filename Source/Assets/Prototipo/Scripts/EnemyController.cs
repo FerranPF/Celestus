@@ -23,12 +23,6 @@ public class EnemyController : MonoBehaviour {
 
     public EnemyWeapon weapon;
 
-    public bool sangrado = false;
-    private int contSangrado;
-    private int sangradoTime;
-    public int sangradoDamage;
-    private float secCont = 0;
-
     public bool frozen = false;
     private float timeFreeze;
     private float freezeCont = 0.0f;
@@ -41,8 +35,6 @@ public class EnemyController : MonoBehaviour {
     private void Start()
     {
         weapon = GetComponentInChildren<EnemyWeapon>();
-        sangradoTime = 5;
-        sangradoDamage = 2;
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -83,25 +75,6 @@ public class EnemyController : MonoBehaviour {
                     animator.SetBool("walking", false);
                 }
             }
-
-            /*
-            if (sangrado)
-            {
-                Debug.Log("Sangrando");
-                secCont += Time.deltaTime;
-                if (secCont >= 1.0f)
-                {
-                    GetDamage(sangradoDamage);
-                    contSangrado++;
-                    secCont = 0.0f;
-                }
-
-                if (contSangrado == sangradoTime)
-                {
-                    sangrado = false;
-                }
-            }
-            */
 
             if (frozen)
             {

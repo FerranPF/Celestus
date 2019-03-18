@@ -76,6 +76,11 @@ public class MyGameManager : MonoBehaviour {
 		Application.Quit();
 	}
 
+    public void Win()
+    {
+        StartCoroutine(Fading("Win"));
+    }
+
     IEnumerator Fading(string scene)
     {
         fadeAnim.SetBool("Fade", true);
