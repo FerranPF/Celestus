@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour {
     private bool canAttack;
     private float attackTime;
 
-    public EnemyWeapon weapon;
+    public EnemySword swordDamage;
 
     public bool frozen = false;
     private float timeFreeze;
@@ -34,7 +34,6 @@ public class EnemyController : MonoBehaviour {
 
     private void Start()
     {
-        weapon = GetComponentInChildren<EnemyWeapon>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -63,10 +62,7 @@ public class EnemyController : MonoBehaviour {
                     {
                         if (canAttack)
                         {
-                            
-                            weapon.coll.enabled = true;
                             StartCoroutine(Attack());
-                            
                         }
                     }
                 }
@@ -101,7 +97,6 @@ public class EnemyController : MonoBehaviour {
     {
         canAttack = false;
         canMove = false;
-        weapon.coll.enabled = false;
         agent.enabled = false;
     }
 
@@ -122,10 +117,11 @@ public class EnemyController : MonoBehaviour {
         animator.SetBool("attacking", true);
         canAttack = false;
         animator.SetBool("walking", false);
+
         yield return new WaitForSeconds(attackTime);
+
         cont = 0.0f;
         canMove = true;
-        weapon.coll.enabled = false;
         animator.SetBool("attacking", false);
         canAttack = true;
 
@@ -176,6 +172,11 @@ public class EnemyController : MonoBehaviour {
         animator.SetBool("walking", false);
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
+    }
+
+    public void AttackOverlap()
+    {
+        swordDamage.MyCollision();
     }
 
     void OnDrawGizmosSelected(){

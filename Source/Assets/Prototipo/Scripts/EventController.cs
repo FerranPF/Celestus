@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
-    PlayerController playerCont;
+    
 
     private void Update()
     {
-        playerCont = GetComponentInParent<PlayerController>();
     }
 
     public void AttackEvent()
     {
+        PlayerController playerCont;
+        playerCont = GetComponentInParent<PlayerController>();
+
         playerCont.AttackOverlap();
+        Debug.Log("AttackEvent");
+    }
+
+    public void EnemyAttackEvent()
+    {
+        EnemyController enemyCont;
+        enemyCont = GetComponentInParent<EnemyController>();
+
+        enemyCont.AttackOverlap();
         Debug.Log("AttackEvent");
     }
 
