@@ -7,6 +7,8 @@ public class PlayerSpellSystem : MonoBehaviour
     public bool canSpell = true;
     bool setTarget = false;
 
+    public AnimationClip spellAnim;
+
     float spell1Time;
     float spell2Time;
     float spell3Time;
@@ -24,7 +26,7 @@ public class PlayerSpellSystem : MonoBehaviour
     public GameObject spell3Sprite;
 
     public GameObject lightningSpell;
-    public Object firePrefab;
+    public Object fireSpell;
     public GameObject iceSpell;
     Vector3 firePos;
 
@@ -43,13 +45,16 @@ public class PlayerSpellSystem : MonoBehaviour
 
     private void Start()
     {
+
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         spellManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SpellManager>();
         spell1Sprite.SetActive(false);
         spell2Sprite.SetActive(false);
         spell3Sprite.SetActive(false);
 
-        spell3Time = 1.9f;
+        spell1Time = spellAnim.length;
+        spell2Time = spellAnim.length;
+        spell3Time = spellAnim.length;
 
         spellType = Spell.None;
     }
@@ -189,47 +194,54 @@ public class PlayerSpellSystem : MonoBehaviour
 
     IEnumerator CastLightningSpell()
     {
-        manager.playerController.anim.SetBool("attack", true);
+        manager.playerController.anim.SetBool("spell", true);
         canSpell = false;
         manager.playerController.canMove = false;
-        Instantiate(lightningSpell, this.transform.position, transform.rotation);
         spell1Sprite.SetActive(false);
+        
         spellType = Spell.None;
+        Instantiate(lightningSpell, this.transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(spell1Time);
-        manager.playerController.anim.SetBool("attack", false);
+        yield return new WaitForSeconds(spell1Time * 0.9f);
+
+        manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;
         ResetTarget();
     }
 
     IEnumerator CastFireSpell(Vector3 position)
     {
-        manager.playerController.anim.SetBool("attack", true);
+        manager.playerController.anim.SetBool("spell", true);
         canSpell = false;
+        manager.playerController.canMove = false;
+        spell2Sprite.SetActive(false);
         spellType = Spell.None;
 
-        yield return new WaitForSeconds(spell2Time);
-        Instantiate(firePrefab, position, transform.rotation);
-        manager.playerController.anim.SetBool("attack", false);
+        yield return new WaitForSeconds(spell2Time*0.9f);
+
+        Instantiate(fireSpell, position, transform.rotation);
+        manager.playerController.anim.SetBool("spell", false);
+        manager.playerController.canMove = true;
         ResetTarget();
     }
 
     IEnumerator CastIceSpell()
     {
-        manager.playerController.anim.SetBool("attack", true);
+        manager.playerController.anim.SetBool("spell", true);
         manager.playerController.canMove = false;
         canSpell = false;
         spell3Sprite.SetActive(false);
         spellType = Spell.None;
 
-        yield return new WaitForSeconds(spell3Time);
-        manager.playerController.anim.SetBool("attack", false);
+        Instantiate(iceSpell, this.transform.position, transform.rotation);
+        yield return new WaitForSeconds(spell3Time * 0.9f);
+
+        manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;
         ResetTarget();
     }
 
-
-
+    
     void GetTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

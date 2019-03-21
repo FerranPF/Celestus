@@ -4639,7 +4639,7 @@ ParticleSystem:
 --- !u!199 &3440535966907617044
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9337,7 +9337,7 @@ ParticleSystem:
 --- !u!199 &3440535967371638156
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9533,7 +9533,7 @@ MonoBehaviour:
   - {fileID: 3440535967840993829}
   - {fileID: 3440535967371638159}
   timeTravel: 1
-  travelSpeed: 20
+  travelSpeed: 15
   damage: 10
 --- !u!1 &3440535967840993824
 GameObject:
@@ -14174,7 +14174,7 @@ ParticleSystem:
 --- !u!199 &3440535967840993826
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -18872,7 +18872,7 @@ ParticleSystem:
 --- !u!199 &3440535967900417540
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

@@ -4,51 +4,51 @@ using UnityEngine;
 
 public class IceSpell : MonoBehaviour
 {
-    private BoxCollider coll;
-    public float timeFrozen;
-    float cont = 0.0f;
-    bool activated = false;
-    public ParticleSystem[] PS;
-
-    private void Start()
-    {
-        coll = GetComponent<BoxCollider>();
-        coll.enabled = false;
-    }
-    
-    public void ActivateSpell()
-    {
-        for(int i = 0; i < PS.Length; i++){
-            PS[i].Play();
-        }
-        coll.enabled = true;
-        activated = true;
-    }
+    public GameObject Spell;
+    public bool m_Started;
+    public float timeSpawn;
+    private float cont;
+    public float timeFreeze;
 
     private void Update()
     {
-        if (activated)
+        MyCollision();
+        cont += Time.deltaTime;
+
+        if(cont >= timeSpawn)
         {
-            cont += Time.deltaTime;
-            if (cont >= 0.5)
-            {
-                cont = 0.0f;
-                coll.enabled = false;
-                activated = false;
-            }
+            Destroy(Spell);
         }
-        
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void MyCollision()
     {
-        if (other.gameObject.tag == "Enemy")
-        {
-            EnemyController enemy;
-            enemy = other.gameObject.GetComponent<EnemyController>();
+        Collider[] enemyColliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.LookRotation(Vector3.forward, Vector3.up));
+        int i = 0;
 
-            enemy.Freeze(timeFrozen);
+        //Check when there is a new collider coming into contact with the box
+        while (i < enemyColliders.Length)
+        {
+            //Damage every enemy in the collider
+            Debug.Log("Hit : " + enemyColliders[i].name + i);
+            if (enemyColliders[i].tag == "Enemy")
+            {
+                EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
+                enemy.Freeze(timeFreeze);
+            }
+
+            //Increase the number of Colliders in the array
+            i++;
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+        if (m_Started)
+            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 
 }
