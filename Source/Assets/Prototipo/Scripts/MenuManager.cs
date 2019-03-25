@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Start(){
-        optionsPanel.SetActive(false);
+        //optionsPanel.SetActive(false);
         mainPanel.SetActive(true);
         //iniPos = celestusTitle.position;
     }
