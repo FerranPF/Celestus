@@ -19394,8 +19394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToEnd: 4
-  timeToDamage: 1
-  enemyDamage: 2
+  timeToDamage: 0.8
+  damageArea: 5
+  enemyDamage: 5
 --- !u!1 &4567914393039006366
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ public class FireSpell : MonoBehaviour
     private GameObject fireSpell;
     public float timeToEnd;
     public float timeToDamage;
+
+    public float damageArea;
+
     private float contToDamage;
     private bool damage = false;
     public int enemyDamage;
@@ -15,6 +18,7 @@ public class FireSpell : MonoBehaviour
     {
         fireSpell = this.gameObject;
     }
+
     private void Update()
     {
         timeToEnd -= Time.deltaTime;
@@ -26,7 +30,7 @@ public class FireSpell : MonoBehaviour
 
         if (contToDamage >= timeToDamage)
         {
-            damage = true;
+            FireDamage(this.transform.position, damageArea);
             contToDamage = 0.0f;
         }
         else
@@ -35,7 +39,8 @@ public class FireSpell : MonoBehaviour
             damage = false;
         }
     }
-    
+
+    /*
     private void OnTriggerStay(Collider other)
     {
         Debug.Log(other.gameObject.tag);
@@ -48,11 +53,33 @@ public class FireSpell : MonoBehaviour
                 enemy.GetDamage(enemyDamage);
             }
         }
-    }
+    }*/
 
     void EndSpell()
     {
         Destroy(fireSpell);
+    }
+
+    void FireDamage(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            if(hitColliders[i].gameObject.tag == "Enemy")
+            {
+                EnemyController enemy;
+                enemy = hitColliders[i].gameObject.GetComponent<EnemyController>();
+                enemy.GetDamage(enemyDamage);
+            }
+            i++;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, damageArea);
     }
 
 }
