@@ -21,7 +21,11 @@ public class SwordDamage : MonoBehaviour
                 EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
                 enemy.GetDamage(Random.Range(4, 6));
             }
-
+            if(enemyColliders[i].tag == "Turret")
+            {
+                TurretEnemy turret = enemyColliders[i].GetComponent<TurretEnemy>();
+                turret.TakeDamage(Random.Range(6, 8));
+            }
             //Increase the number of Colliders in the array
             i++;
         }

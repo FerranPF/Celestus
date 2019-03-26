@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Boss
   - Key
+  - Turret
   layers:
   - Default
   - TransparentFX
