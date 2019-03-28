@@ -25,12 +25,16 @@ public class TurretEnemy : MonoBehaviour
 
     public float turretHealth = 20f;
 
+    public LineRenderer ray;
+
     // Start is called before the first frame update
     void Start()
     {
         canAttack = false;
         findPlayer = true;
         target = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Transform>();
+        ray.SetPosition(0, pointOfAttack.position);
+        ray.enabled = false;
     }
 
 
@@ -45,6 +49,8 @@ public class TurretEnemy : MonoBehaviour
         if (canAttack)
         {
             Debug.DrawRay(pointOfAttack.position, target.position - pointOfAttack.position);
+            ray.enabled = true;
+            ray.SetPosition(1, target.position);
             cont += Time.deltaTime;
             if(cont >= timeToAttack)
             {
@@ -72,6 +78,7 @@ public class TurretEnemy : MonoBehaviour
         {
             canAttack = false;
             cont = 0.0f;
+            ray.enabled = false;
         }
     }
 
@@ -84,7 +91,7 @@ public class TurretEnemy : MonoBehaviour
         target.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
 
         yield return new WaitForSeconds(timeAttacking);
-
+        
         findPlayer = true;
 
     }
