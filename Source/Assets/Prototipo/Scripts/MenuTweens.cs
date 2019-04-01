@@ -27,5 +27,14 @@ public class MenuTweens : MonoBehaviour
 
     }
     // Update is called once per frame
-   
+   public void ButtonBack()
+    {
+        newgame.DOAnchorPosX(1, 1f);
+        options.DOAnchorPosX(1, 1f);
+        exit.DOAnchorPosX(1, 1f);
+        newgame.DOAnchorPosX(-2111, 1f);
+        options.DOAnchorPosX(-137, 1f);
+        exit.DOAnchorPosX(137, 1f);
+        optionpanel.DOAnchorPosX(137, 1f).SetDelay(1f);
+    }
 }
