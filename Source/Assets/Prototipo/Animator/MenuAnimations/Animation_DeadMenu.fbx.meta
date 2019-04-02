@@ -319,7 +319,12 @@ ModelImporter:
     9500000: //RootNode
     13700000: Low
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface2
+    second: {fileID: 2100000, guid: 8016021729050814f81c271422d39fa6, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
