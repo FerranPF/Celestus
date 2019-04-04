@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
-    
-
-    private void Update()
-    {
-    }
-
     public void AttackEvent()
     {
         PlayerController playerCont;
