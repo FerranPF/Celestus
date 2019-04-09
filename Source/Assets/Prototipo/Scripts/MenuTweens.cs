@@ -12,6 +12,8 @@ public class MenuTweens : MonoBehaviour
     public GameObject par2;
     public GameObject Floor1;
     public GameObject Floor2;
+
+    private float buttonsPos;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class MenuTweens : MonoBehaviour
         par1.SetActive(false);
         Floor2.SetActive(false);
         Floor1.SetActive(true);
+        buttonsPos = newgame.transform.position.x;
     }
 
 
