@@ -79,7 +79,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.19266616
+        value: 0.14969741
         inSlope: 3.0768988
         outSlope: 3.0768988
         tangentMode: 0
@@ -88,7 +88,7 @@ LineRenderer:
         outWeight: 0.8888541
       - serializedVersion: 3
         time: 0.0901497
-        value: 0.3119318
+        value: 0.27677554
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -96,8 +96,8 @@ LineRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.19916141
-        value: 0.096330285
+        time: 0.19915424
+        value: 0.13929904
         inSlope: -0.19891585
         outSlope: -0.19891585
         tangentMode: 0
@@ -106,12 +106,12 @@ LineRenderer:
         outWeight: 0.11671089
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -0.24864468
-        outSlope: -0.24864468
+        value: 0.03125
+        inSlope: -0.08640604
+        outSlope: -0.08640604
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.11518326
+        inWeight: 0.11290081
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -325,7 +325,7 @@ MonoBehaviour:
   pointOfAttack: {fileID: 2305481770974522420}
   damageText: {fileID: 5583334948775179130, guid: 731c6aee0a0a61b428ceb21c95201816,
     type: 3}
-  range: 15
+  range: 12
   damage: 5
   showGizmo: 1
   canAttack: 0
