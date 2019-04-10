@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour {
     {
         anim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("Prototipo");
+        SceneManager.LoadScene("Level_01");
     }
 
     
