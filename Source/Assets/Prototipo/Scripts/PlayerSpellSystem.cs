@@ -7,7 +7,8 @@ public class PlayerSpellSystem : MonoBehaviour
     public bool canSpell = true;
     bool setTarget = false;
 
-    public AnimationClip spellAnim;
+    public AnimationClip spellAnim1;
+    public AnimationClip spellAnim2;
 
     float spell1Time;
     float spell2Time;
@@ -33,6 +34,8 @@ public class PlayerSpellSystem : MonoBehaviour
     GameManager manager;
     SpellManager spellManager;
 
+    public Transform lightningSpellSpawn;
+
     enum Spell
     {
         None,
@@ -52,11 +55,12 @@ public class PlayerSpellSystem : MonoBehaviour
         spell2Sprite.SetActive(false);
         spell3Sprite.SetActive(false);
 
-        spell1Time = spellAnim.length;
-        spell2Time = spellAnim.length;
-        spell3Time = spellAnim.length;
+        spell1Time = spellAnim1.length;
+        spell2Time = spellAnim2.length;
+        spell3Time = spellAnim1.length;
 
         spellType = Spell.None;
+        canSpell = true;
     }
 
     private void Update()
@@ -109,7 +113,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 if (setTarget)
                 {
                     spellManager.Spell2CD();
-                    StartCoroutine(CastFireSpell(firePos));
+                    StartCoroutine(CastFireSpell());
                 }
                 break;
 
@@ -192,35 +196,52 @@ public class PlayerSpellSystem : MonoBehaviour
         spellType = Spell.None;
     }
 
+    public void InstSpell()
+    {
+        switch (spellType)
+        {
+            case Spell.Lightning:
+                Instantiate(lightningSpell, lightningSpellSpawn.position, transform.rotation);
+                break;
+
+            case Spell.Fire:
+                Instantiate(fireSpell, firePos, transform.rotation);
+                break;
+
+            case Spell.Ice:
+                Instantiate(iceSpell, this.transform.position, transform.rotation);
+                break;
+            default:
+                break;
+        }
+    }
+
     IEnumerator CastLightningSpell()
     {
         manager.playerController.anim.SetBool("spell", true);
         canSpell = false;
         manager.playerController.canMove = false;
         spell1Sprite.SetActive(false);
-        
-        spellType = Spell.None;
-        Instantiate(lightningSpell, this.transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(spell1Time * 0.9f);
+        yield return new WaitForSeconds(spell1Time * 0.8f);
+        spellType = Spell.None;
 
         manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;
         ResetTarget();
     }
 
-    IEnumerator CastFireSpell(Vector3 position)
+    IEnumerator CastFireSpell()
     {
-        manager.playerController.anim.SetBool("spell", true);
+        manager.playerController.anim.SetBool("spell2", true);
         canSpell = false;
         manager.playerController.canMove = false;
         spell2Sprite.SetActive(false);
+
+        yield return new WaitForSeconds(spell2Time*0.6f);
         spellType = Spell.None;
 
-        yield return new WaitForSeconds(spell2Time*0.9f);
-
-        Instantiate(fireSpell, position, transform.rotation);
-        manager.playerController.anim.SetBool("spell", false);
+        manager.playerController.anim.SetBool("spell2", false);
         manager.playerController.canMove = true;
         ResetTarget();
     }
@@ -231,10 +252,9 @@ public class PlayerSpellSystem : MonoBehaviour
         manager.playerController.canMove = false;
         canSpell = false;
         spell3Sprite.SetActive(false);
-        spellType = Spell.None;
 
-        Instantiate(iceSpell, this.transform.position, transform.rotation);
-        yield return new WaitForSeconds(spell3Time * 0.9f);
+        yield return new WaitForSeconds(spell3Time * 0.8f);
+        spellType = Spell.None;
 
         manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;
