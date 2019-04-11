@@ -9492,7 +9492,7 @@ Transform:
   m_GameObject: {fileID: 3440535967772234319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -31.6, y: 2.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3440535966907617045}
   - {fileID: 3440535967900417541}
@@ -9532,6 +9532,7 @@ MonoBehaviour:
   - {fileID: 3440535967900417543}
   - {fileID: 3440535967840993829}
   - {fileID: 3440535967371638159}
+  m_Started: 1
   timeTravel: 1
   travelSpeed: 15
   damage: 10
