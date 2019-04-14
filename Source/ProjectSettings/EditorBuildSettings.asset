@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Prototipo/Scenes/GameLogoScreen.unity
     guid: 6b49e1cdd7dd9144e87b7e3478212ada
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 988a4e5929fed6044b91c1b381725f50
+  - enabled: 1
+    path: Assets/Scenes/Level_01.unity
+    guid: c413f317d19c6cd429724ec36d96c63c
+  - enabled: 0
     path: Assets/Prototipo/Scenes/ProtoMenu.unity
     guid: 18acae0a29feffe46b2629c884bd12d3
   - enabled: 0
@@ -26,7 +32,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prototipo/Scenes/Win.unity
     guid: d87273f0757330a4c89bb452bca23c53
-  - enabled: 1
-    path: Assets/Scenes/Level_01.unity
-    guid: c413f317d19c6cd429724ec36d96c63c
   m_configObjects: {}
