@@ -69,7 +69,7 @@ public class MyGameManager : MonoBehaviour {
 	
 	public void ExitMenu(){
 		Time.timeScale = 1.0f;
-        StartCoroutine(Fading("ProtoMenu"));
+        StartCoroutine(Fading("MainMenu"));
 	}
 	
 	public void Exit(){

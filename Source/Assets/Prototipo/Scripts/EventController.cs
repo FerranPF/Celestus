@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
+
+    public AudioClip attackAudio;
+
+    public void AttackAudio()
+    {
+        PlayerController playerCont;
+        playerCont = GetComponentInParent<PlayerController>();
+        playerCont.PlayAudio(attackAudio);
+    }
+
     public void AttackEvent()
     {
         PlayerController playerCont;

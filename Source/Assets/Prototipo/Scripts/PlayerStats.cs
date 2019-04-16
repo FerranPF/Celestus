@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour {
     public Image healthSlider;
     public Image manaSlider;
     public Image expSlider;
+    public Image vignetteImage;
 
     PlayerController playerControl;
 
@@ -47,6 +48,7 @@ public class PlayerStats : MonoBehaviour {
 
     public void TakeDamage(float amount)
     {
+        StartCoroutine(AttackVignette());
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -142,5 +144,14 @@ public class PlayerStats : MonoBehaviour {
         {
             win = true;
         }
+    }
+
+    IEnumerator AttackVignette()
+    {
+        vignetteImage.color = new Color(255, 255, 255, 0.1f);
+        yield return new WaitForSeconds(0.5f);
+
+        vignetteImage.color = new Color(255, 255, 255, 0f);
+        yield return new WaitForSeconds(0.5f);
     }
 }

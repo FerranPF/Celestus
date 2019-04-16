@@ -9,30 +9,12 @@ public class SettingsMenu : MonoBehaviour {
 	//public Dropdown resolutionDropdown;
 	Resolution[] resolutions;
 
+    public Slider fxSlider;
+    public Slider musicSlider;
+
 	void Start(){
-        /*
-		resolutions = Screen.resolutions;
-		resolutionDropdown.ClearOptions();
-
-		List<string> options = new List<string>();
-
-		int currentResolutionIndex = 0;
-
-		for (int i = 0; i < resolutions.Length; i++)
-		{
-			string option = resolutions[i] + " x " + resolutions[i].height;
-			options.Add(option);
-
-			if(resolutions[i].width == Screen.currentResolution.width && 
-				resolutions[i].height == Screen.currentResolution.height){
-					currentResolutionIndex = i;
-				}
-		}
-
-		resolutionDropdown.AddOptions(options);
-		resolutionDropdown.value = currentResolutionIndex;
-		resolutionDropdown.RefreshShownValue();
-        */
+        fxSlider.value = PlayerPrefs.GetFloat("fxVol");
+        musicSlider.value = PlayerPrefs.GetFloat("musicVol");
 	}
 
 	public void SetResolution720(){
@@ -49,12 +31,15 @@ public class SettingsMenu : MonoBehaviour {
         Screen.SetResolution(1920, 1080, Screen.fullScreen);
     }
 
-    public void SetMusicVolume(float volume){
-		audioMixer.SetFloat("musicVolume", volume);
+    public void SetMusicVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("musicVol", volume);
+        audioMixer.SetFloat("musicVolume", volume);
 	}
 
     public void SetFXVolume(float volume)
     {
+        PlayerPrefs.SetFloat("fxVol", volume);
         fxMixer.SetFloat("fxVolume", volume);
     }
 

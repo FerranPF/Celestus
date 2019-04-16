@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Audio Settings")]
     private AudioSource audioSource;
-    public AudioClip attackAudio;
     public AudioClip dashAudio;
 
     [Header("Skill Tree Settings")]
@@ -111,8 +110,6 @@ public class PlayerController : MonoBehaviour {
             
             if (Input.GetMouseButtonDown(0) && canAttack)
             {
-                audioSource.clip = attackAudio;
-                audioSource.Play(0);
                 StartCoroutine(Attack());
             }
 
@@ -268,5 +265,12 @@ public class PlayerController : MonoBehaviour {
             health.GetExp(50f);
         }
 
+    }
+
+
+    public void PlayAudio(AudioClip audio)
+    {
+        audioSource.clip = audio;
+        audioSource.Play();
     }
 }
