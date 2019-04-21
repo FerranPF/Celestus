@@ -19,6 +19,8 @@ public class TurretEnemy : MonoBehaviour
     public bool attack;
     private bool findPlayer;
 
+    private float contColor;
+
     private float cont = 0f;
     public float timeToAttack = 2f;
     public float timeAttacking = 1f;
@@ -26,6 +28,8 @@ public class TurretEnemy : MonoBehaviour
     public float turretHealth = 20f;
 
     public LineRenderer ray;
+    public Color colorIdle;
+    public Color colorAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -51,23 +55,25 @@ public class TurretEnemy : MonoBehaviour
             Debug.DrawRay(pointOfAttack.position, target.position - pointOfAttack.position);
             ray.enabled = true;
             ray.SetPosition(1, target.position);
+            //ray.material.color = Color.Lerp(colorIdle, colorAttack, timeToAttack);
+
             cont += Time.deltaTime;
-            if(cont >= timeToAttack)
+
+            if (cont >= timeToAttack)
             {
                 attack = true;
             }
         }
 
-
         if (attack)
         {
+            ray.material.color = colorAttack;
             StartCoroutine(Attack());
         }
     }
-
+     
     void UpdateTarget()
     {
-
         float distanceToPlayer = Vector3.Distance(pointOfAttack.position, target.transform.position);
 
         if (distanceToPlayer <= range)
@@ -76,6 +82,7 @@ public class TurretEnemy : MonoBehaviour
         }
         else
         {
+            ray.material.color = colorIdle;
             canAttack = false;
             cont = 0.0f;
             ray.enabled = false;
@@ -91,9 +98,9 @@ public class TurretEnemy : MonoBehaviour
         target.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
 
         yield return new WaitForSeconds(timeAttacking);
-        
-        findPlayer = true;
 
+        ray.material.color = colorIdle;
+        findPlayer = true;
     }
 
     public void TakeDamage(float damageTaken)

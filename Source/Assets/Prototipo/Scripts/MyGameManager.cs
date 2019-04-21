@@ -16,7 +16,7 @@ public class MyGameManager : MonoBehaviour {
 	public PlayerController player;
 	
 	private bool godMode;
-	private bool isPaused;
+	public bool isPaused;
 	
     void Awake(){
 		fadePanel.SetActive(true);
@@ -56,19 +56,20 @@ public class MyGameManager : MonoBehaviour {
 		isPaused = true;
 		pausePanel.SetActive(true);
 		statsPanel.SetActive(false);
-		Time.timeScale = 0.0f;
-	}
+        //Time.timeScale = 0.0f;
+    }
 	
 	public void Resume(){
 		isPaused = false;
 		pausePanel.SetActive(false);
 		statsPanel.SetActive(true);
-		Time.timeScale = 1.0f;
-		player.canMove = true;
+        //Time.timeScale = 1.0f;
+        player.canMove = true;
 	}
 	
 	public void ExitMenu(){
-		Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
+        isPaused = false;
         StartCoroutine(Fading("MainMenu"));
 	}
 	
