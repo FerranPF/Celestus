@@ -2185,14 +2185,14 @@ PrefabInstance:
       objectReference: {fileID: 5684128229932651358}
     - target: {fileID: 7034865645789078134, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: fadeAnim
-      value: 
-      objectReference: {fileID: 5684128230264242582}
-    - target: {fileID: 7034865645789078134, guid: 62406a10ad6cc6b4b9126157d9509cb3,
-        type: 3}
       propertyPath: vignetteImage
       value: 
       objectReference: {fileID: 1745825643}
+    - target: {fileID: 7034865645789078134, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: fadeAnim
+      value: 
+      objectReference: {fileID: 5684128230264242582}
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2251,34 +2251,33 @@ PrefabInstance:
     - target: {fileID: 8319384168328256839, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.87
+      value: 4.1
       objectReference: {fileID: 0}
-    - target: {fileID: 299242559753872198, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+    - target: {fileID: 459887827136834295, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: 14.7
       objectReference: {fileID: 0}
-    - target: {fileID: 299242559753872199, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+    - target: {fileID: 459887827981656340, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: isGlobal
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: 14.6
       objectReference: {fileID: 0}
-    - target: {fileID: 911739272379642642, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+    - target: {fileID: 3066486477610493544, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
-    - target: {fileID: 7034865645789078132, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+    - target: {fileID: 459887827136834292, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 35e8ffcad9d82d343beac59a6ac921e1,
-        type: 2}
-    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 459887827981656341, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
-      propertyPath: attackAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 07d31ad062a291043b8a3f7f5b4f8966, type: 3}
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62406a10ad6cc6b4b9126157d9509cb3, type: 3}
 --- !u!114 &1350643909 stripped

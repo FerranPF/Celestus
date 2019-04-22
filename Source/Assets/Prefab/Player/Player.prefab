@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3228089873933271202
 Transform:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 7fb8d2884e9a83b4b80515f9b19f47cc, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5057873139243627993}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.66, y: 3.4, z: -0.71}
+  m_LocalPosition: {x: 0.66, y: 3.87, z: -0.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459887826224014283}
@@ -2253,6 +2253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8871fbc383f351940aad327256b8f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAudio: {fileID: 8300000, guid: 07d31ad062a291043b8a3f7f5b4f8966, type: 3}
 --- !u!1 &5072016558541278483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5656,7 +5657,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7034865645330545738}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -5811,7 +5812,7 @@ AudioSource:
   m_GameObject: {fileID: 7034865645789078136}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 8d628e373ea27aa4cb7fc3a7af85079a,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 35e8ffcad9d82d343beac59a6ac921e1,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 07d31ad062a291043b8a3f7f5b4f8966, type: 3}
   m_PlayOnAwake: 0
@@ -5927,7 +5928,6 @@ MonoBehaviour:
   dashSpeed: 15
   dashStoppingSpeed: 0.1
   CDDash: 0.7
-  attackAudio: {fileID: 8300000, guid: 07d31ad062a291043b8a3f7f5b4f8966, type: 3}
   dashAudio: {fileID: 8300000, guid: 226b3d0c1ce5f824b9847051b1ac42b0, type: 3}
   skillTree: 0
 --- !u!114 &7034865645789078134
@@ -5945,6 +5945,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   manaSlider: {fileID: 0}
   expSlider: {fileID: 0}
+  vignetteImage: {fileID: 0}
   startingHealth: 100
   currentHealth: 0
   startingMana: 100
