@@ -55,7 +55,7 @@ public class TurretEnemy : MonoBehaviour
             Debug.DrawRay(pointOfAttack.position, target.position - pointOfAttack.position);
             ray.enabled = true;
             ray.SetPosition(1, target.position);
-            //ray.material.color = Color.Lerp(colorIdle, colorAttack, timeToAttack);
+            ray.material.color = Color.Lerp(colorIdle, colorAttack, cont/timeToAttack);
 
             cont += Time.deltaTime;
 
@@ -67,7 +67,6 @@ public class TurretEnemy : MonoBehaviour
 
         if (attack)
         {
-            ray.material.color = colorAttack;
             StartCoroutine(Attack());
         }
     }
@@ -82,7 +81,6 @@ public class TurretEnemy : MonoBehaviour
         }
         else
         {
-            ray.material.color = colorIdle;
             canAttack = false;
             cont = 0.0f;
             ray.enabled = false;
