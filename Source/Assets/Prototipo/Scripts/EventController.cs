@@ -5,13 +5,14 @@ using UnityEngine;
 public class EventController : MonoBehaviour
 {
 
-    public AudioClip attackAudio;
+    public AudioClip[] attackAudio;
 
     public void AttackAudio()
     {
+        float i = Random.Range(0.0f, (float)attackAudio.Length);
         PlayerController playerCont;
         playerCont = GetComponentInParent<PlayerController>();
-        playerCont.PlayAudio(attackAudio);
+        playerCont.PlayAudio(attackAudio[(int)i]);
     }
 
     public void AttackEvent()

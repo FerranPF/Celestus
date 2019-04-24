@@ -2918,6 +2918,36 @@ PrefabInstance:
       propertyPath: m_IgnoreLayers.m_Bits
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4971c70dcca75214b9466f7dd3081578, type: 3}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: eee4e47b55c1e8f43a9c4096960a4b89, type: 3}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c1a2eb0972c5e64e9eb51af5b90f0fb, type: 3}
+    - target: {fileID: 5072016558541278480, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: attackAudio.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1fba25cf125b9a04498df50e893517ff, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62406a10ad6cc6b4b9126157d9509cb3, type: 3}
 --- !u!114 &1350643909 stripped
@@ -3121,8 +3151,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
-  m_Intensity: 0.05
+  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
