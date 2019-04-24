@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Key
   - Turret
+  - Father
   layers:
   - Default
   - TransparentFX

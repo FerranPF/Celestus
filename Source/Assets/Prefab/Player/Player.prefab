@@ -134,7 +134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459887827136834294}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.79, y: 13.4, z: 4.55}
+  m_LocalPosition: {x: 0.79, y: 14.7, z: 4.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459887827664463529}
@@ -158,7 +158,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: 07b736fa56f63cd4abec2ba222302eb7, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &459887827664463528
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459887827981656343}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.71, y: 13.82, z: 4.54}
+  m_LocalPosition: {x: 0.71, y: 14.6, z: 4.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459887827780143799}
@@ -302,7 +302,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: 3fe9c8f10b5c55b439cb7628026edb4a, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &5057873139243627993
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5057873139243627993}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.66, y: 3.87, z: -0.71}
+  m_LocalPosition: {x: 0.66, y: 4.1, z: -0.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459887826224014283}
@@ -352,7 +352,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: 8ab4305c6ae00ad45b42e9ef1f17e3f5, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &5072016558541278209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,7 +2253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8871fbc383f351940aad327256b8f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAudio: {fileID: 8300000, guid: 07d31ad062a291043b8a3f7f5b4f8966, type: 3}
+  attackAudio:
+  - {fileID: 8300000, guid: 4971c70dcca75214b9466f7dd3081578, type: 3}
+  - {fileID: 8300000, guid: eee4e47b55c1e8f43a9c4096960a4b89, type: 3}
+  - {fileID: 8300000, guid: 6c1a2eb0972c5e64e9eb51af5b90f0fb, type: 3}
+  - {fileID: 8300000, guid: 1fba25cf125b9a04498df50e893517ff, type: 3}
 --- !u!1 &5072016558541278483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5499,8 +5503,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6068156368918553075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.22}
-  m_LocalScale: {x: 1.663894, y: 1, z: 1.86}
+  m_LocalPosition: {x: 0, y: 0, z: 1.89}
+  m_LocalScale: {x: 2.0369391, y: 1, z: 1.7208349}
   m_Children: []
   m_Father: {fileID: 7034865645789078135}
   m_RootOrder: 2
