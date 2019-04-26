@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour {
     [Header("Skill Tree Settings")]
     public bool skillTree = false;
 
+    [Header("Boss")]
+    public BossController father;
+
     private void Awake()
     {
         health = GetComponent<PlayerStats>();
@@ -66,6 +69,11 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void Update(){
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            father.canAttack = true;
+        }
 
         if(godMode){
             GodMode();
@@ -259,11 +267,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            health.GetExp(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            health.GetExp(50f);
+            father.GetDamage(10);
         }
 
     }

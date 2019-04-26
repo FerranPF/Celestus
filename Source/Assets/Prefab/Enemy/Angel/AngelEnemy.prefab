@@ -103,7 +103,7 @@ MonoBehaviour:
   damageText: {fileID: 5583334948775179130, guid: 731c6aee0a0a61b428ceb21c95201816,
     type: 3}
   lookRadius: 14.99
-  enemyHealth: 30
+  enemyHealth: 15
   attackAnim: {fileID: 7400000, guid: 02c16be7163716446a62897c179f66d1, type: 2}
   swordDamage: {fileID: 4784621427457533826}
   frozen: 0

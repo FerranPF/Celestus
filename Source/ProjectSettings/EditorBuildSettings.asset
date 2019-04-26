@@ -20,16 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_01.unity
     guid: c413f317d19c6cd429724ec36d96c63c
-  - enabled: 0
-    path: Assets/Prototipo/Scenes/ProtoMenu.unity
-    guid: 18acae0a29feffe46b2629c884bd12d3
-  - enabled: 0
-    path: Assets/Prototipo/Scenes/Prototipo.unity
-    guid: 734c2f98a74ca1f4991a09e26191fe1d
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 135b9631284f95643a5250befb4a9979
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: d87273f0757330a4c89bb452bca23c53
+  - enabled: 0
+    path: Assets/Prototipo/Scenes/ProtoMenu.unity
+    guid: 18acae0a29feffe46b2629c884bd12d3
+  - enabled: 0
+    path: Assets/Prototipo/Scenes/Prototipo.unity
+    guid: 734c2f98a74ca1f4991a09e26191fe1d
   m_configObjects: {}

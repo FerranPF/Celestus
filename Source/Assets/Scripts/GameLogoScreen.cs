@@ -12,7 +12,8 @@ public class GameLogoScreen : MonoBehaviour {
     private void Awake()
     {
         source = GameObject.FindObjectOfType<AudioSource>();
-        source.volume = PlayerPrefs.GetFloat("musicVolume");
+        source.volume = 0.5f;
+        
     }
 
     void Update()
