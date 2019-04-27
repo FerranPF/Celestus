@@ -6,6 +6,9 @@ public class SwordDamage : MonoBehaviour
 {
     public bool m_Started;
 
+    public int damage = 10;
+    public int difDamage = 2;
+
     public void MyCollision()
     {
         Collider[] enemyColliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.LookRotation(Vector3.forward, Vector3.up));
@@ -19,17 +22,17 @@ public class SwordDamage : MonoBehaviour
             if(enemyColliders[i].tag == "Enemy")
             {
                 EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
-                enemy.GetDamage(Random.Range(4, 6));
+                enemy.GetDamage(Random.Range(damage - difDamage, damage + difDamage));
             }
             if(enemyColliders[i].tag == "Turret")
             {
                 TurretEnemy turret = enemyColliders[i].GetComponent<TurretEnemy>();
-                turret.TakeDamage(Random.Range(3, 5));
+                turret.TakeDamage(Random.Range(damage - difDamage, damage + difDamage));
             }
             if(enemyColliders[i].tag == "Father")
             {
                 BossController father = enemyColliders[i].GetComponent<BossController>();
-                father.GetDamage(Random.Range(6, 8));
+                father.GetDamage(Random.Range(damage - difDamage, damage + difDamage));
             }
             //Increase the number of Colliders in the array
             i++;

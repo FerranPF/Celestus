@@ -9,10 +9,15 @@ public class PlayerSpellSystem : MonoBehaviour
 
     public AnimationClip spellAnim1;
     public AnimationClip spellAnim2;
+    public AnimationClip spellAnim3;
 
     float spell1Time;
     float spell2Time;
     float spell3Time;
+
+    public float spell1Delay;
+    public float spell2Delay;
+    public float spell3Delay;
 
     public float spell1Mana;
     public float spell2Mana;
@@ -57,7 +62,7 @@ public class PlayerSpellSystem : MonoBehaviour
 
         spell1Time = spellAnim1.length;
         spell2Time = spellAnim2.length;
-        spell3Time = spellAnim1.length;
+        spell3Time = spellAnim3.length;
 
         spellType = Spell.None;
         canSpell = true;
@@ -77,21 +82,21 @@ public class PlayerSpellSystem : MonoBehaviour
             {
                 ResetTarget();
                 spellType = Spell.Lightning;
-                Debug.Log(spellType);
+                //Debug.Log(spellType);
             }
 
             if (Input.GetKey(KeyCode.Alpha2) && canSpell2)
             {
                 ResetTarget();
                 spellType = Spell.Fire;
-                Debug.Log(spellType);
+                //Debug.Log(spellType);
             }
 
             if (Input.GetKey(KeyCode.Alpha3) && canSpell3)
             {
                 ResetTarget();
                 spellType = Spell.Ice;
-                Debug.Log(spellType);
+                //Debug.Log(spellType);
             }
         }
 
@@ -202,14 +207,17 @@ public class PlayerSpellSystem : MonoBehaviour
         {
             case Spell.Lightning:
                 Instantiate(lightningSpell, lightningSpellSpawn.position, transform.rotation);
+                spellType = Spell.None;
                 break;
 
             case Spell.Fire:
                 Instantiate(fireSpell, firePos, transform.rotation);
+                spellType = Spell.None;
                 break;
 
             case Spell.Ice:
                 Instantiate(iceSpell, this.transform.position, transform.rotation);
+                spellType = Spell.None;
                 break;
             default:
                 break;
@@ -218,13 +226,17 @@ public class PlayerSpellSystem : MonoBehaviour
 
     IEnumerator CastLightningSpell()
     {
+
         manager.playerController.anim.SetBool("spell", true);
-        canSpell = false;
         manager.playerController.canMove = false;
         spell1Sprite.SetActive(false);
+        canSpell = false;
 
-        yield return new WaitForSeconds(spell1Time * 0.8f);
-        spellType = Spell.None;
+        yield return new WaitForSeconds(spell1Delay);
+
+        InstSpell();
+
+        yield return new WaitForSeconds((spell1Time * 0.8f) - spell1Delay);
 
         manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;
@@ -234,12 +246,15 @@ public class PlayerSpellSystem : MonoBehaviour
     IEnumerator CastFireSpell()
     {
         manager.playerController.anim.SetBool("spell2", true);
-        canSpell = false;
         manager.playerController.canMove = false;
         spell2Sprite.SetActive(false);
+        canSpell = false;
 
-        yield return new WaitForSeconds(spell2Time*0.6f);
-        spellType = Spell.None;
+        yield return new WaitForSeconds(spell2Delay);
+
+        InstSpell();
+
+        yield return new WaitForSeconds((spell2Time*0.6f) - spell2Delay);
 
         manager.playerController.anim.SetBool("spell2", false);
         manager.playerController.canMove = true;
@@ -250,11 +265,14 @@ public class PlayerSpellSystem : MonoBehaviour
     {
         manager.playerController.anim.SetBool("spell", true);
         manager.playerController.canMove = false;
-        canSpell = false;
         spell3Sprite.SetActive(false);
+        canSpell = false;
 
-        yield return new WaitForSeconds(spell3Time * 0.8f);
-        spellType = Spell.None;
+        yield return new WaitForSeconds(spell3Delay);
+
+        InstSpell();
+
+        yield return new WaitForSeconds((spell3Time * 0.8f)-spell3Delay);
 
         manager.playerController.anim.SetBool("spell", false);
         manager.playerController.canMove = true;

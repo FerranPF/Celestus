@@ -233,7 +233,6 @@ public class PlayerController : MonoBehaviour {
         swordDamage.MyCollision();
     }
 
-
     void GodMovement(){
         if (Input.GetKey(KeyCode.Space))
         {

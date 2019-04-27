@@ -25,15 +25,6 @@ public class EventController : MonoBehaviour
         Debug.Log("AttackEvent");
     }
 
-    public void SpellEvent()
-    {
-        PlayerSpellSystem playerSpell;
-        playerSpell = GetComponentInParent<PlayerSpellSystem>();
-
-        playerSpell.InstSpell();
-        Debug.Log("AttackEvent");
-    }
-
     public void EnemyAttackEvent()
     {
         EnemyController enemyCont;

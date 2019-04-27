@@ -32,9 +32,7 @@ public class PlayerStats : MonoBehaviour {
     public Animator fadeAnim;
     public AnimationClip deathAnim;
 
-    public int[] keys;
-    private int keyCont = 0;
-    public bool win = false;
+    public bool key = false;
 
     private void Awake()
     {
@@ -134,16 +132,6 @@ public class PlayerStats : MonoBehaviour {
         fadeAnim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("GameOver");
-    }
-
-    public void Key(int key)
-    {
-        keys[key] = 1;
-        keyCont++;
-        if(keyCont == keys.Length)
-        {
-            win = true;
-        }
     }
 
     IEnumerator AttackVignette()
