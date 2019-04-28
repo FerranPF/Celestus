@@ -16,6 +16,7 @@ public class DoorEvent : MonoBehaviour
 
     private PlayerStats playerStats;
     private PlayerController playerCont;
+    private DoorController doorController;
 
     private float cont = 0.0f;
 
@@ -23,6 +24,7 @@ public class DoorEvent : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().playerStats;
         playerCont = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().playerController;
+        doorController = GetComponentInParent<DoorController>();
     }
 
     private void Update()
@@ -79,6 +81,7 @@ public class DoorEvent : MonoBehaviour
         switch (playerStats.key)
         {
             case true:
+                doorController.OpenDoor();
                 eventText.text = keyText;
                 break;
             case false:
