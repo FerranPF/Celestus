@@ -16,7 +16,10 @@ public class MenuManager : MonoBehaviour {
     private Vector2 iniPos;
     public float difScale;
 
+    public LevelLoader loader;
+
     void Awake(){
+        loader = GetComponent<LevelLoader>();
         fadePanel.SetActive(true);
     }
 
@@ -50,16 +53,16 @@ public class MenuManager : MonoBehaviour {
         mainPanel.SetActive(true);
     }
 
-    public void PlayButton()
+    public void PlayButton(string sceneName)
     {
-        StartCoroutine(Fading());
+        StartCoroutine(Fading(sceneName));
     }
 
-    IEnumerator Fading()
+    IEnumerator Fading(string sceneName)
     {
         anim.SetBool("Fade", true);
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("Level_01");
+        loader.LoadLevel(sceneName);
     }
 
     
