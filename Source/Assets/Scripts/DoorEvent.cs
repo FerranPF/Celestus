@@ -46,7 +46,6 @@ public class DoorEvent : MonoBehaviour
             {
                 StartCoroutine(StopPlayer());
             }
-            eventText.text = keyText;
         }
     }
 
