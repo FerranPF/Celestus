@@ -136,7 +136,7 @@ public class PlayerStats : MonoBehaviour {
 
     IEnumerator AttackVignette()
     {
-        vignetteImage.color = new Color(255, 255, 255, 0.1f);
+        vignetteImage.color = new Color(255, 255, 255, 0.05f);
         yield return new WaitForSeconds(0.5f);
 
         vignetteImage.color = new Color(255, 255, 255, 0f);

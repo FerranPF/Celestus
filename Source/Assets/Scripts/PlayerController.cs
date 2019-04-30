@@ -136,8 +136,8 @@ public class PlayerController : MonoBehaviour {
         if (currentDashTime < maxDashTime)
         {
             moveDirection = new Vector3(0, 0, dashSpeed);
-            //currentDashTime += dashStoppingSpeed*Time.deltaTime;
-            currentDashTime += dashStoppingSpeed;
+            currentDashTime += dashStoppingSpeed*Time.deltaTime;
+            //currentDashTime += dashStoppingSpeed;
         }
         else
         {
