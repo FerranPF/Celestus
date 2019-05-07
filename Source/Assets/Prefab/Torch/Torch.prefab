@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1101999453}
   - component: {fileID: 6419988642163641269}
   - component: {fileID: 2145669395943921104}
+  - component: {fileID: 3583062178816867621}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2281496524870339353}
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -7.892583, y: 0.5815692, z: 0.22151321}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4.498299, y: 4.498294, z: 4.498299}
   m_Children:
   - {fileID: 4513887280693940}
   m_Father: {fileID: 0}
@@ -78,6 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3583062178816867621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2281496524870339353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26e3eae08d7ab408afea666f41a32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomTime: 2
 --- !u!1001 &287193484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +102,10 @@ PrefabInstance:
     - target: {fileID: 1284544305647804, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
       propertyPath: m_Name
       value: Fire_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284544305647804, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4513887532759864, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,6 +150,59 @@ PrefabInstance:
     - target: {fileID: 4513887532759864, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699885676839020, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016348303781738, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016348303781738, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4016348303781738, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664116432186510, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849168193701204, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198824975954717674, guid: a4c5a37d83fc43b43b669f729b582115,
+        type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911867446474344, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108849310258073026, guid: a4c5a37d83fc43b43b669f729b582115,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6946671
+      objectReference: {fileID: 0}
+    - target: {fileID: 108849310258073026, guid: a4c5a37d83fc43b43b669f729b582115,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.34376112
+      objectReference: {fileID: 0}
+    - target: {fileID: 108849310258073026, guid: a4c5a37d83fc43b43b669f729b582115,
+        type: 3}
+      propertyPath: m_Range
+      value: 7.580838
+      objectReference: {fileID: 0}
+    - target: {fileID: 108849310258073026, guid: a4c5a37d83fc43b43b669f729b582115,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9716981
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c5a37d83fc43b43b669f729b582115, type: 3}
