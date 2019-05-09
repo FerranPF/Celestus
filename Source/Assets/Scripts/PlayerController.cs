@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Player Attack")]
     public SwordDamage swordDamage;
+    public GameObject swordPS;
 
     [Header("God Settings")]
     [SerializeField]
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour {
         canAttack = true;
         canDash = true;
         dashing = false;
+        swordPS.SetActive(false);
 
     }
 
@@ -156,9 +158,11 @@ public class PlayerController : MonoBehaviour {
         RotatePlayer();
         canMove = false;
         canAttack = false;
-        
+        swordPS.SetActive(true);
+
         yield return new WaitForSeconds(attackTime);
 
+        swordPS.SetActive(false);
         anim.SetBool("attack", false);
 		canMove = true;
         canAttack = true;
