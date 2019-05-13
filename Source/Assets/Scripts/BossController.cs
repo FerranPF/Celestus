@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class BossController : MonoBehaviour
 {
     public int bossHealth = 100;
+    private int initialHP;
 
     private Animator animator;
     public AnimationClip attack;
     public GameObject areaAttack;
+    private BoxCollider coll;
+    public Image hpSlider;
 
     public bool defeat = false;
     public bool canAttack;
@@ -23,6 +27,8 @@ public class BossController : MonoBehaviour
         animator.SetBool("attack", false);
         timeOfAttack = attack.length;
         canAttack = false;
+        coll = GetComponent<BoxCollider>();
+        initialHP = bossHealth;
     }
 
     private void Update()
@@ -54,9 +60,12 @@ public class BossController : MonoBehaviour
     }
 
     public void GetDamage(int damage)
-    {
+    {   
         bossHealth -= damage;
         Debug.Log("Boss health: " + bossHealth);
+        Debug.Log("Initial health: " + initialHP);
+        hpSlider.fillAmount = bossHealth/initialHP;
+        Debug.Log("Slider value" + bossHealth / initialHP);
         if (bossHealth <= 0)
         {
             WinGame();
@@ -65,9 +74,15 @@ public class BossController : MonoBehaviour
 
     void WinGame()
     {
+        defeat = true;
+        animator.SetBool("attack", false);
+        coll.enabled = false;
+
+        /*
         MyGameManager manager;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MyGameManager>();
         manager.Win();
         Destroy(gameObject);
+        */
     }
 }
