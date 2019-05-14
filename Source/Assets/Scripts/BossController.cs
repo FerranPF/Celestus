@@ -64,8 +64,7 @@ public class BossController : MonoBehaviour
         bossHealth -= damage;
         Debug.Log("Boss health: " + bossHealth);
         Debug.Log("Initial health: " + initialHP);
-        hpSlider.fillAmount = bossHealth/initialHP;
-        Debug.Log("Slider value" + bossHealth / initialHP);
+        hpSlider.fillAmount = (float)bossHealth/(float)initialHP;
         if (bossHealth <= 0)
         {
             WinGame();
