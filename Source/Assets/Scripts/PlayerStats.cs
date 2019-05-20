@@ -34,8 +34,14 @@ public class PlayerStats : MonoBehaviour {
 
     public bool key = false;
 
+    [Header("Camera Shake")]
+    private CameraShake shake;
+    public float shakeMagnitude = .05f;
+    public float shakeDuration = .14f;
+
     private void Awake()
     {
+        shake = Camera.main.GetComponent<CameraShake>();
         currentHealth = startingHealth;
         currentMana = startingMana;
         playerControl = GetComponent<PlayerController>();
@@ -47,6 +53,7 @@ public class PlayerStats : MonoBehaviour {
     public void TakeDamage(float amount)
     {
         StartCoroutine(AttackVignette());
+        StartCoroutine(shake.Shake(shakeDuration, shakeMagnitude));
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
