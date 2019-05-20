@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802634669855508254}
   - component: {fileID: 2021424731441947502}
+  - component: {fileID: 7692173698592081198}
   m_Layer: 0
   m_Name: DoorsPrefab
   m_TagString: Untagged
@@ -45,6 +46,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a94bb2bc09b22443809340ed9161233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7692173698592081198
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021424731441947501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e2b42ff2ea37774898077f03248a751, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2807251086229258822
 PrefabInstance:
   m_ObjectHideFlags: 0
