@@ -10,11 +10,13 @@ public class DoorController : MonoBehaviour
     private void Awake()
     {
         doorEvent = GetComponentInChildren<DoorEvent>();
-        doorAnim = GetComponentInChildren<Animator>();
+        doorAnim = GetComponent<Animator>();
+        doorAnim.enabled = false;
     }
 
     public void OpenDoor()
     {
+        doorAnim.enabled = true;
         doorAnim.SetBool("open", true);
         doorEvent.enabled = false;
     }

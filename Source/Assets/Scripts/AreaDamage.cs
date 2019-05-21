@@ -7,6 +7,7 @@ public class AreaDamage : MonoBehaviour
     public float expandSpeed;
     public float damage;
     private PlayerController player;
+    public GameObject particles;
 
     private void Update()
     {
