@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour {
     public Image manaSlider;
     public Image expSlider;
     public Image vignetteImage;
+    public Sprite[] damageImages;
 
     PlayerController playerControl;
 
@@ -48,6 +49,7 @@ public class PlayerStats : MonoBehaviour {
         level = 1.0f;
         expSlider.fillAmount = 0.0f;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
 
         vignetteImage.CrossFadeAlpha(0, 0, false);
     }
@@ -146,8 +148,9 @@ public class PlayerStats : MonoBehaviour {
     IEnumerator AttackVignette()
     {
         //vignetteImage.color = new Color(255, 255, 255, 0.05f);
+        vignetteImage.sprite = damageImages[(int)Random.Range(0.0f, 2.0f)];
         vignetteImage.CrossFadeAlpha(1, 0.2f, false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         //vignetteImage.color = new Color(255, 255, 255, 0f);
         vignetteImage.CrossFadeAlpha(0.0f, 0.2f, false);
