@@ -4916,7 +4916,7 @@ ParticleSystem:
 --- !u!199 &4567914392099036369
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9623,7 +9623,7 @@ ParticleSystem:
 --- !u!199 &4567914392161773191
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14495,7 +14495,7 @@ ParticleSystem:
 --- !u!199 &4567914392394229541
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19202,7 +19202,7 @@ ParticleSystem:
 --- !u!199 &4567914392422902613
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -19395,9 +19395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToEnd: 4
-  timeToDamage: 0.8
+  timeToDamage: 0.9
   damageArea: 5
-  enemyDamage: 5
+  enemyDamage: 10
   sounds:
   - {fileID: 8300000, guid: 9427fffeb01396a4ba7cb79dd036e32a, type: 3}
   - {fileID: 8300000, guid: d132afa1ee6872943a7c37b8a16f4417, type: 3}
@@ -24145,7 +24145,7 @@ ParticleSystem:
 --- !u!199 &4567914393039006364
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28852,7 +28852,7 @@ ParticleSystem:
 --- !u!199 &4567914393152297253
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -33559,7 +33559,7 @@ ParticleSystem:
 --- !u!199 &4567914393188927895
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -38266,7 +38266,7 @@ ParticleSystem:
 --- !u!199 &4567914393478250953
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -43138,7 +43138,7 @@ ParticleSystem:
 --- !u!199 &4567914393510347228
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

@@ -180,7 +180,8 @@ MonoBehaviour:
   Spell: {fileID: 6981639616094470654}
   m_Started: 1
   timeSpawn: 2
-  timeFreeze: 0.4
+  timeFreeze: 5
+  damage: 10
   sounds:
   - {fileID: 8300000, guid: 83ff01dd2d89fea40a206a21915f9f10, type: 3}
 --- !u!1 &6981639616094470654

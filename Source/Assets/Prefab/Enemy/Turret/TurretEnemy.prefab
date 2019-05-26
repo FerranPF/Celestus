@@ -251,13 +251,13 @@ MonoBehaviour:
   damageText: {fileID: 5583334948775179130, guid: 731c6aee0a0a61b428ceb21c95201816,
     type: 3}
   range: 12
-  damage: 5
+  damage: 20
   showGizmo: 1
   canAttack: 0
   attack: 0
   timeToAttack: 2
   timeAttacking: 1
-  turretHealth: 20
+  turretHealth: 100
   ray: {fileID: 1161223900189321342}
   colorIdle: {r: 1, g: 0.976174, b: 0, a: 1}
   colorAttack: {r: 1, g: 0, b: 0, a: 1}

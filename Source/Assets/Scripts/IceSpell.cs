@@ -9,6 +9,7 @@ public class IceSpell : MonoBehaviour
     public float timeSpawn;
     private float cont;
     public float timeFreeze;
+    public int damage;
 
     public AudioClip[] sounds;
     AudioSource audioSource;
@@ -50,6 +51,7 @@ public class IceSpell : MonoBehaviour
             if (enemyColliders[i].tag == "Enemy")
             {
                 EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
+                enemy.GetDamage(damage);
                 enemy.Freeze(timeFreeze);
             }
 

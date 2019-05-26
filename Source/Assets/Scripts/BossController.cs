@@ -14,12 +14,16 @@ public class BossController : MonoBehaviour
     public GameObject areaAttack;
     private BoxCollider coll;
     public Image hpSlider;
+    public GameObject hpBar;
 
     public bool defeat = false;
     public bool canAttack;
     private float cont = 0.0f;
     public float timeOfAttack;
     public float timeToAttack;
+
+    public Text eventText;
+    public string text;
 
     private void Start()
     {
@@ -67,21 +71,24 @@ public class BossController : MonoBehaviour
         hpSlider.fillAmount = (float)bossHealth/(float)initialHP;
         if (bossHealth <= 0)
         {
-            WinGame();
+            StartCoroutine(WinGame());
         }
     }
 
-    void WinGame()
+    IEnumerator WinGame()
     {
         defeat = true;
         animator.SetBool("attack", false);
         coll.enabled = false;
+        hpBar.SetActive(false);
+        eventText.enabled = true;
+        eventText.text = text;
 
-        /*
+        yield return new WaitForSeconds(2.0f);
+
         MyGameManager manager;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MyGameManager>();
         manager.Win();
-        Destroy(gameObject);
-        */
+        //Destroy(gameObject);
     }
 }

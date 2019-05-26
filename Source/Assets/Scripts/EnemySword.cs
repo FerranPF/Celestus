@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySword : MonoBehaviour
 {
     public bool m_Started;
+    public int minDamage = 10;
+    public int maxDamage = 15;
 
     public void MyCollision()
     {
@@ -19,7 +21,7 @@ public class EnemySword : MonoBehaviour
             if (playerColliders[i].tag == "Player")
             {
                 PlayerStats player = playerColliders[i].GetComponent<PlayerStats>();
-                player.TakeDamage(Random.Range(4, 6));
+                player.TakeDamage(Random.Range(minDamage, maxDamage));
             }
 
             //Increase the number of Colliders in the array
