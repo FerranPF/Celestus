@@ -17,7 +17,6 @@ public class LightningSpell : MonoBehaviour
     public int bossDamage;
     private bool active;
     private Vector3 speedVector;
-    private string lastEnemy = " ";
 
     public AudioClip[] sounds;
     AudioSource audioSource;
@@ -53,7 +52,7 @@ public class LightningSpell : MonoBehaviour
 
         this.transform.Translate(speedVector*Time.deltaTime, Space.Self);
 
-        MyCollision();
+        //MyCollision();
 
         if(contTime >= timeTravel)
         {
@@ -61,6 +60,22 @@ public class LightningSpell : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            EnemyController enemy = other.GetComponent<EnemyController>();
+            enemy.GetDamage(damage);
+            
+        }
+        else if (other.tag == "Father")
+        {
+            BossController boss = other.GetComponent<BossController>();
+            boss.GetDamage(bossDamage);
+        }
+    }
+
+    /*
     public void MyCollision()
     {
         Collider[] enemyColliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.LookRotation(Vector3.forward, Vector3.up));
@@ -70,23 +85,18 @@ public class LightningSpell : MonoBehaviour
         {
             if (enemyColliders[i].tag == "Enemy")
             {
-
-                if(enemyColliders[i].gameObject.name != lastEnemy)
-                {
-                    EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
-                    enemy.GetDamage(damage);
-                }
+                EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
+                enemy.GetDamage(damage);
+                
             }else if (enemyColliders[i].tag == "Father")
             {
-                if (enemyColliders[i].gameObject.name != lastEnemy)
-                {
-                    BossController boss = enemyColliders[i].GetComponent<BossController>();
-                    boss.GetDamage(bossDamage);
-                }
+                BossController boss = enemyColliders[i].GetComponent<BossController>();
+                boss.GetDamage(bossDamage);
             }
             i++;
         }
     }
+    */
 
     void OnDrawGizmos()
     {

@@ -9477,6 +9477,7 @@ GameObject:
   - component: {fileID: 658894198}
   - component: {fileID: 3282051711568912124}
   - component: {fileID: 658894196}
+  - component: {fileID: 3761152418237404274}
   m_Layer: 0
   m_Name: LightningSpell
   m_TagString: Untagged
@@ -9511,7 +9512,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440535967772234319}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -9637,6 +9638,22 @@ MonoBehaviour:
   bossDamage: 20
   sounds:
   - {fileID: 8300000, guid: 8cb5dc2dac36dd5498fa69bc5cd4fda4, type: 3}
+--- !u!54 &3761152418237404274
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440535967772234319}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3440535967840993824
 GameObject:
   m_ObjectHideFlags: 0

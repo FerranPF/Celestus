@@ -31,6 +31,8 @@ public class TurretEnemy : MonoBehaviour
     public Color colorIdle;
     public Color colorAttack;
 
+    public GameObject ps;
+
 
     void Start()
     {
@@ -94,6 +96,7 @@ public class TurretEnemy : MonoBehaviour
         findPlayer = false;
         attack = false;
         target.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+        Instantiate(ps, pointOfAttack.transform);
 
         yield return new WaitForSeconds(timeAttacking);
 

@@ -2918,7 +2918,7 @@ PrefabInstance:
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 155.7
+      value: 78.6
       objectReference: {fileID: 0}
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
@@ -2928,7 +2928,7 @@ PrefabInstance:
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.9
+      value: -56.7
       objectReference: {fileID: 0}
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
@@ -22532,6 +22532,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.12016957
       objectReference: {fileID: 0}
+    - target: {fileID: 960036346, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 960036346, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1977091822, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
       propertyPath: eventText
       value: 
@@ -22586,8 +22594,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -127}
-  m_SizeDelta: {x: 393.8, y: 73.8}
+  m_AnchoredPosition: {x: 0, y: -161}
+  m_SizeDelta: {x: 523.66, y: 98.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665572495
 MonoBehaviour:
@@ -22613,7 +22621,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 9df877ee46e81ab4788564f74a8cb0cb, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 4
@@ -23519,6 +23527,21 @@ PrefabInstance:
     - target: {fileID: 2025457970, guid: fc1fe088dfd45254bb9ddd84c0e189b6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383742862518339, guid: fc1fe088dfd45254bb9ddd84c0e189b6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383742862518339, guid: fc1fe088dfd45254bb9ddd84c0e189b6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343383742862518339, guid: fc1fe088dfd45254bb9ddd84c0e189b6,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc1fe088dfd45254bb9ddd84c0e189b6, type: 3}
@@ -28788,18 +28811,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 51.17, y: 3.62, z: 8.53}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6231495941953239940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6231495941953239942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f39e97f78c6e8b42a66f339c9f31c2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6231495941953239941
 Transform:
   m_ObjectHideFlags: 0
@@ -28808,7 +28819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231495941953239942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -13.6, z: -31.4}
+  m_LocalPosition: {x: -1.1, y: -13.6, z: -30.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1607639911463261647}
@@ -28824,7 +28835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6231495941953239941}
   - component: {fileID: 6231495941953239939}
-  - component: {fileID: 6231495941953239940}
+  - component: {fileID: 6231495941953239944}
   m_Layer: 0
   m_Name: CloseDoor
   m_TagString: Untagged
@@ -28832,18 +28843,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6231495942851751303
+--- !u!114 &6231495941953239944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9155686171536866232}
+  m_GameObject: {fileID: 6231495941953239942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a94bb2bc09b22443809340ed9161233, type: 3}
+  m_Script: {fileID: 11500000, guid: 5601593f5c1176a449d480157fbdaed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyText: Use your abilities to overpass your enemies
+  eventText: {fileID: 1665572495}
+  timeStopped: 1.5
+  open: 0
 --- !u!208 &6231495942851751304
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -28876,25 +28891,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -50.24, y: -5.06, z: -6.28}
   m_TimeToStationary: 0.5
---- !u!114 &6231495943096221841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6231495943096221844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dbc17d00faa5df45b6c23a0e7c502af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noKeyText: You need the key
-  keyText: You have unlocked the door
-  eventText: {fileID: 1665572495}
-  timeStopped: 1
-  timeToAsk: 1
-  hasStopped: 0
-  playerExits: 1
 --- !u!65 &6231495943096221842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28916,7 +28912,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6231495943096221844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: -15, z: 6.4}
+  m_LocalPosition: {x: -1.5, y: -15, z: 12.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1607639911463261647}
@@ -28931,8 +28927,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6231495943096221843}
-  - component: {fileID: 6231495943096221841}
   - component: {fileID: 6231495943096221842}
+  - component: {fileID: 6231495943096221845}
   m_Layer: 0
   m_Name: DoorEvent
   m_TagString: Untagged
@@ -28940,6 +28936,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6231495943096221845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231495943096221844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5601593f5c1176a449d480157fbdaed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyText: Defeat all the enemies
+  eventText: {fileID: 1665572495}
+  timeStopped: 1.5
+  open: 1
 --- !u!1 &6784373404591154216
 GameObject:
   m_ObjectHideFlags: 0
@@ -29399,7 +29411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607639911463261647}
   - component: {fileID: 5100190220132877580}
-  - component: {fileID: 6231495942851751303}
+  - component: {fileID: 9155686171536866233}
   m_Layer: 0
   m_Name: TutoDoor
   m_TagString: Untagged
@@ -29407,3 +29419,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9155686171536866233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155686171536866232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86365c90672fa814193dabfc06421b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
