@@ -49,8 +49,11 @@ public class IceSpell : MonoBehaviour
             if (enemyColliders[i].tag == "Enemy")
             {
                 EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
-                //enemy.GetDamage(damage);
                 enemy.Freeze(timeFreeze);
+            }else if(enemyColliders[i].tag == "Father")
+            {
+                BossController boss = enemyColliders[i].GetComponent<BossController>();
+                boss.Freeze(timeFreeze);
             }
 
             i++;

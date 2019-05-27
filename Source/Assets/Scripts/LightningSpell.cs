@@ -14,6 +14,7 @@ public class LightningSpell : MonoBehaviour
     public float travelSpeed;
     private float contTime = 0.0f;
     public int damage;
+    public int bossDamage;
     private bool active;
     private Vector3 speedVector;
     private string lastEnemy = " ";
@@ -64,25 +65,25 @@ public class LightningSpell : MonoBehaviour
     {
         Collider[] enemyColliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.LookRotation(Vector3.forward, Vector3.up));
         int i = 0;
-
-        //Check when there is a new collider coming into contact with the box
+        
         while (i < enemyColliders.Length)
         {
-            //Damage every enemy in the collider
-            //Debug.Log("Hit : " + enemyColliders[i].name + i);
             if (enemyColliders[i].tag == "Enemy")
             {
-                Debug.Log(enemyColliders[i].gameObject.name);
 
                 if(enemyColliders[i].gameObject.name != lastEnemy)
                 {
                     EnemyController enemy = enemyColliders[i].GetComponent<EnemyController>();
-                    lastEnemy = enemyColliders[i].gameObject.name;
                     enemy.GetDamage(damage);
                 }
+            }else if (enemyColliders[i].tag == "Father")
+            {
+                if (enemyColliders[i].gameObject.name != lastEnemy)
+                {
+                    BossController boss = enemyColliders[i].GetComponent<BossController>();
+                    boss.GetDamage(bossDamage);
+                }
             }
-
-            //Increase the number of Colliders in the array
             i++;
         }
     }
@@ -90,9 +91,7 @@ public class LightningSpell : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
         if (m_Started)
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }

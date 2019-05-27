@@ -19398,6 +19398,7 @@ MonoBehaviour:
   timeToDamage: 0.9
   damageArea: 5
   enemyDamage: 10
+  bossDamage: 10
   sounds:
   - {fileID: 8300000, guid: 9427fffeb01396a4ba7cb79dd036e32a, type: 3}
   - {fileID: 8300000, guid: d132afa1ee6872943a7c37b8a16f4417, type: 3}

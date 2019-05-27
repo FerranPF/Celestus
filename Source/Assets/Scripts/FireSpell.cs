@@ -13,6 +13,7 @@ public class FireSpell : MonoBehaviour
     private float contToDamage;
     private bool damage = false;
     public int enemyDamage;
+    public int bossDamage;
 
     public AudioClip[] sounds;
     AudioSource audioSource;
@@ -71,6 +72,11 @@ public class FireSpell : MonoBehaviour
                 EnemyController enemy;
                 enemy = hitColliders[i].gameObject.GetComponent<EnemyController>();
                 enemy.GetDamage(enemyDamage);
+            }
+            else if (hitColliders[i].gameObject.tag == "Father")
+            {
+                BossController boss = hitColliders[i].GetComponent<BossController>();
+                boss.GetDamage(bossDamage);
             }
             i++;
         }

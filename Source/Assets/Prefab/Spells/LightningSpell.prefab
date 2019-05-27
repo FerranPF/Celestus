@@ -9634,6 +9634,7 @@ MonoBehaviour:
   timeTravel: 1
   travelSpeed: 15
   damage: 20
+  bossDamage: 20
   sounds:
   - {fileID: 8300000, guid: 8cb5dc2dac36dd5498fa69bc5cd4fda4, type: 3}
 --- !u!1 &3440535967840993824

@@ -25,6 +25,11 @@ public class BossController : MonoBehaviour
     public Text eventText;
     public string text;
 
+    public bool frozen = false;
+    private float timeFreeze;
+    private float freezeCont = 0.0f;
+    public float enemySpeed;
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -48,6 +53,25 @@ public class BossController : MonoBehaviour
                 }
             }
         }
+
+        if (frozen)
+        {
+            freezeCont += Time.deltaTime;
+            Debug.Log(timeFreeze);
+            if (freezeCont >= timeFreeze)
+            {
+                freezeCont = 0.0f;
+                canAttack = true;
+                frozen = false;
+            }
+        }
+    }
+
+    public void Freeze(float timeFrozen)
+    {
+        frozen = true;
+        canAttack = false;
+        timeFreeze = timeFrozen;
     }
 
     IEnumerator Attack()
