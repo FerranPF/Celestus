@@ -13,10 +13,8 @@ public class EnemySword : MonoBehaviour
         Collider[] playerColliders = Physics.OverlapBox(transform.position, transform.localScale, Quaternion.LookRotation(Vector3.forward, Vector3.up));
         int i = 0;
 
-        //Check when there is a new collider coming into contact with the box
         while (i < playerColliders.Length)
         {
-            //Damage every enemy in the collider
             Debug.Log("Hit : " + playerColliders[i].name + i);
             if (playerColliders[i].tag == "Player")
             {
@@ -24,7 +22,6 @@ public class EnemySword : MonoBehaviour
                 player.TakeDamage(Random.Range(minDamage, maxDamage));
             }
 
-            //Increase the number of Colliders in the array
             i++;
         }
     }
@@ -32,9 +29,7 @@ public class EnemySword : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
         if (m_Started)
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
             Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }

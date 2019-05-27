@@ -31,7 +31,7 @@ public class TurretEnemy : MonoBehaviour
     public Color colorIdle;
     public Color colorAttack;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         canAttack = false;
@@ -42,7 +42,7 @@ public class TurretEnemy : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+
     void Update()
     {
         if (findPlayer)

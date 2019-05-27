@@ -29,7 +29,6 @@ public class EnemyController : MonoBehaviour {
     public float enemySpeed;
     private bool dead = false;
 
-    private float cont;
     public float delayAttack = 0.2f;
 
     private void Start()
@@ -120,7 +119,6 @@ public class EnemyController : MonoBehaviour {
 
         yield return new WaitForSeconds(attackTime);
 
-        cont = 0.0f;
         canMove = true;
         animator.SetBool("attacking", false);
         canAttack = true;
@@ -136,10 +134,8 @@ public class EnemyController : MonoBehaviour {
 
     public void GetDamage(int damage)
     {
-        //Take damage
         enemyHealth -= damage;
 
-        //Trigger damage popup
         if (damageText && enemyHealth > 0)
         {
             ShowFloatingText();
@@ -147,7 +143,6 @@ public class EnemyController : MonoBehaviour {
 
         Debug.Log("Enemy health: " + enemyHealth);
 
-        //Enemy death
         if (enemyHealth <= 0)
         {
             StartCoroutine(Death());

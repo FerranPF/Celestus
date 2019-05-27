@@ -230,10 +230,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.9
-  m_Height: 2.78
+  m_Radius: 1.78
+  m_Height: 5.95
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &2305481771081682583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   pointOfAttack: {fileID: 2305481770974522420}
   damageText: {fileID: 5583334948775179130, guid: 731c6aee0a0a61b428ceb21c95201816,
     type: 3}
-  range: 12
+  range: 8
   damage: 20
   showGizmo: 1
   canAttack: 0
