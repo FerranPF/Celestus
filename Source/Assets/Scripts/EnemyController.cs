@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour {
     private bool dead = false;
 
     public float delayAttack = 0.2f;
+    public int healthRecovery = 20;
+    public float manaRecovery = 10;
 
     private void Start()
     {
@@ -165,6 +167,9 @@ public class EnemyController : MonoBehaviour {
         animator.SetBool("death", true);
         animator.SetBool("attacking", false);
         animator.SetBool("walking", false);
+
+        playerHealth.HealthRecovery(healthRecovery);
+        playerHealth.ManaRecovery(manaRecovery);
         yield return new WaitForSeconds(5.0f);
         Destroy(gameObject);
     }

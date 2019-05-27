@@ -257,7 +257,7 @@ MonoBehaviour:
   attack: 0
   timeToAttack: 2
   timeAttacking: 1
-  turretHealth: 100
+  turretHealth: 75
   ray: {fileID: 1161223900189321342}
   colorIdle: {r: 1, g: 0.976174, b: 0, a: 1}
   colorAttack: {r: 1, g: 0, b: 0, a: 1}
