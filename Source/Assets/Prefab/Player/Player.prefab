@@ -20232,7 +20232,9 @@ MonoBehaviour:
     type: 3}
   iceSpell: {fileID: 6981639616094470654, guid: b39828074d4bf7148b2ec54d1e9f54be,
     type: 3}
+  playerTransform: {fileID: 0}
   lightningSpellSpawn: {fileID: 585306420}
+  fireRange: 20
 --- !u!1 &8110799942796012084
 GameObject:
   m_ObjectHideFlags: 0

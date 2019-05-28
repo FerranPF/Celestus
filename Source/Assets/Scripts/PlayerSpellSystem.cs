@@ -40,6 +40,9 @@ public class PlayerSpellSystem : MonoBehaviour
     SpellManager spellManager;
 
     public Transform lightningSpellSpawn;
+    Vector3 pointToLook;
+
+    public float fireRange = 20.0f;
 
     enum Spell
     {
@@ -82,21 +85,18 @@ public class PlayerSpellSystem : MonoBehaviour
             {
                 ResetTarget();
                 spellType = Spell.Lightning;
-                //Debug.Log(spellType);
             }
 
             if (Input.GetKey(KeyCode.Alpha2) && canSpell2)
             {
                 ResetTarget();
                 spellType = Spell.Fire;
-                //Debug.Log(spellType);
             }
 
             if (Input.GetKey(KeyCode.Alpha3) && canSpell3)
             {
                 ResetTarget();
                 spellType = Spell.Ice;
-                //Debug.Log(spellType);
             }
         }
 
@@ -144,7 +144,6 @@ public class PlayerSpellSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0.5f, 0));
         float rayLength;
-        Vector3 pointToLook;
 
         if (groundPlane.Raycast(ray, out rayLength))
         {
@@ -156,14 +155,32 @@ public class PlayerSpellSystem : MonoBehaviour
                 spell1Sprite.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
             }
 
+            
             if (spellType == Spell.Fire)
             {
                 spell2Sprite.SetActive(true);
                 Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
                 spell2Sprite.transform.position = PoI;
-                firePos = pointToLook;
             }
-
+            
+            /*
+            if (spellType == Spell.Fire)
+            {
+                spell2Sprite.SetActive(true);
+                if (Vector3.Distance(this.transform.position, pointToLook) <= fireRange)
+                {
+                    Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
+                    spell2Sprite.transform.position = PoI;
+                    firePos = pointToLook;
+                }
+                else
+                {
+                    pointToLook.Normalize();
+                    Vector3 PoI2 = new Vector3(pointToLook.x, -1.0f, pointToLook.z) * fireRange;
+                    spell2Sprite.transform.position = PoI2;
+                }
+            }
+            */
             if (spellType == Spell.Ice)
             {
                 spell3Sprite.SetActive(true);
@@ -178,6 +195,7 @@ public class PlayerSpellSystem : MonoBehaviour
         manager.playerController.canAttack = false;
         if (Input.GetMouseButtonDown(0))
         {
+            firePos = pointToLook;
             manager.playerStats.UseMana(spellMana);
             GetTarget();
             setTarget = true;
@@ -285,12 +303,12 @@ public class PlayerSpellSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 1.3f, 0));
         float rayLength;
-        Vector3 pointToLook;
+        Vector3 pointToLook2;
 
         if (groundPlane.Raycast(ray, out rayLength))
         {
-            pointToLook = ray.GetPoint(rayLength);
-            Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
+            pointToLook2 = ray.GetPoint(rayLength);
+            Vector3 PoI = new Vector3(pointToLook2.x - manager.playerController.transform.position.x, 0f, pointToLook2.z - manager.playerController.transform.position.z);
             manager.playerController.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
         }
     }
