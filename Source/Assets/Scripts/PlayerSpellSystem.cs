@@ -234,7 +234,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 break;
 
             case Spell.Ice:
-                Instantiate(iceSpell, this.transform.position, transform.rotation);
+                Instantiate(iceSpell, new Vector3(this.transform.position.x, this.transform.position.y - 1.5f, this.transform.position.z), transform.rotation);
                 spellType = Spell.None;
                 break;
             default:
