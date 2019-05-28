@@ -1647,7 +1647,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.49052152, g: 0.6886792, b: 0.6712614, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2918,7 +2918,7 @@ PrefabInstance:
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.6
+      value: 68.5
       objectReference: {fileID: 0}
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
@@ -2928,7 +2928,7 @@ PrefabInstance:
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56.7
+      value: -23.8
       objectReference: {fileID: 0}
     - target: {fileID: 7034865644837780093, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
@@ -3000,6 +3000,11 @@ PrefabInstance:
       propertyPath: fadeAnim
       value: 
       objectReference: {fileID: 5684128230264242582}
+    - target: {fileID: 7034865645789078134, guid: 62406a10ad6cc6b4b9126157d9509cb3,
+        type: 3}
+      propertyPath: key
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7034865644626272362, guid: 62406a10ad6cc6b4b9126157d9509cb3,
         type: 3}
       propertyPath: far clip plane
@@ -3098,7 +3103,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.6792453, g: 0.58632964, b: 0.58632964, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3600,6 +3605,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4140769
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000263462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536315074, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02240221
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715639581536025314, guid: bd682f3950ff21248b53d577035ec429,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd682f3950ff21248b53d577035ec429, type: 3}
@@ -22517,41 +22557,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4626819080007177136, guid: f2dafdd813aa65e408126a4d884920e5,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.13660339
-      objectReference: {fileID: 0}
-    - target: {fileID: 4626819080007177136, guid: f2dafdd813aa65e408126a4d884920e5,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.09347579
-      objectReference: {fileID: 0}
-    - target: {fileID: 4626819080007177136, guid: f2dafdd813aa65e408126a4d884920e5,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.12016957
-      objectReference: {fileID: 0}
-    - target: {fileID: 960036346, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 960036346, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -23.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1977091822, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
       propertyPath: eventText
       value: 
       objectReference: {fileID: 1665572495}
-    - target: {fileID: 1655090167, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
-      propertyPath: m_Carve
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655090166, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
-      propertyPath: m_Carve
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dafdd813aa65e408126a4d884920e5, type: 3}
 --- !u!4 &1655090162 stripped
@@ -23432,6 +23441,11 @@ MonoBehaviour:
   expText: {fileID: 5684128230161107041}
   fxMixer: {fileID: 24100000, guid: 35e8ffcad9d82d343beac59a6ac921e1, type: 2}
   musicMixer: {fileID: 24100000, guid: 8d628e373ea27aa4cb7fc3a7af85079a, type: 2}
+  turretCont: 0
+  turretEnemies: 4
+  eventTextTime: 2
+  eventText: You have access to the final door
+  eventTextComponent: {fileID: 1665572495}
 --- !u!1001 &2535996134073038455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23517,7 +23531,7 @@ PrefabInstance:
     - target: {fileID: 964087164170857050, guid: fc1fe088dfd45254bb9ddd84c0e189b6,
         type: 3}
       propertyPath: bossHealth
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8343781762744373238, guid: fc1fe088dfd45254bb9ddd84c0e189b6,
         type: 3}

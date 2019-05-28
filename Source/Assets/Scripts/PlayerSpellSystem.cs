@@ -142,7 +142,7 @@ public class PlayerSpellSystem : MonoBehaviour
     void ShowSpell()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, -1.0f, 0));
+        Plane groundPlane = new Plane(Vector3.up, new Vector3(0, 0.5f, 0));
         float rayLength;
         Vector3 pointToLook;
 

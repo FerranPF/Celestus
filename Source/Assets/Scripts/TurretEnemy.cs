@@ -8,6 +8,7 @@ public class TurretEnemy : MonoBehaviour
     public Transform target;
     public Transform pointOfAttack;
     public GameObject damageText;
+    private GameManager manager;
 
     public float range = 15f;
     public float damage;
@@ -32,7 +33,10 @@ public class TurretEnemy : MonoBehaviour
     public Color colorAttack;
 
     public GameObject ps;
+    public bool defeat = false;
 
+    private CapsuleCollider coll;
+    private Animator anim;
 
     void Start()
     {
@@ -41,35 +45,41 @@ public class TurretEnemy : MonoBehaviour
         target = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Transform>();
         ray.SetPosition(0, pointOfAttack.position);
         ray.enabled = false;
+        coll = GetComponent<CapsuleCollider>();
+        anim = GetComponent<Animator>();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
 
 
     void Update()
     {
-        if (findPlayer)
+        if (!defeat)
         {
-            Invoke("UpdateTarget", 0.5f);
-        }
-
-        if (canAttack)
-        {
-            Debug.DrawRay(pointOfAttack.position, target.position - pointOfAttack.position);
-            ray.enabled = true;
-            ray.SetPosition(1, target.position);
-            ray.material.color = Color.Lerp(colorIdle, colorAttack, cont/timeToAttack);
-
-            cont += Time.deltaTime;
-
-            if (cont >= timeToAttack)
+            if (findPlayer)
             {
-                attack = true;
+                Invoke("UpdateTarget", 0.5f);
             }
-        }
 
-        if (attack)
-        {
-            StartCoroutine(Attack());
+            if (canAttack)
+            {
+                Debug.DrawRay(pointOfAttack.position, target.position - pointOfAttack.position);
+                ray.enabled = true;
+                ray.SetPosition(1, target.position);
+                ray.material.color = Color.Lerp(colorIdle, colorAttack, cont / timeToAttack);
+
+                cont += Time.deltaTime;
+
+                if (cont >= timeToAttack)
+                {
+                    attack = true;
+                }
+            }
+
+            if (attack)
+            {
+                StartCoroutine(Attack());
+            }
         }
     }
      
@@ -106,15 +116,22 @@ public class TurretEnemy : MonoBehaviour
 
     public void TakeDamage(float damageTaken)
     {
-        if(turretHealth - damageTaken <= 0)
+        turretHealth -= damageTaken;
+        if(turretHealth <= 0)
         {
-            Destroy(this.gameObject);
+            DisableTurret();
         }
-        else
-        {
-            turretHealth -= damageTaken;
-            ShowFloatingText();
-        }
+        ShowFloatingText();
+    }
+
+    void DisableTurret()
+    {
+        defeat = true;
+        turretHealth = 0;
+        ray.enabled = false;
+        coll.enabled = false;
+        anim.SetBool("death", true);
+        manager.KillTurret();
     }
 
     void ShowFloatingText()

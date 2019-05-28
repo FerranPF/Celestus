@@ -137,8 +137,9 @@ public class EnemyController : MonoBehaviour {
     public void GetDamage(int damage)
     {
         enemyHealth -= damage;
+        if (enemyHealth < 0) enemyHealth = 0;
 
-        if (damageText && enemyHealth > 0)
+        if (damageText)
         {
             ShowFloatingText();
         }

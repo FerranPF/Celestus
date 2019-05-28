@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour {
             GodMovement();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.F8))
         {
             if (skillTree)
@@ -94,6 +95,7 @@ public class PlayerController : MonoBehaviour {
                 skillTree = true;
             }
         }
+        */
 
         if(Input.GetKeyDown(KeyCode.F10)){
             if(godMode){
