@@ -9,6 +9,7 @@ public class TutoEvent : MonoBehaviour
     public Text eventText;
     public float timeStopped = 0.2f;
     public bool open = false;
+    private bool showed = false;
 
     private PlayerController playerCont;
     private TutoDoor doorController;
@@ -21,9 +22,12 @@ public class TutoEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (!showed)
         {
-            StartCoroutine(StopPlayer());
+            if (other.gameObject.tag == "Player")
+            {
+                StartCoroutine(StopPlayer());
+            }
         }
     }
 
@@ -32,6 +36,7 @@ public class TutoEvent : MonoBehaviour
         PlayerKey();
         Time.timeScale = 0.0f;
         playerCont.canMove = false;
+        showed = true;
 
         yield return new WaitForSecondsRealtime(timeStopped);
 

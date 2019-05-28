@@ -255,13 +255,14 @@ MonoBehaviour:
   showGizmo: 1
   canAttack: 0
   attack: 0
-  timeToAttack: 2
+  timeToAttack: 3.5
   timeAttacking: 1
   turretHealth: 75
   ray: {fileID: 1161223900189321342}
   colorIdle: {r: 1, g: 0.976174, b: 0, a: 1}
   colorAttack: {r: 1, g: 0, b: 0, a: 1}
   ps: {fileID: 2249335626448929086, guid: 91e2f115708e1844fa3b7c62dabb935a, type: 3}
+  defeat: 0
 --- !u!95 &516389583
 Animator:
   serializedVersion: 3
