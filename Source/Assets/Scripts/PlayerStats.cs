@@ -40,6 +40,8 @@ public class PlayerStats : MonoBehaviour {
     public float shakeMagnitude = .05f;
     public float shakeDuration = .14f;
 
+    public PlayerSpellSystem spellSystem;
+
     private void Awake()
     {
         shake = Camera.main.GetComponent<CameraShake>();
@@ -49,7 +51,7 @@ public class PlayerStats : MonoBehaviour {
         level = 1.0f;
         expSlider.fillAmount = 0.0f;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
+        spellSystem = GetComponent<PlayerSpellSystem>();
 
         vignetteImage.CrossFadeAlpha(0, 0, false);
     }
@@ -112,6 +114,7 @@ public class PlayerStats : MonoBehaviour {
                 currentMana += amount;
             }
             manaSlider.fillAmount = currentMana / startingMana;
+            spellSystem.canSpell = true;
         }
         Debug.Log("Mana: " + currentMana);
     }

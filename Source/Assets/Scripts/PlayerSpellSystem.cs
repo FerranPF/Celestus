@@ -71,6 +71,34 @@ public class PlayerSpellSystem : MonoBehaviour
         canSpell = true;
     }
 
+    public void UpdateMana()
+    {
+        if(manager.playerStats.currentMana < spell1Mana)
+        {
+            canSpell1 = false;
+        }
+        else
+        {
+            canSpell1 = true;
+        }
+        if(manager.playerStats.currentMana < spell2Mana)
+        {
+            canSpell2 = false;
+        }
+        else
+        {
+            canSpell2 = true;
+        }
+        if (manager.playerStats.currentMana < spell3Mana)
+        {
+            canSpell3 = false;
+        }
+        else
+        {
+            canSpell3 = true;
+        }
+    }
+
     private void Update()
     {
         if (manager.playerStats.currentMana <= 0)
@@ -81,6 +109,7 @@ public class PlayerSpellSystem : MonoBehaviour
 
         if (canSpell)
         {
+            UpdateMana();
             if (Input.GetKey(KeyCode.Alpha1) && canSpell1)
             {
                 ResetTarget();
@@ -154,16 +183,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 Vector3 PoI = new Vector3(pointToLook.x - manager.playerController.transform.position.x, 0f, pointToLook.z - manager.playerController.transform.position.z);
                 spell1Sprite.transform.rotation = Quaternion.LookRotation(PoI, Vector3.up);
             }
-
             
-            if (spellType == Spell.Fire)
-            {
-                spell2Sprite.SetActive(true);
-                Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
-                spell2Sprite.transform.position = PoI;
-            }
-            
-            /*
             if (spellType == Spell.Fire)
             {
                 spell2Sprite.SetActive(true);
@@ -175,12 +195,15 @@ public class PlayerSpellSystem : MonoBehaviour
                 }
                 else
                 {
-                    pointToLook.Normalize();
-                    Vector3 PoI2 = new Vector3(pointToLook.x, -1.0f, pointToLook.z) * fireRange;
-                    spell2Sprite.transform.position = PoI2;
+                    Vector3 spellDirection = pointToLook - this.transform.position;
+                    spellDirection = this.transform.position + (spellDirection.normalized * fireRange);
+
+                    Vector3 PoI = new Vector3(spellDirection.x, -1.0f, spellDirection.z);
+                    spell2Sprite.transform.position = PoI;
+                    firePos = spellDirection;
                 }
             }
-            */
+            
             if (spellType == Spell.Ice)
             {
                 spell3Sprite.SetActive(true);
