@@ -110,19 +110,19 @@ public class PlayerSpellSystem : MonoBehaviour
         if (canSpell)
         {
             UpdateMana();
-            if (Input.GetKey(KeyCode.Alpha1) && canSpell1)
+            if (Input.GetKey(KeyCode.Q) && canSpell1)
             {
                 ResetTarget();
                 spellType = Spell.Lightning;
             }
 
-            if (Input.GetKey(KeyCode.Alpha2) && canSpell2)
+            if (Input.GetKey(KeyCode.E) && canSpell2)
             {
                 ResetTarget();
                 spellType = Spell.Fire;
             }
 
-            if (Input.GetKey(KeyCode.Alpha3) && canSpell3)
+            if (Input.GetKey(KeyCode.R) && canSpell3)
             {
                 ResetTarget();
                 spellType = Spell.Ice;
