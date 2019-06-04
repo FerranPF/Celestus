@@ -72,11 +72,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            father.canAttack = true;
-        }
-
         if(godMode){
             GodMode();
             GodMovement();
