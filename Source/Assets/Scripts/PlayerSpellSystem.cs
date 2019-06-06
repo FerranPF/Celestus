@@ -110,19 +110,19 @@ public class PlayerSpellSystem : MonoBehaviour
         if (canSpell)
         {
             UpdateMana();
-            if (Input.GetKey(KeyCode.Q) && canSpell1)
+            if (Input.GetKey(KeyCode.Alpha1) && canSpell1)
             {
                 ResetTarget();
                 spellType = Spell.Lightning;
             }
 
-            if (Input.GetKey(KeyCode.E) && canSpell2)
+            if (Input.GetKey(KeyCode.Alpha2) && canSpell2)
             {
                 ResetTarget();
                 spellType = Spell.Fire;
             }
 
-            if (Input.GetKey(KeyCode.R) && canSpell3)
+            if (Input.GetKey(KeyCode.Alpha3) && canSpell3)
             {
                 ResetTarget();
                 spellType = Spell.Ice;
@@ -189,7 +189,7 @@ public class PlayerSpellSystem : MonoBehaviour
                 spell2Sprite.SetActive(true);
                 if (Vector3.Distance(this.transform.position, pointToLook) <= fireRange)
                 {
-                    Vector3 PoI = new Vector3(pointToLook.x, -1.0f, pointToLook.z);
+                    Vector3 PoI = new Vector3(pointToLook.x, -1.9f, pointToLook.z);
                     spell2Sprite.transform.position = PoI;
                     firePos = pointToLook;
                 }
@@ -198,7 +198,7 @@ public class PlayerSpellSystem : MonoBehaviour
                     Vector3 spellDirection = pointToLook - this.transform.position;
                     spellDirection = this.transform.position + (spellDirection.normalized * fireRange);
 
-                    Vector3 PoI = new Vector3(spellDirection.x, -1.0f, spellDirection.z);
+                    Vector3 PoI = new Vector3(spellDirection.x, -1.9f, spellDirection.z);
                     spell2Sprite.transform.position = PoI;
                     firePos = spellDirection;
                 }

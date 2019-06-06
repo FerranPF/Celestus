@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5853062930929701028}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.2, z: 2.56}
+  m_LocalPosition: {x: 0, y: 0.48, z: 2.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6981639616794248320}
@@ -180,7 +180,7 @@ MonoBehaviour:
   Spell: {fileID: 6981639616094470654}
   m_Started: 1
   timeSpawn: 2
-  timeFreeze: 5
+  timeFreeze: 3
   damage: 10
   sounds:
   - {fileID: 8300000, guid: 83ff01dd2d89fea40a206a21915f9f10, type: 3}
